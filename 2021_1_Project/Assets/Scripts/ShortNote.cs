@@ -6,32 +6,27 @@ using UnityEngine.EventSystems;
 
 public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
-    public Text judgeText;
+    public Text judgeText; // Temp Component
 
-    private Image _circle;
+    private Image _circle, _line;
 
-    [SerializeField] private Image _line = default;
+    private bool _isHit; // 노트 터치 여부
 
-    private bool _isHit;
+    private float _judgeValue; // 판정 범위를 저장할 변수
 
-    public float _reduceValue = 250.0f;
-
-    private Vector2 _lineSize, _setlineSize;
+    private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
 
     private Color _noteColor;
+
+    [Header("판정선 축소 속도")]
+    [SerializeField] private float _reduceValue = 250.0f;
+    [Header("판정 범위")]
+    [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
 
     private void Awake()
     {
         _circle = GetComponent<Image>();
-    }
-    private void Start()
-    {
-        _circle.color = _noteColor;
-        _line.color = _noteColor;
-        
-        _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
-        
-        _isHit = false;
+        _line = transform.GetChild(0).GetComponent<Image>(); // 판정선 이미지 호출
     }
 
     private void OnEnable()
@@ -41,10 +36,15 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         _noteColor = Color.gray;
         _noteColor.a = 0;
     }
+    private void Start()
+    {
+        _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
+        _isHit = false;
+    }
 
     private void OnDisable()
     {
-        _lineSize = _line.rectTransform.sizeDelta = _setlineSize;
+        _lineSize = _line.rectTransform.sizeDelta = _setlineSize; // 초기 라인 사이즈로 복구
         _isHit = false;
     }
 
@@ -52,32 +52,31 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         _isHit = true;
         judgeText.text = _message;
-        InvokeRepeating("DarkenNote", 0f, 0.05f);
+
+        if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
+            CancelInvoke("BrightenNote");
+
+        InvokeRepeating("DarkenNote", 0f, 0.05f); 
     }
 
     private void BrightenNote()
     {
-        _noteColor.a += 0.1f;
+        _noteColor.a += 0.1f; // 노트가 보여지는 상수값
         _circle.color = _noteColor;
         _line.color = _noteColor;
 
-        if(_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < 50.0f)
+        if (_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < _failRange + 1.0f) // Fail 판정시 Note가 밝아지지 않은 경우도 있기 때문에 미세한 값 수정
         {
-            _noteColor = Color.white;
-
-            _circle.color = _noteColor;
-            _line.color = _noteColor;
+            _circle.color = _line.color = _noteColor = Color.white;
             CancelInvoke();
         }
     }
     private void DarkenNote()
     {
-        if(IsInvoking("BrightenNote"))
-            CancelInvoke("BrightenNote");
-        _noteColor.a -= 0.1f;
+        _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
         _circle.color = _noteColor;
         _line.color = _noteColor;
-        if(_noteColor.a <= 0f)
+        if(_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
             CancelInvoke();
             gameObject.SetActive(false);
@@ -86,13 +85,13 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private void Update()
     {
-        if (!_isHit)
+        if (!_isHit) // 판정선 축소
         {
             _lineSize.x -= _reduceValue * Time.deltaTime;
             _lineSize.y -= _reduceValue * Time.deltaTime;
             _line.rectTransform.sizeDelta = _lineSize;
-            if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - 10.0f)
-                Hit("FAIL");
+            if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
+                Hit("MISS");
         }
     }
 
@@ -100,15 +99,13 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         if (!_isHit)
         {
-            float _value = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
-
-            if (_value < 20.0f)
+            _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
+            // 판정라인 설정
+            if (_judgeValue < _awesomeRange)
                 Hit("AWESOME");
-            else if (_value < 30.0f)
+            else if (_judgeValue < _goodRange)
                 Hit("GOOD");
-            else if (_value < 40.0f)
-                Hit("BAD");
-            else if (_value < 50.0f)
+            else if (_judgeValue < _failRange)
                 Hit("FAIL");
             else { }
         }
