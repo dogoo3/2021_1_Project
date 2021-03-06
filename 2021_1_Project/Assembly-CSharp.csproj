@@ -64,7 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Dummy.cs" />
     <Compile Include="Assets\Scripts\LongNote.cs" />
-    <Compile Include="Assets\Scripts\LongNoteArrow.cs" />
+    <Compile Include="Assets\Scripts\LongNoteStopover.cs" />
     <Compile Include="Assets\Scripts\SetNote.cs" />
     <Compile Include="Assets\Scripts\ShortNote.cs" />
     <Compile Include="Assets\Scripts\SystemManager.cs" />
