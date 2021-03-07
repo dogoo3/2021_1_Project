@@ -8,7 +8,7 @@ public class SetNote : MonoBehaviour
 
     private void Awake()
     {
-        InvokeRepeating("Set", 1.0f, 3.5f);
+        InvokeRepeating("Set", 1.0f, 6.0f);
     }
 
     private void Set()
