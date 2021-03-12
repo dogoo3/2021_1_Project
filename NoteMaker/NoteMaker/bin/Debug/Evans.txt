@@ -1,0 +1,3 @@
+2.15/Lshoulder/ShortNote
+3.44123/Rshoulder/LongNote1/Move
+6.185182/Lshoulder/Walk

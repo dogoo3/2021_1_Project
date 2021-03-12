@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SetNote : MonoBehaviour
 {
-    public GameObject _obj;
+    public GameObject[] _obj;
 
     private void Awake()
     {
@@ -13,6 +13,8 @@ public class SetNote : MonoBehaviour
 
     private void Set()
     {
-        _obj.gameObject.SetActive(true);
+        _obj[0].gameObject.SetActive(true);
+        _obj[1].gameObject.SetActive(true);
+        _obj[2].gameObject.SetActive(true);
     }
 }
