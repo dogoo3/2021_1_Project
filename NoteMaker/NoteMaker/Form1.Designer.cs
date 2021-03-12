@@ -45,25 +45,25 @@
             this.MaxPlayTime = new System.Windows.Forms.Label();
             this._listbox_noteInfo = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this._picture_joint_lShoulder = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Rfoot = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lfoot = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Rknee = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lknee = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Rhand = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lhand = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Rshoulder = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lshoulder = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_lShoulder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lfoot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rknee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lknee)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rhand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lhand)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,11 +179,13 @@
             // _textbox_playtime
             // 
             this._textbox_playtime.Enabled = false;
+            this._textbox_playtime.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this._textbox_playtime.Location = new System.Drawing.Point(90, 92);
             this._textbox_playtime.Name = "_textbox_playtime";
             this._textbox_playtime.Size = new System.Drawing.Size(134, 21);
             this._textbox_playtime.TabIndex = 0;
             this._textbox_playtime.TabStop = false;
+            this._textbox_playtime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_playtime_KeyPress);
             // 
             // label3
             // 
@@ -235,102 +237,109 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "재생시간 / 관절 / 노트 / 애니메이션";
             // 
-            // pictureBox8
+            // _picture_joint_Rfoot
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
-            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox8.Location = new System.Drawing.Point(184, 522);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox8.TabIndex = 24;
-            this.pictureBox8.TabStop = false;
+            this._picture_joint_Rfoot.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Rfoot.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Rfoot.BackgroundImage")));
+            this._picture_joint_Rfoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Rfoot.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Rfoot.Location = new System.Drawing.Point(184, 522);
+            this._picture_joint_Rfoot.Name = "_picture_joint_Rfoot";
+            this._picture_joint_Rfoot.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rfoot.TabIndex = 24;
+            this._picture_joint_Rfoot.TabStop = false;
+            this._picture_joint_Rfoot.Click += new System.EventHandler(this._picture_joint_Rfoot_Click);
             // 
-            // pictureBox7
+            // _picture_joint_Lfoot
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox7.Location = new System.Drawing.Point(117, 522);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox7.TabIndex = 23;
-            this.pictureBox7.TabStop = false;
+            this._picture_joint_Lfoot.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lfoot.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Lfoot.BackgroundImage")));
+            this._picture_joint_Lfoot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lfoot.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lfoot.Location = new System.Drawing.Point(117, 522);
+            this._picture_joint_Lfoot.Name = "_picture_joint_Lfoot";
+            this._picture_joint_Lfoot.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lfoot.TabIndex = 23;
+            this._picture_joint_Lfoot.TabStop = false;
+            this._picture_joint_Lfoot.Click += new System.EventHandler(this._picture_joint_Lfoot_Click);
             // 
-            // pictureBox6
+            // _picture_joint_Rknee
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox6.Location = new System.Drawing.Point(172, 453);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox6.TabIndex = 22;
-            this.pictureBox6.TabStop = false;
+            this._picture_joint_Rknee.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Rknee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Rknee.BackgroundImage")));
+            this._picture_joint_Rknee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Rknee.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Rknee.Location = new System.Drawing.Point(172, 453);
+            this._picture_joint_Rknee.Name = "_picture_joint_Rknee";
+            this._picture_joint_Rknee.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rknee.TabIndex = 22;
+            this._picture_joint_Rknee.TabStop = false;
+            this._picture_joint_Rknee.Click += new System.EventHandler(this._picture_joint_Rknee_Click);
             // 
-            // pictureBox5
+            // _picture_joint_Lknee
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
-            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox5.Location = new System.Drawing.Point(126, 453);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox5.TabIndex = 21;
-            this.pictureBox5.TabStop = false;
+            this._picture_joint_Lknee.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lknee.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Lknee.BackgroundImage")));
+            this._picture_joint_Lknee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lknee.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lknee.Location = new System.Drawing.Point(126, 453);
+            this._picture_joint_Lknee.Name = "_picture_joint_Lknee";
+            this._picture_joint_Lknee.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lknee.TabIndex = 21;
+            this._picture_joint_Lknee.TabStop = false;
+            this._picture_joint_Lknee.Click += new System.EventHandler(this._picture_joint_Lknee_Click);
             // 
-            // pictureBox4
+            // _picture_joint_Rhand
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox4.Location = new System.Drawing.Point(184, 401);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox4.TabIndex = 20;
-            this.pictureBox4.TabStop = false;
+            this._picture_joint_Rhand.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Rhand.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Rhand.BackgroundImage")));
+            this._picture_joint_Rhand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Rhand.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Rhand.Location = new System.Drawing.Point(184, 401);
+            this._picture_joint_Rhand.Name = "_picture_joint_Rhand";
+            this._picture_joint_Rhand.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rhand.TabIndex = 20;
+            this._picture_joint_Rhand.TabStop = false;
+            this._picture_joint_Rhand.Click += new System.EventHandler(this._picture_joint_Rhand_Click);
             // 
-            // pictureBox3
+            // _picture_joint_Lhand
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox3.Location = new System.Drawing.Point(106, 401);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox3.TabIndex = 19;
-            this.pictureBox3.TabStop = false;
+            this._picture_joint_Lhand.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lhand.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_joint_Lhand.BackgroundImage")));
+            this._picture_joint_Lhand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lhand.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lhand.Location = new System.Drawing.Point(106, 401);
+            this._picture_joint_Lhand.Name = "_picture_joint_Lhand";
+            this._picture_joint_Lhand.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lhand.TabIndex = 19;
+            this._picture_joint_Lhand.TabStop = false;
+            this._picture_joint_Lhand.Click += new System.EventHandler(this._picture_joint_Lhand_Click);
             // 
-            // pictureBox2
+            // _picture_joint_Rshoulder
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox2.Location = new System.Drawing.Point(184, 277);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            this._picture_joint_Rshoulder.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Rshoulder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Rshoulder.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Rshoulder.Location = new System.Drawing.Point(184, 277);
+            this._picture_joint_Rshoulder.Name = "_picture_joint_Rshoulder";
+            this._picture_joint_Rshoulder.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rshoulder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Rshoulder.TabIndex = 18;
+            this._picture_joint_Rshoulder.TabStop = false;
+            this._picture_joint_Rshoulder.Click += new System.EventHandler(this._picture_joint_Rshoulder_Click);
             // 
-            // _picture_joint_lShoulder
+            // _picture_joint_Lshoulder
             // 
-            this._picture_joint_lShoulder.BackColor = System.Drawing.Color.Transparent;
-            this._picture_joint_lShoulder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._picture_joint_lShoulder.Cursor = System.Windows.Forms.Cursors.Default;
-            this._picture_joint_lShoulder.Location = new System.Drawing.Point(106, 277);
-            this._picture_joint_lShoulder.Name = "_picture_joint_lShoulder";
-            this._picture_joint_lShoulder.Size = new System.Drawing.Size(30, 30);
-            this._picture_joint_lShoulder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._picture_joint_lShoulder.TabIndex = 17;
-            this._picture_joint_lShoulder.TabStop = false;
-            this._picture_joint_lShoulder.Click += new System.EventHandler(this._picture_joint_lShoulder_Click);
+            this._picture_joint_Lshoulder.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lshoulder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lshoulder.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lshoulder.Location = new System.Drawing.Point(106, 277);
+            this._picture_joint_Lshoulder.Name = "_picture_joint_Lshoulder";
+            this._picture_joint_Lshoulder.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lshoulder.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Lshoulder.TabIndex = 17;
+            this._picture_joint_Lshoulder.TabStop = false;
+            this._picture_joint_Lshoulder.Click += new System.EventHandler(this._picture_joint_lShoulder_Click);
             // 
             // pictureBox1
             // 
@@ -347,14 +356,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 580);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this._picture_joint_lShoulder);
+            this.Controls.Add(this._picture_joint_Rfoot);
+            this.Controls.Add(this._picture_joint_Lfoot);
+            this.Controls.Add(this._picture_joint_Rknee);
+            this.Controls.Add(this._picture_joint_Lknee);
+            this.Controls.Add(this._picture_joint_Rhand);
+            this.Controls.Add(this._picture_joint_Lhand);
+            this.Controls.Add(this._picture_joint_Rshoulder);
+            this.Controls.Add(this._picture_joint_Lshoulder);
             this.Controls.Add(this.label4);
             this.Controls.Add(this._listbox_noteInfo);
             this.Controls.Add(this.MaxPlayTime);
@@ -381,14 +390,14 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_lShoulder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lfoot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rknee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lknee)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rhand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lhand)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -414,14 +423,14 @@
         private System.Windows.Forms.Label MaxPlayTime;
         private System.Windows.Forms.ListBox _listbox_noteInfo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox _picture_joint_lShoulder;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox _picture_joint_Lshoulder;
+        private System.Windows.Forms.PictureBox _picture_joint_Rshoulder;
+        private System.Windows.Forms.PictureBox _picture_joint_Lhand;
+        private System.Windows.Forms.PictureBox _picture_joint_Rhand;
+        private System.Windows.Forms.PictureBox _picture_joint_Lknee;
+        private System.Windows.Forms.PictureBox _picture_joint_Rknee;
+        private System.Windows.Forms.PictureBox _picture_joint_Lfoot;
+        private System.Windows.Forms.PictureBox _picture_joint_Rfoot;
     }
 }
 

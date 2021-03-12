@@ -64,7 +64,7 @@ namespace NoteMaker
             _timer.Interval = 10;
             _timer.Tick += _timer_tick;
             #endregion
-            _noteinfoEditor = new NoteInfoEditor();
+            _noteinfoEditor = new NoteInfoEditor(this);
         }
 
         private void _timer_tick(object sender, EventArgs e)
@@ -76,6 +76,15 @@ namespace NoteMaker
             _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
 
             _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
+
+            SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder);
+            SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder);
+            SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand);
+            SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand);
+            SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee);
+            SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
+            SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
+            SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
             #endregion
         }
 
@@ -106,6 +115,7 @@ namespace NoteMaker
             if(_ofd_Getnote.ShowDialog() == DialogResult.OK)
             {
                 _streamReader = new StreamReader(_ofd_Getnote.FileName);
+                _textbox_nownote.Text = _ofd_Getnote.SafeFileName;
                 while (_streamReader.Peek() != -1)
                 {
                     _temp = _streamReader.ReadLine();
@@ -122,31 +132,39 @@ namespace NoteMaker
                 _streamReader.Close();
             }
         }
-
         private void _button_savenote_Click(object sender, EventArgs e) // 노트 파일 저장하기
         {
-            if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+            if(_textbox_nownote.Text != "") // 불러온 파일이 있을 경우
             {
-                _streamWriter = new StreamWriter(_ofd_Savenote.FileName);
-
-                for (int i = 0; i < _note.Count; i++)
-                    _streamWriter.WriteLine(_note[i]);
-                _streamWriter.Close();
+                SetStream(_ofd_Getnote);
+                MessageBox.Show("저장되었습니다!");
+            }
+            else
+            {
+                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+                    SetStream(_ofd_Savenote);
             }
         }
+        private void SetStream<T>(T _fd) where T : FileDialog
+        {
+            _streamWriter = new StreamWriter(_fd.FileName);
+
+            for (int i = 0; i < _note.Count; i++)
+                _streamWriter.WriteLine(_note[i]._showlist);
+            _streamWriter.Close();
+        }
+
         private void _button_play_Click(object sender, EventArgs e)
         {
             ChangeState(MP3MODE.Play);
         }
-
         private void _button_stop_Click(object sender, EventArgs e)
         {
             ChangeState(MP3MODE.Pause);
         }
-
         #endregion
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e) // 메인 키 입력
         {
             if (e.KeyCode == Keys.Space)
             {
@@ -162,12 +180,21 @@ namespace NoteMaker
             }
             if (e.KeyCode == Keys.Enter)
             {
-                if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused)
+                if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused) // 음악이 일시정지되어있어야 타임 조작 가능
                 {
-                    if (Convert.ToDouble(_textbox_playtime.Text) >= 0 && Convert.ToDouble(_textbox_playtime.Text) <= _mp3player.Duration)
+                    if (Convert.ToDouble(_textbox_playtime.Text) >= 0 && Convert.ToDouble(_textbox_playtime.Text) <= _mp3player.Duration) // 음악이 노래 범위 안이어야 함
                     {
                         _mp3player.CurrentPosition = Convert.ToDouble(_textbox_playtime.Text);
                         _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
+
+                        SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder);
+                        SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder);
+                        SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand);
+                        SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand);
+                        SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee);
+                        SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
+                        SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
+                        SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
                         label1.Focus();
                     }
                     else
@@ -175,6 +202,45 @@ namespace NoteMaker
                 }
             }
         }
+
+        #region JOINTSET
+        private void SetJoint(string joint, double currentPosition, PictureBox pictureBox)
+        {
+            if (_note.Count == 0) // 노트안에 아무것도 없으면 실행하지 않음.
+                return;
+
+            if (currentPosition >= _note[_note.Count / 2]._activeTime) // 중간 타임보다 찾으려는 시간이 크면
+            {
+                for(int i=_note.Count-1;i>=0;i--)
+                {
+                    if (CheckTime(joint, currentPosition, pictureBox, i))
+                        return;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _note.Count; i++)
+                {
+                    if (CheckTime(joint, currentPosition, pictureBox, i))
+                        return;
+                }
+            }
+            pictureBox.Image = null;
+        }
+
+        private bool CheckTime(string joint, double currentPosition, PictureBox pictureBox, int i)
+        {
+            if (_note[i]._activeTime >= currentPosition && _note[i]._activeTime <= currentPosition + 0.05) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
+            {
+                if (_note[i]._joint == joint) // 관절이 맞으면
+                {
+                    pictureBox.Image = Properties.Resources.circle;
+                    return true;
+                }
+            }
+            return false;
+        }
+        #endregion
 
         private void ChangeState(MP3MODE _mode)
         {
@@ -238,14 +304,111 @@ namespace NoteMaker
             // 이 listbox를 클릭했을 때
         }
 
+        private void _textbox_playtime_KeyPress(object sender, KeyPressEventArgs e) // 숫자와 소수점만 받아야하므로 별도의 처리 필요 
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
+                e.Handled = true;
+        }
+
+        #region ClickJoint
         private void _picture_joint_lShoulder_Click(object sender, EventArgs e)
         {
-            if(_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused)
+            OpenNoteInfoEditor("Lshoulder");
+        }
+        private void _picture_joint_Rshoulder_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Rshoulder");
+        }
+
+        private void _picture_joint_Lhand_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Lhand");
+        }
+
+        private void _picture_joint_Rhand_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Rhand");
+        }
+
+        private void _picture_joint_Lknee_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Lknee");
+        }
+
+        private void _picture_joint_Rknee_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Rknee");
+        }
+
+        private void _picture_joint_Lfoot_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Lfoot");
+        }
+
+        private void _picture_joint_Rfoot_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Rfoot");
+        }
+
+        private void OpenNoteInfoEditor(string _joint)
+        {
+            if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused)
             {
-                // note._activeTime == _mp3Player.CurretnPosition && note._joint == "LShoulder"
-                _noteinfoEditor.Init(_mp3player.CurrentPosition);
+                _noteinfoEditor.Init(_mp3player.CurrentPosition, _joint);
                 _noteinfoEditor.ShowDialog();
             }
         }
+        #endregion
+
+        #region InputNote
+        public bool MakeNote(double _activeTime, string _joint, string _activeNote, string _animation = "")
+        {
+            if (_note.Count == 0) // 노트 안에 아무것도 없으면
+            {
+                InsertNote(0, _activeTime, _joint, _activeNote, _animation);
+                return true;
+            }
+            if(_note.Count == 1)
+            {
+                if(_note[0]._activeTime > _activeTime)
+                    InsertNote(0, _activeTime, _joint, _activeNote, _animation);
+                else
+                    InsertNote(1, _activeTime, _joint, _activeNote, _animation);
+                return true;
+            }
+
+            if (_activeTime >= _note[_note.Count / 2]._activeTime) // 중간 타임보다 넣으려는 시간이 크면
+            {
+                for (int i = _note.Count - 1; i >= 0; i--)
+                {
+                    if (_activeTime > _note[i]._activeTime) // 넣을려는 노트의 시간이 더 작으면
+                    {
+                        InsertNote(i+1, _activeTime, _joint, _activeNote, _animation);
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _note.Count; i++)
+                {
+                    if(_activeTime < _note[i]._activeTime) // 넣을려는 노트의 시간이 더 커지면
+                    {
+                        InsertNote(i, _activeTime, _joint, _activeNote, _animation);
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private void InsertNote(int i, double _activeTime, string _joint, string _activeNote, string _animation)
+        {
+            _inputValue = new Note(_activeTime, _joint, _activeNote, _animation);
+            _note.Insert(i, _inputValue); // 노트를 중간에 삽입
+            _listbox_noteInfo.Items.Insert(i, _inputValue._showlist);
+        }
+        #endregion
     }
 }

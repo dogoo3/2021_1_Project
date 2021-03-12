@@ -1,3 +1,6 @@
+2.1100001/Rshoulder/fff/asdf
 2.15/Lshoulder/ShortNote
 3.44123/Rshoulder/LongNote1/Move
+3.7300004/Lhand/fffd/ff
 6.185182/Lshoulder/Walk
+7.690001/Lshoulder/asdf/asdf

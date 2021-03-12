@@ -45,9 +45,10 @@
             this._button_OK.Location = new System.Drawing.Point(65, 145);
             this._button_OK.Name = "_button_OK";
             this._button_OK.Size = new System.Drawing.Size(75, 23);
-            this._button_OK.TabIndex = 0;
+            this._button_OK.TabIndex = 2;
             this._button_OK.Text = "노트 설정";
             this._button_OK.UseVisualStyleBackColor = true;
+            this._button_OK.Click += new System.EventHandler(this._button_OK_Click);
             // 
             // label1
             // 
@@ -56,7 +57,7 @@
             this.label1.Location = new System.Drawing.Point(5, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(90, 21);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 3;
             this.label1.Text = "활성화시간";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -67,15 +68,16 @@
             this._textbox_activetime.Name = "_textbox_activetime";
             this._textbox_activetime.ReadOnly = true;
             this._textbox_activetime.Size = new System.Drawing.Size(100, 29);
-            this._textbox_activetime.TabIndex = 2;
+            this._textbox_activetime.TabIndex = 3;
             // 
             // _textbox_joint
             // 
             this._textbox_joint.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this._textbox_joint.Location = new System.Drawing.Point(95, 41);
             this._textbox_joint.Name = "_textbox_joint";
+            this._textbox_joint.ReadOnly = true;
             this._textbox_joint.Size = new System.Drawing.Size(100, 29);
-            this._textbox_joint.TabIndex = 4;
+            this._textbox_joint.TabIndex = 3;
             // 
             // label2
             // 
@@ -91,38 +93,39 @@
             // _textbox_animation
             // 
             this._textbox_animation.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_animation.Location = new System.Drawing.Point(95, 76);
+            this._textbox_animation.Location = new System.Drawing.Point(95, 111);
             this._textbox_animation.Name = "_textbox_animation";
             this._textbox_animation.Size = new System.Drawing.Size(100, 29);
-            this._textbox_animation.TabIndex = 6;
+            this._textbox_animation.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.label3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Location = new System.Drawing.Point(5, 80);
+            this.label3.Location = new System.Drawing.Point(5, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 21);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 3;
             this.label3.Text = "애니메이션";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // _textbox_activenote
             // 
             this._textbox_activenote.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_activenote.Location = new System.Drawing.Point(95, 111);
+            this._textbox_activenote.Location = new System.Drawing.Point(95, 76);
             this._textbox_activenote.Name = "_textbox_activenote";
             this._textbox_activenote.Size = new System.Drawing.Size(100, 29);
-            this._textbox_activenote.TabIndex = 8;
+            this._textbox_activenote.TabIndex = 0;
+            this._textbox_activenote.TextChanged += new System.EventHandler(this._textbox_activenote_TextChanged);
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this.label4.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label4.Location = new System.Drawing.Point(5, 115);
+            this.label4.Location = new System.Drawing.Point(5, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 21);
-            this.label4.TabIndex = 7;
+            this.label4.TabIndex = 3;
             this.label4.Text = "노트";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -144,6 +147,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NoteInfoEditor";
+            this.Text = "노트 정보 입력";
             this.ResumeLayout(false);
             this.PerformLayout();
 
