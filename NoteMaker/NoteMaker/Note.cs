@@ -30,6 +30,11 @@ namespace NoteMaker
             this._activeNote = _activeNote;
             this._animation = _animation;
 
+            ModifyShowlist();
+        }
+
+        public void ModifyShowlist()
+        {
             if (_animation == "")
                 _showlist = _activeTime.ToString() + "/" + _joint + "/" + _activeNote;
             else

@@ -116,7 +116,6 @@
             this._textbox_activenote.Name = "_textbox_activenote";
             this._textbox_activenote.Size = new System.Drawing.Size(100, 29);
             this._textbox_activenote.TabIndex = 0;
-            this._textbox_activenote.TextChanged += new System.EventHandler(this._textbox_activenote_TextChanged);
             // 
             // label4
             // 
@@ -144,10 +143,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this._button_OK);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NoteInfoEditor";
             this.Text = "노트 정보 입력";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NoteInfoEditor_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -53,7 +53,7 @@
             this._picture_joint_Lhand = new System.Windows.Forms.PictureBox();
             this._picture_joint_Rshoulder = new System.Windows.Forms.PictureBox();
             this._picture_joint_Lshoulder = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this._picturebox_Character = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
@@ -64,7 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lhand)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).BeginInit();
             this.SuspendLayout();
             // 
             // _button_loadmp3
@@ -225,8 +225,8 @@
             this._listbox_noteInfo.Name = "_listbox_noteInfo";
             this._listbox_noteInfo.Size = new System.Drawing.Size(248, 496);
             this._listbox_noteInfo.TabIndex = 15;
-            this._listbox_noteInfo.SelectedIndexChanged += new System.EventHandler(this._listbox_noteInfo_SelectedIndexChanged);
             this._listbox_noteInfo.DoubleClick += new System.EventHandler(this._listbox_noteInfo_DoubleClick);
+            this._listbox_noteInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this._listbox_noteInfo_KeyDown);
             // 
             // label4
             // 
@@ -341,15 +341,15 @@
             this._picture_joint_Lshoulder.TabStop = false;
             this._picture_joint_Lshoulder.Click += new System.EventHandler(this._picture_joint_lShoulder_Click);
             // 
-            // pictureBox1
+            // _picturebox_Character
             // 
-            this.pictureBox1.Image = global::NoteMaker.Properties.Resources.Test;
-            this.pictureBox1.Location = new System.Drawing.Point(15, 170);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(297, 398);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this._picturebox_Character.Image = global::NoteMaker.Properties.Resources.Test;
+            this._picturebox_Character.Location = new System.Drawing.Point(15, 170);
+            this._picturebox_Character.Name = "_picturebox_Character";
+            this._picturebox_Character.Size = new System.Drawing.Size(297, 398);
+            this._picturebox_Character.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picturebox_Character.TabIndex = 6;
+            this._picturebox_Character.TabStop = false;
             // 
             // Form1
             // 
@@ -374,7 +374,7 @@
             this.Controls.Add(this._textbox_nownote);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._button_loadnote);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this._picturebox_Character);
             this.Controls.Add(this._button_stop);
             this.Controls.Add(this._button_play);
             this.Controls.Add(this._textbox_nowmusic);
@@ -386,7 +386,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.0";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
@@ -398,7 +398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lhand)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,7 +412,7 @@
         private System.Windows.Forms.TextBox _textbox_nowmusic;
         private System.Windows.Forms.Button _button_play;
         private System.Windows.Forms.Button _button_stop;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox _picturebox_Character;
         private System.Windows.Forms.Button _button_loadnote;
         private System.Windows.Forms.TextBox _textbox_nownote;
         private System.Windows.Forms.Label label2;

@@ -44,7 +44,7 @@ namespace NoteMaker
             _ofd_music.InitialDirectory = Application.StartupPath;
             _ofd_music.Title = "악곡 가져오기";
             _ofd_music.FileName = "*.mp3";
-            _ofd_music.Filter = "그림 파일 (*.mp3) | *.mp3";
+            _ofd_music.Filter = "음악 파일 (*.mp3) | *.mp3";
 
             _ofd_Getnote = new OpenFileDialog();
             _ofd_Getnote.InitialDirectory = Application.StartupPath;
@@ -86,9 +86,9 @@ namespace NoteMaker
             SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
             SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
             #endregion
-        }
+        } // 음악이 재생되고 있을 때
 
-        #region BUTTONS
+        #region MP3/NOTE IO
         private void _button_loadmp3_Click(object sender, EventArgs e)
         {
             if(_ofd_music.ShowDialog() == DialogResult.OK)
@@ -153,7 +153,9 @@ namespace NoteMaker
                 _streamWriter.WriteLine(_note[i]._showlist);
             _streamWriter.Close();
         }
+        #endregion
 
+        #region MUSIC CONTROL(PLAY,PAUSE,VOLUME)
         private void _button_play_Click(object sender, EventArgs e)
         {
             ChangeState(MP3MODE.Play);
@@ -161,6 +163,46 @@ namespace NoteMaker
         private void _button_stop_Click(object sender, EventArgs e)
         {
             ChangeState(MP3MODE.Pause);
+        }
+        private void ChangeState(MP3MODE _mode)
+        {
+            switch (_mode)
+            {
+                case MP3MODE.Play:
+                case MP3MODE.Pause:
+                    if (!string.IsNullOrEmpty(_mp3player.FileName))
+                    {
+                        if (_mode == MP3MODE.Play)
+                        {
+                            _mp3player.Play();
+                            _timer.Start();
+                            _textbox_playtime.Enabled = false;
+                        }
+                        else if (_mode == MP3MODE.Pause)
+                        {
+                            _mp3player.Pause();
+                            _timer.Stop();
+                            _textbox_playtime.Enabled = true;
+                            _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
+                        }
+                    }
+                    else
+                        MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                case MP3MODE.Stop:
+                    _mp3player.Stop();
+                    _timer.Stop();
+                    break;
+            }
+            label1.Focus();
+        }
+        private void _trackbar_volume_Scroll(object sender, EventArgs e)
+        {
+            _mp3player.Volume = _trackbar_volume.Value;
+            if (_mp3player.Volume <= _trackbar_volume.Minimum)
+                _mp3player.Mute = true;
+            else
+                _mp3player.Mute = false;
         }
         #endregion
 
@@ -203,7 +245,7 @@ namespace NoteMaker
             }
         }
 
-        #region JOINTSET
+        #region SHOWJOINT
         private void SetJoint(string joint, double currentPosition, PictureBox pictureBox)
         {
             if (_note.Count == 0) // 노트안에 아무것도 없으면 실행하지 않음.
@@ -213,7 +255,7 @@ namespace NoteMaker
             {
                 for(int i=_note.Count-1;i>=0;i--)
                 {
-                    if (CheckTime(joint, currentPosition, pictureBox, i))
+                    if (ShowJoint(joint, currentPosition, pictureBox, i))
                         return;
                 }
             }
@@ -221,16 +263,15 @@ namespace NoteMaker
             {
                 for (int i = 0; i < _note.Count; i++)
                 {
-                    if (CheckTime(joint, currentPosition, pictureBox, i))
+                    if (ShowJoint(joint, currentPosition, pictureBox, i))
                         return;
                 }
             }
             pictureBox.Image = null;
         }
-
-        private bool CheckTime(string joint, double currentPosition, PictureBox pictureBox, int i)
+        private bool ShowJoint(string joint, double currentPosition, PictureBox pictureBox, int i)
         {
-            if (_note[i]._activeTime >= currentPosition && _note[i]._activeTime <= currentPosition + 0.05) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
+            if (_note[i]._activeTime <= currentPosition && _note[i]._activeTime + 0.05 >= currentPosition) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
             {
                 if (_note[i]._joint == joint) // 관절이 맞으면
                 {
@@ -242,76 +283,7 @@ namespace NoteMaker
         }
         #endregion
 
-        private void ChangeState(MP3MODE _mode)
-        {
-            switch (_mode)
-            {
-                case MP3MODE.Play:
-                case MP3MODE.Pause:
-                    if (!string.IsNullOrEmpty(_mp3player.FileName))
-                    {
-                        if(_mode == MP3MODE.Play)
-                        {
-                            _mp3player.Play();
-                            _timer.Start();
-                            _textbox_playtime.Enabled = false;
-                        }
-                        else if(_mode == MP3MODE.Pause)
-                        {
-                            _mp3player.Pause();
-                            _timer.Stop();
-                            _textbox_playtime.Enabled = true;
-                            _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
-                        }
-                    }
-                    else
-                        MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    break;
-                case MP3MODE.Stop:
-                    _mp3player.Stop();
-                    _timer.Stop();
-                    break;
-            }
-            label1.Focus();
-        }
-
-        #region ControlVolume
-        private void _trackbar_volume_Scroll(object sender, EventArgs e)
-        {
-            _mp3player.Volume = _trackbar_volume.Value;
-            if (_mp3player.Volume <= _trackbar_volume.Minimum)
-                _mp3player.Mute = true;
-            else
-                _mp3player.Mute = false;
-        }
-        #endregion
-
-        #region MoveMusicLine
-        private void _trackbar_musicline_Scroll(object sender, EventArgs e)
-        {
-            _mp3player.CurrentPosition = _trackbar_musicline.Value;
-        }
-        #endregion
-
-        private void _listbox_noteInfo_DoubleClick(object sender, EventArgs e) // 리스트 박스를 더블클릭했을 때
-        {
-            // SelectedIndex == -1 -> 아무것도 선택된 것이 없음.
-            MessageBox.Show(_listbox_noteInfo.SelectedIndex.ToString());
-        }
-
-        private void _listbox_noteInfo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // 이 listbox를 클릭했을 때
-        }
-
-        private void _textbox_playtime_KeyPress(object sender, KeyPressEventArgs e) // 숫자와 소수점만 받아야하므로 별도의 처리 필요 
-        {
-            //숫자만 입력되도록 필터링
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
-                e.Handled = true;
-        }
-
-        #region ClickJoint
+        #region MAKEJOINT
         private void _picture_joint_lShoulder_Click(object sender, EventArgs e)
         {
             OpenNoteInfoEditor("Lshoulder");
@@ -361,7 +333,75 @@ namespace NoteMaker
         }
         #endregion
 
-        #region InputNote
+        private void _trackbar_musicline_Scroll(object sender, EventArgs e) // 음악 트랙바 스크롤의 위치를 조정할 때
+        {
+            _mp3player.CurrentPosition = _trackbar_musicline.Value;
+            _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
+        }
+
+        #region CONTROL LISTBOX
+        private void _listbox_noteInfo_DoubleClick(object sender, EventArgs e) // 리스트 박스를 더블클릭했을 때
+        {
+            if(_listbox_noteInfo.SelectedIndex != -1)
+            {
+                _noteinfoEditor.Init(_note[_listbox_noteInfo.SelectedIndex], _listbox_noteInfo.SelectedIndex);
+                _noteinfoEditor.ShowDialog();
+            }
+        }
+
+        private void _listbox_noteInfo_KeyDown(object sender, KeyEventArgs e) // 리스트 박스에 저장되어있는 노트를 삭제할 때
+        {
+            if(e.KeyCode == Keys.Delete)
+            {
+                if (_listbox_noteInfo.SelectedIndex != -1)
+                {
+                    if (_mp3player.CurrentPosition == _note[_listbox_noteInfo.SelectedIndex]._activeTime)
+                    {
+                        switch (_note[_listbox_noteInfo.SelectedIndex]._joint)
+                        {
+                            case "Lshoulder":
+                                _picture_joint_Lshoulder.Image = null;
+                                break;
+                            case "Rshoulder":
+                                _picture_joint_Rshoulder.Image = null;
+                                break;
+                            case "Lhand":
+                                _picture_joint_Lhand.Image = null;
+                                break;
+                            case "Rhand":
+                                _picture_joint_Rhand.Image = null;
+                                break;
+                            case "Lknee":
+                                _picture_joint_Lknee.Image = null;
+                                break;
+                            case "Rknee":
+                                _picture_joint_Rknee.Image = null;
+                                break;
+                            case "Lfoot":
+                                _picture_joint_Lfoot.Image = null;
+                                break;
+                            case "Rfoot":
+                                _picture_joint_Lfoot.Image = null;
+                                break;
+                        }
+                    }
+
+                    _note[_listbox_noteInfo.SelectedIndex] = null;
+                    _note.RemoveAt(_listbox_noteInfo.SelectedIndex);
+                    _listbox_noteInfo.Items.RemoveAt(_listbox_noteInfo.SelectedIndex); // 리스트에서 지워버리면 선택 인덱스를 잃어버리기때문에 제일 나중에 삭제해줘야 함.
+                }
+            }
+        }
+        #endregion
+
+        private void _textbox_playtime_KeyPress(object sender, KeyPressEventArgs e) // 숫자와 소수점만 받아야하므로 별도의 처리 필요 
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지를 바로 처리
+                e.Handled = true;
+        }
+
+        #region NOTE MAKE&MODIFY
         public bool MakeNote(double _activeTime, string _joint, string _activeNote, string _animation = "")
         {
             if (_note.Count == 0) // 노트 안에 아무것도 없으면
@@ -369,7 +409,7 @@ namespace NoteMaker
                 InsertNote(0, _activeTime, _joint, _activeNote, _animation);
                 return true;
             }
-            if(_note.Count == 1)
+            if(_note.Count == 1) // 노트가 1개만 있으면
             {
                 if(_note[0]._activeTime > _activeTime)
                     InsertNote(0, _activeTime, _joint, _activeNote, _animation);
@@ -402,12 +442,22 @@ namespace NoteMaker
             }
             return false;
         }
-
         private void InsertNote(int i, double _activeTime, string _joint, string _activeNote, string _animation)
         {
             _inputValue = new Note(_activeTime, _joint, _activeNote, _animation);
             _note.Insert(i, _inputValue); // 노트를 중간에 삽입
             _listbox_noteInfo.Items.Insert(i, _inputValue._showlist);
+        }
+
+        public void ModifyNote(int _index, double _activeTime, string _joint, string _activeNote, string _animation = "")
+        {
+            _note[_index]._activeTime = _activeTime;
+            _note[_index]._joint = _joint;
+            _note[_index]._activeNote = _activeNote;
+            _note[_index]._animation = _animation;
+
+            _note[_index].ModifyShowlist();
+            _listbox_noteInfo.Items[_index] = _note[_index]._showlist;
         }
         #endregion
     }
