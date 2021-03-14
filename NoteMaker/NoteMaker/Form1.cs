@@ -149,6 +149,7 @@ namespace NoteMaker
         {
             _streamWriter = new StreamWriter(_fd.FileName);
 
+            _streamWriter.WriteLine("재생시간/관절/노트/애니메이션");
             for (int i = 0; i < _note.Count; i++)
                 _streamWriter.WriteLine(_note[i]._showlist);
             _streamWriter.Close();

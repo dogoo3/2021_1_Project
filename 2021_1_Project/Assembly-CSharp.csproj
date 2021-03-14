@@ -62,12 +62,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ChoiceStageManager.cs" />
+    <Compile Include="Assets\FileManager.cs" />
+    <Compile Include="Assets\Note.cs" />
+    <Compile Include="Assets\PlayMusicInfo.cs" />
     <Compile Include="Assets\Scripts\LongNote.cs" />
     <Compile Include="Assets\Scripts\LongNoteStopover.cs" />
     <Compile Include="Assets\Scripts\SetNote.cs" />
     <Compile Include="Assets\Scripts\ShortNote.cs" />
     <Compile Include="Assets\Scripts\SystemManager.cs" />
-    <Compile Include="Assets\TimetestScript.cs" />
+    <Compile Include="Assets\Song.cs" />
+    <Compile Include="Assets\SoundManager.cs" />
+    <None Include="Assets\Resources\Notes\evans.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/2021_1_Project/2021_1_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

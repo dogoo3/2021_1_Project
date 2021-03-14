@@ -37,8 +37,7 @@ public class LongNote : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float _movedepartcircle = default;
     [Header("판정 범위")]
     [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
-
-    float r;
+    
     private void Awake()
     {
         _departcircle = GetComponent<Image>();
@@ -82,7 +81,6 @@ public class LongNote : MonoBehaviour, IPointerDownHandler
             case "AWESOME":
             case "GOOD":
                 _arrow = _setarrow = (_stopOver[0].transform.position - transform.position).normalized; // 첫 경유지 방향벡터 설정
-                // _stopOver[0].SpreadNote(_movedepartcircle); // 시작
                 _stopindex = 0;
                 break;
             case "FAIL":
@@ -165,8 +163,8 @@ public class LongNote : MonoBehaviour, IPointerDownHandler
                     else { }
                 }
 
-                if (Vector2.Distance(transform.position, Input.mousePosition) >= 125.0f)
-                    Hit("FAIL");
+                //if (Vector2.Distance(transform.position, ) >= 125.0f)
+                //    Hit("FAIL");
             }
             else // 판정선이 축소되는 부분
             {
