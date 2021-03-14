@@ -229,14 +229,14 @@ namespace NoteMaker
                         _mp3player.CurrentPosition = Convert.ToDouble(_textbox_playtime.Text);
                         _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
 
-                        SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder);
-                        SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder);
-                        SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand);
-                        SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand);
-                        SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee);
-                        SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
-                        SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
-                        SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
+                        SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder, true);
+                        SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder, true);
+                        SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand, true);
+                        SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand, true);
+                        SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee, true);
+                        SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
+                        SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
+                        SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
                         label1.Focus();
                     }
                     else
@@ -246,7 +246,7 @@ namespace NoteMaker
         }
 
         #region SHOWJOINT
-        private void SetJoint(string joint, double currentPosition, PictureBox pictureBox)
+        private void SetJoint(string joint, double currentPosition, PictureBox pictureBox, bool _iscorrect = false)
         {
             if (_note.Count == 0) // 노트안에 아무것도 없으면 실행하지 않음.
                 return;
@@ -255,7 +255,7 @@ namespace NoteMaker
             {
                 for(int i=_note.Count-1;i>=0;i--)
                 {
-                    if (ShowJoint(joint, currentPosition, pictureBox, i))
+                    if (ShowJoint(joint, currentPosition, pictureBox, i, _iscorrect))
                         return;
                 }
             }
@@ -263,20 +263,34 @@ namespace NoteMaker
             {
                 for (int i = 0; i < _note.Count; i++)
                 {
-                    if (ShowJoint(joint, currentPosition, pictureBox, i))
+                    if (ShowJoint(joint, currentPosition, pictureBox, i, _iscorrect))
                         return;
                 }
             }
             pictureBox.Image = null;
         }
-        private bool ShowJoint(string joint, double currentPosition, PictureBox pictureBox, int i)
+        private bool ShowJoint(string joint, double currentPosition, PictureBox pictureBox, int i, bool _iscorrect = false)
         {
-            if (_note[i]._activeTime <= currentPosition && _note[i]._activeTime + 0.05 >= currentPosition) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
+            if (!_iscorrect)
             {
-                if (_note[i]._joint == joint) // 관절이 맞으면
+                if (_note[i]._activeTime <= currentPosition && _note[i]._activeTime + 0.05 >= currentPosition) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
                 {
-                    pictureBox.Image = Properties.Resources.circle;
-                    return true;
+                    if (_note[i]._joint == joint) // 관절이 맞으면
+                    {
+                        pictureBox.Image = Properties.Resources.circle;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (_note[i]._activeTime == currentPosition) // 시간이 정확히 맞고
+                {
+                    if (_note[i]._joint == joint) // 관절이 맞으면
+                    {
+                        pictureBox.Image = Properties.Resources.circle;
+                        return true;
+                    }
                 }
             }
             return false;
@@ -327,6 +341,37 @@ namespace NoteMaker
         {
             if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused)
             {
+                if (_note.Count == 0) // 노트안에 아무것도 없으면 그냥 생성
+                {
+                    _noteinfoEditor.Init(_mp3player.CurrentPosition, _joint);
+                    _noteinfoEditor.ShowDialog();
+                    return;
+                }
+
+                if (_mp3player.CurrentPosition >= _note[_note.Count / 2]._activeTime) // 중간 타임보다 찾으려는 시간이 크면
+                {
+                    for (int i = _note.Count - 1; i >= _note.Count/2; i--) // 뒤에서부터 검색
+                    {
+                        if(_note[i]._activeTime == _mp3player.CurrentPosition && _note[i]._joint == _joint) // 같은 종류의 노트가 있으면
+                        {
+                            _noteinfoEditor.Init(_note[i], i);
+                            _noteinfoEditor.ShowDialog();
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < _note.Count/2; i++) // 앞에서부터 검색
+                    {
+                        if (_note[i]._activeTime == _mp3player.CurrentPosition && _note[i]._joint == _joint) // 같은 종류의 노트가 있으면
+                        {
+                            _noteinfoEditor.Init(_note[i], i);
+                            _noteinfoEditor.ShowDialog();
+                            return;
+                        }
+                    }
+                }
                 _noteinfoEditor.Init(_mp3player.CurrentPosition, _joint);
                 _noteinfoEditor.ShowDialog();
             }

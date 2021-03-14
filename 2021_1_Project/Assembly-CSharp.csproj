@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\SetNote.cs" />
     <Compile Include="Assets\Scripts\ShortNote.cs" />
     <Compile Include="Assets\Scripts\SystemManager.cs" />
+    <Compile Include="Assets\TimetestScript.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/2021_1_Project/2021_1_Project/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
