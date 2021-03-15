@@ -65,6 +65,7 @@
     <Compile Include="Assets\ChoiceStageManager.cs" />
     <Compile Include="Assets\FileManager.cs" />
     <Compile Include="Assets\Note.cs" />
+    <Compile Include="Assets\NotePoolingManager.cs" />
     <Compile Include="Assets\PlayMusicInfo.cs" />
     <Compile Include="Assets\Scripts\LongNote.cs" />
     <Compile Include="Assets\Scripts\LongNoteStopover.cs" />

@@ -19,7 +19,7 @@ public class LongNote : MonoBehaviour, IPointerDownHandler
     private Image _departcircle, _line;
 
     private Vector3 _arrow, _setarrow, _pos, _setpos; // departCircle 진행방향, departCircle 시작 좌표값
-    private Vector2 _lineSize, _setlineSize, _touchPos; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표
+    private Vector2 _lineSize, _setlineSize, _touchPos, _betweenToParent; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표, 도착 노트와의 간격
 
     private Color _noteColor;
 
@@ -47,6 +47,7 @@ public class LongNote : MonoBehaviour, IPointerDownHandler
     {
         _pos = _setpos = transform.position; // 초기 출발노트 좌표값 설정
         _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
+        _betweenToParent = transform.parent.position - transform.position;
         _isHit = false;
     }
     private void OnEnable()
