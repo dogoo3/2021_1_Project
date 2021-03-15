@@ -11,7 +11,7 @@ public static class PlayMusicInfo
         PlayMusicInfo._song = _song;
     }
 
-    public static string Return()
+    public static string ReturnSongName()
     {
         return _song;
     }

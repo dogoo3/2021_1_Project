@@ -17,18 +17,21 @@ public class SetNote : MonoBehaviour
 
     private void Awake()
     {
-        _noteInfo = FileManager.ReadFile_TXT("evans.txt", "Notes/");
-        
-        for(int i=0;i<_noteInfo.Count;i++)
-        {
-            _getInfo = _noteInfo[i].Split('/');
-            if (_getInfo.Length == 3)
-                _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2]));
-            else
-                _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3]));
-        }
+        _noteInfo = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
 
-        Invoke("StartMusic", 5.0f);
+        if (_noteInfo != null)
+        {
+            for (int i = 0; i < _noteInfo.Count; i++)
+            {
+                _getInfo = _noteInfo[i].Split('/');
+                if (_getInfo.Length == 3)
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2]));
+                else
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3]));
+            }
+
+            Invoke("StartMusic", 5.0f);
+        }
     }
 
     private void StartMusic()
