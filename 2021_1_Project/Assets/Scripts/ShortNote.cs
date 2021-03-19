@@ -6,8 +6,6 @@ using UnityEngine.EventSystems;
 
 public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
-    public Text judgeText; // Temp Component
-
     private Image _circle, _line;
 
     private bool _isHit; // 노트 터치 여부
@@ -32,7 +30,6 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
-        judgeText.text = "";
         _noteColor = Color.gray;
         _noteColor.a = 0;
     }
@@ -51,7 +48,6 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private void Hit(string _message)
     {
         _isHit = true;
-        judgeText.text = _message;
 
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
             CancelInvoke("BrightenNote");
@@ -79,7 +75,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         if(_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
             CancelInvoke();
-            gameObject.SetActive(false);
+            NotePoolingManager.instance.InsertNote(this);
         }
     }
 

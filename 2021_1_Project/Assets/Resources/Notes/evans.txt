@@ -1,12 +1,12 @@
 
-2.1100001/Rshoulder/fff/asdf
+2.1100001/Rshoulder/ShortNote/asdf
 2.15/Lshoulder/ShortNote
-3.44123/Rshoulder/LongNote1/Move
-4.7300004/Lhand/fffd/ff
-5.185182/Lshoulder/Walk
-5.185182/Rshoulder/asdf/asdf
-7.690001/Lshoulder/asdf/asdf
-8.690001/Lshoulder/asdf/asdf
-9.690001/Lshoulder/asdf/asdf
-10.690001/Lshoulder/asdf/asdf
-11.690001/Lshoulder/asdf/asdf
+3.44123/Rshoulder/ShortNote/Move
+4.7300004/Lhand/ShortNote/ff
+5.185182/Lshoulder/ShortNote/Walk
+5.185182/Rshoulder/ShortNote/asdf
+7.690001/Lshoulder/ShortNote/asdf
+8.690001/Lshoulder/ShortNote/asdf
+9.690001/Lshoulder/ShortNote/asdf
+10.690001/Lshoulder/ShortNote/asdf
+11.690001/Lshoulder/ShortNote/asdf

@@ -68,6 +68,7 @@
     <Compile Include="Assets\NotePoolingManager.cs" />
     <Compile Include="Assets\PlayMusicInfo.cs" />
     <Compile Include="Assets\Scripts\LongNote.cs" />
+    <Compile Include="Assets\Scripts\LongNoteDepart.cs" />
     <Compile Include="Assets\Scripts\LongNoteStopover.cs" />
     <Compile Include="Assets\Scripts\SetNote.cs" />
     <Compile Include="Assets\Scripts\ShortNote.cs" />

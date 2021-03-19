@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class SetNote : MonoBehaviour
 {
+    [SerializeField] private Transform[] _joints = default;
+
     private List<string> _noteInfo = new List<string>();
     private List<Note> _note = new List<Note>();
+    private Dictionary<string, Transform> _jointPoints = new Dictionary<string, Transform>();
 
     private string[] _getInfo;
 
@@ -14,7 +17,7 @@ public class SetNote : MonoBehaviour
     private int _index = 0, _afterIndex, _upIndex = 0;
 
     private float _startTime;
-
+    
     private void Awake()
     {
         _noteInfo = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
@@ -32,6 +35,15 @@ public class SetNote : MonoBehaviour
 
             Invoke("StartMusic", 5.0f);
         }
+
+        _jointPoints.Add("Lshoulder", _joints[0]);
+        _jointPoints.Add("Rshoulder", _joints[1]);
+        _jointPoints.Add("Lhand", _joints[2]);
+        _jointPoints.Add("Rhand", _joints[3]);
+        _jointPoints.Add("Lknee", _joints[4]);
+        _jointPoints.Add("Rknee", _joints[5]);
+        _jointPoints.Add("Lfoot", _joints[6]);
+        _jointPoints.Add("Rfoot", _joints[7]);
     }
 
     private void StartMusic()
@@ -49,7 +61,8 @@ public class SetNote : MonoBehaviour
             {
                 if(_note[i].activeTime <= Time.time - _startTime)
                 {
-                    Debug.Log(Time.time - _startTime);
+                    // 노트 출력
+                    NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename);
                     _upIndex++;
                 }
             }
@@ -61,16 +74,6 @@ public class SetNote : MonoBehaviour
                 Debug.Log("노트끝");
                 _isStart = false;
             }
-            //if (_note[_index].activeTime <= Time.time - _startTime)
-            //{
-            //    Debug.Log(Time.time - _startTime + " / " + _note[_index].notename + " / " + _note[_index].joint);
-            //    _index++;
-            //}
-            //if (_note.Count <= _index)
-            //{
-            //    Debug.Log("노트끝");
-            //    _isStart = false;
-            //}
         }
     }
 }
