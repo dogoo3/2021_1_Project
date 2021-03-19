@@ -75,6 +75,7 @@ public class NotePoolingManager : MonoBehaviour
             if (_dic_longNote[_noteName].Count > 0)
             {
                 LongNote _temp = _dic_longNote[_noteName].Dequeue();
+                _temp.transform.position = _origin;
                 _temp.gameObject.SetActive(true);
             }
         }

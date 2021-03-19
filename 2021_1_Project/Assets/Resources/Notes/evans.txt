@@ -1,12 +1,12 @@
 
 2.1100001/Rshoulder/ShortNote/asdf
 2.15/Lshoulder/ShortNote
-3.44123/Rshoulder/ShortNote/Move
-4.7300004/Lhand/ShortNote/ff
-5.185182/Lshoulder/ShortNote/Walk
-5.185182/Rshoulder/ShortNote/asdf
-7.690001/Lshoulder/ShortNote/asdf
-8.690001/Lshoulder/ShortNote/asdf
+3.44123/Lhand/ShortNote/Move
+4.7300004/Rhand/ShortNote/ff
+5.185182/Lknee/ShortNote/Walk
+5.185182/Rknee/ShortNote/asdf
+7.690001/Lfoot/LongNote1/asdf
+8.690001/Rfoot/LongNote1/asdf
 9.690001/Lshoulder/ShortNote/asdf
-10.690001/Lshoulder/ShortNote/asdf
-11.690001/Lshoulder/ShortNote/asdf
+10.690001/Lhand/ShortNote/asdf
+11.690001/Rhand/ShortNote/asdf
