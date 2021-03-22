@@ -45,7 +45,7 @@
             this._button_OK.Location = new System.Drawing.Point(65, 145);
             this._button_OK.Name = "_button_OK";
             this._button_OK.Size = new System.Drawing.Size(75, 23);
-            this._button_OK.TabIndex = 2;
+            this._button_OK.TabIndex = 3;
             this._button_OK.Text = "노트 설정";
             this._button_OK.UseVisualStyleBackColor = true;
             this._button_OK.Click += new System.EventHandler(this._button_OK_Click);
@@ -75,9 +75,8 @@
             this._textbox_joint.Font = new System.Drawing.Font("맑은 고딕", 12F);
             this._textbox_joint.Location = new System.Drawing.Point(95, 41);
             this._textbox_joint.Name = "_textbox_joint";
-            this._textbox_joint.ReadOnly = true;
             this._textbox_joint.Size = new System.Drawing.Size(100, 29);
-            this._textbox_joint.TabIndex = 3;
+            this._textbox_joint.TabIndex = 0;
             // 
             // label2
             // 
@@ -96,7 +95,7 @@
             this._textbox_animation.Location = new System.Drawing.Point(95, 111);
             this._textbox_animation.Name = "_textbox_animation";
             this._textbox_animation.Size = new System.Drawing.Size(100, 29);
-            this._textbox_animation.TabIndex = 1;
+            this._textbox_animation.TabIndex = 2;
             // 
             // label3
             // 
@@ -115,7 +114,7 @@
             this._textbox_activenote.Location = new System.Drawing.Point(95, 76);
             this._textbox_activenote.Name = "_textbox_activenote";
             this._textbox_activenote.Size = new System.Drawing.Size(100, 29);
-            this._textbox_activenote.TabIndex = 0;
+            this._textbox_activenote.TabIndex = 1;
             // 
             // label4
             // 

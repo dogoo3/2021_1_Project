@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SetNote : MonoBehaviour
 {
+    public static SetNote instance;
+
+    private Animator _animator;
+
     [SerializeField] private Transform[] _joints = default;
 
     private List<string> _noteInfo = new List<string>();
@@ -16,10 +21,19 @@ public class SetNote : MonoBehaviour
 
     private int _index = 0, _afterIndex, _upIndex = 0;
 
-    private float _startTime;
+    private float _startTime, _songDelay = 1.2f;
     
     private void Awake()
     {
+        instance = this;
+
+        _animator = GetComponent<Animator>();
+
+        Debug.Log(_animator.runtimeAnimatorController.animationClips[0]); // 애니메이션 가져오는 방법
+        Debug.Log(_animator.runtimeAnimatorController.animationClips[0].frameRate); // 애니메이션의 프레임 가져오는 방법
+        Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name); // 현재 재생중인 애니메이션 가져오는 방법
+        _animator.Play("motion1", 0, 0.25f); // 애니메이션 재생
+        // _animator.Play("Idle", 0, 0.75f);
         _noteInfo = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
 
         if (_noteInfo != null)
@@ -59,10 +73,11 @@ public class SetNote : MonoBehaviour
         {
             for (int i = _index; i < Mathf.Clamp(_index + 3, 0, _note.Count); i++)
             {
-                if(_note[i].activeTime <= Time.time - _startTime)
+                if(_note[i].activeTime - _songDelay <= Time.time - _startTime)
                 {
                     // 노트 출력
-                    NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename);
+                    NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename, _note[i].animation);
+                        // SetAnimation();
                     _upIndex++;
                 }
             }
@@ -74,6 +89,19 @@ public class SetNote : MonoBehaviour
                 Debug.Log("노트끝");
                 _isStart = false;
             }
+        }
+    }
+
+    public void SetAnimation(string animation)
+    {
+        if (animation == "")
+            return;
+        for(int i=0;i<_animator.parameterCount;i++)
+        {
+            if (animation == _animator.parameters[i].name)
+                _animator.SetBool(animation, true);
+            else
+                _animator.SetBool(_animator.parameters[i].name, false);
         }
     }
 }

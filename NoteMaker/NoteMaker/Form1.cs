@@ -116,6 +116,7 @@ namespace NoteMaker
             {
                 _streamReader = new StreamReader(_ofd_Getnote.FileName);
                 _textbox_nownote.Text = _ofd_Getnote.SafeFileName;
+                _streamReader.ReadLine();
                 while (_streamReader.Peek() != -1)
                 {
                     _temp = _streamReader.ReadLine();
@@ -149,7 +150,7 @@ namespace NoteMaker
         {
             _streamWriter = new StreamWriter(_fd.FileName);
 
-            _streamWriter.WriteLine("재생시간/관절/노트/애니메이션");
+            _streamWriter.WriteLine("");
             for (int i = 0; i < _note.Count; i++)
                 _streamWriter.WriteLine(_note[i]._showlist);
             _streamWriter.Close();
@@ -219,12 +220,14 @@ namespace NoteMaker
                         ChangeState(MP3MODE.Play);
                 }
                 else
-                    MessageBox.Show("음악이 없습니다!","경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             if (e.KeyCode == Keys.Enter)
             {
                 if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPaused) // 음악이 일시정지되어있어야 타임 조작 가능
                 {
+                    if (_textbox_playtime.Text == "")
+                        return;
                     if (Convert.ToDouble(_textbox_playtime.Text) >= 0 && Convert.ToDouble(_textbox_playtime.Text) <= _mp3player.Duration) // 음악이 노래 범위 안이어야 함
                     {
                         _mp3player.CurrentPosition = Convert.ToDouble(_textbox_playtime.Text);
@@ -243,6 +246,13 @@ namespace NoteMaker
                     else
                         MessageBox.Show("시간은 0~" + _mp3player.Duration + " 사이로 표기해주세요!", "범위값 오류!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
+            }
+            if (e.KeyCode == Keys.Insert)
+            {
+                if (!string.IsNullOrEmpty(_mp3player.FileName))
+                    MakeNote(_mp3player.CurrentPosition, "", "", "");
+                else
+                    MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

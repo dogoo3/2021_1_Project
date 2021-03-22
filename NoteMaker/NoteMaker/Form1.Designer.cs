@@ -246,6 +246,7 @@
             this._picture_joint_Rfoot.Location = new System.Drawing.Point(184, 522);
             this._picture_joint_Rfoot.Name = "_picture_joint_Rfoot";
             this._picture_joint_Rfoot.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rfoot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Rfoot.TabIndex = 24;
             this._picture_joint_Rfoot.TabStop = false;
             this._picture_joint_Rfoot.Click += new System.EventHandler(this._picture_joint_Rfoot_Click);
@@ -259,6 +260,7 @@
             this._picture_joint_Lfoot.Location = new System.Drawing.Point(117, 522);
             this._picture_joint_Lfoot.Name = "_picture_joint_Lfoot";
             this._picture_joint_Lfoot.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lfoot.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Lfoot.TabIndex = 23;
             this._picture_joint_Lfoot.TabStop = false;
             this._picture_joint_Lfoot.Click += new System.EventHandler(this._picture_joint_Lfoot_Click);
@@ -272,6 +274,7 @@
             this._picture_joint_Rknee.Location = new System.Drawing.Point(172, 453);
             this._picture_joint_Rknee.Name = "_picture_joint_Rknee";
             this._picture_joint_Rknee.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rknee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Rknee.TabIndex = 22;
             this._picture_joint_Rknee.TabStop = false;
             this._picture_joint_Rknee.Click += new System.EventHandler(this._picture_joint_Rknee_Click);
@@ -285,6 +288,7 @@
             this._picture_joint_Lknee.Location = new System.Drawing.Point(126, 453);
             this._picture_joint_Lknee.Name = "_picture_joint_Lknee";
             this._picture_joint_Lknee.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lknee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Lknee.TabIndex = 21;
             this._picture_joint_Lknee.TabStop = false;
             this._picture_joint_Lknee.Click += new System.EventHandler(this._picture_joint_Lknee_Click);
@@ -298,6 +302,7 @@
             this._picture_joint_Rhand.Location = new System.Drawing.Point(184, 401);
             this._picture_joint_Rhand.Name = "_picture_joint_Rhand";
             this._picture_joint_Rhand.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Rhand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Rhand.TabIndex = 20;
             this._picture_joint_Rhand.TabStop = false;
             this._picture_joint_Rhand.Click += new System.EventHandler(this._picture_joint_Rhand_Click);
@@ -311,6 +316,7 @@
             this._picture_joint_Lhand.Location = new System.Drawing.Point(106, 401);
             this._picture_joint_Lhand.Name = "_picture_joint_Lhand";
             this._picture_joint_Lhand.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lhand.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this._picture_joint_Lhand.TabIndex = 19;
             this._picture_joint_Lhand.TabStop = false;
             this._picture_joint_Lhand.Click += new System.EventHandler(this._picture_joint_Lhand_Click);

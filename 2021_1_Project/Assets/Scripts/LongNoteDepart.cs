@@ -53,6 +53,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
+        _departcircle.raycastTarget = true; // 터치 비활성화
 
         _noteColor = Color.gray;
         _noteColor.a = 0;
@@ -75,6 +76,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         _isHit = true;
         _line.gameObject.SetActive(false); // 판정선 비활성화
+        _departcircle.raycastTarget = false; // 터치 비활성화
         switch (_message)
         {
             case "AWESOME":
@@ -129,7 +131,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         transform.position += temp;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(!_isEnd)
         {

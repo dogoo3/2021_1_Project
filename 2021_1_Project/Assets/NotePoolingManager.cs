@@ -19,7 +19,7 @@ public class NotePoolingManager : MonoBehaviour
     {
         instance = this;
 
-        for (i = 0; i < 8; i++)
+        for (i = 0; i < 16; i++)
             Init(_shortNote, _queue_shortNote, "ShortNote", i);
         for(i=0;i< _longNotes.Length;i++)
         {
@@ -59,7 +59,7 @@ public class NotePoolingManager : MonoBehaviour
         _dic_longNote[_obj.GetNoteName()].Enqueue(_obj);
     }
 
-    public void GetNote(Vector2 _origin, string _noteName)
+    public void GetNote(Vector2 _origin, string _noteName, string animation = "")
     {
         if (_noteName == "ShortNote")
         {
@@ -68,6 +68,9 @@ public class NotePoolingManager : MonoBehaviour
                 ShortNote _temp = _queue_shortNote.Dequeue();
                 _temp.transform.position = _origin;
                 _temp.gameObject.SetActive(true);
+                _temp.gameObject.transform.SetAsLastSibling();
+                if (animation != "")
+                    _temp.InputAnimation(animation);
             }
         }
         else
@@ -77,6 +80,7 @@ public class NotePoolingManager : MonoBehaviour
                 LongNote _temp = _dic_longNote[_noteName].Dequeue();
                 _temp.transform.position = _origin;
                 _temp.gameObject.SetActive(true);
+                _temp.gameObject.transform.SetAsLastSibling();
             }
         }
     }

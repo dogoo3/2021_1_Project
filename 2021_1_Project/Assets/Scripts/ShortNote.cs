@@ -12,6 +12,8 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private float _judgeValue; // 판정 범위를 저장할 변수
 
+    private string _animationName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
+
     private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
 
     private Color _noteColor;
@@ -20,6 +22,8 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     [SerializeField] private float _reduceValue = 250.0f;
     [Header("판정 범위")]
     [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
+
+    private float _t;
 
     private void Awake()
     {
@@ -30,8 +34,10 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
+        _circle.raycastTarget = true;
         _noteColor = Color.gray;
         _noteColor.a = 0;
+        _t = Time.time;
     }
     private void Start()
     {
@@ -48,7 +54,20 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private void Hit(string _message)
     {
         _isHit = true;
-
+        _circle.raycastTarget = false;
+        switch(_message)
+        {
+            case "AWESOME":
+            case "GOOD":
+                SetNote.instance.SetAnimation(_animationName);
+                break;
+            case "FAIL":
+            case "MISS":
+                // 실패 애니메이션 진행 함수 작성
+                // SetNote.instance.SetAnimation(_animationName);
+                break;
+        }
+        _animationName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
             CancelInvoke("BrightenNote");
 
@@ -78,8 +97,12 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             NotePoolingManager.instance.InsertNote(this);
         }
     }
+    public void InputAnimation(string _animation)
+    {
+        _animationName = _animation;
+    }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!_isHit) // 판정선 축소
         {
