@@ -55,7 +55,8 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         _isHit = true;
         _circle.raycastTarget = false;
-        switch(_message)
+        Debug.Log(_message);
+        switch(_message) // 애니메이션 처리
         {
             case "AWESOME":
             case "GOOD":
