@@ -248,7 +248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da8a0e82da65f84a8708604ea0e4c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _judgeText: {fileID: 0}
   _stopOver:
   - {fileID: 6528527221741228517}
   - {fileID: 6528527222299779259}

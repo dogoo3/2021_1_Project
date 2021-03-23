@@ -6,15 +6,15 @@ using UnityEngine.EventSystems;
 
 public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
-    private Image _circle, _line;
+    [SerializeField] private Image _circle, _line;
 
     private bool _isHit; // 노트 터치 여부
 
-    private float _judgeValue; // 판정 범위를 저장할 변수
+    private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
 
     private string _animationName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
-    private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
+    private Vector2 _lineSize, _setlineSize, _lineValue; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 판정선과 노트 간격 사이즈
 
     private Color _noteColor;
 
@@ -25,11 +25,11 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private float _t;
 
-    private void Awake()
-    {
-        _circle = GetComponent<Image>();
-        _line = transform.GetChild(0).GetComponent<Image>(); // 판정선 이미지 호출
-    }
+    //private void Awake()
+    //{
+    //    _circle = GetComponent<Image>();
+    //    _line = transform.GetChild(0).GetComponent<Image>(); // 판정선 이미지 호출
+    //}
 
     private void OnEnable()
     {
@@ -41,7 +41,8 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     }
     private void Start()
     {
-        _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
+        // _line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue; // 최대 판정선과 노트의 간격 설정
+        // _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
         _isHit = false;
     }
 
@@ -98,9 +99,17 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             NotePoolingManager.instance.InsertNote(this);
         }
     }
+
     public void InputAnimation(string _animation)
     {
         _animationName = _animation;
+    }
+    public void SetNoteProperties(float _line, float _reduceValue)
+    {
+        _lineValue.x = _line;
+        _lineValue.y = _line;
+        _lineSize = _setlineSize = this._line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue;
+        this._reduceValue = _reduceValue;
     }
 
     private void FixedUpdate()
@@ -130,6 +139,4 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             else { }
         }
     }
-
-
 }

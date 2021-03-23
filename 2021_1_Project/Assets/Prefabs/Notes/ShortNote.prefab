@@ -160,6 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1970baec98f302640a2647099cf4b4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _circle: {fileID: 1095997570521280393}
+  _line: {fileID: 1095997569634108390}
   _reduceValue: 250
   _awesomeRange: 20
   _goodRange: 35

@@ -14,14 +14,20 @@ public class NotePoolingManager : MonoBehaviour
     private Dictionary<string, Queue<LongNote>> _dic_longNote = new Dictionary<string, Queue<LongNote>>(); // 롱노트 프리팹의 개수에 맞게 배열로 선언
 
     private int i;
+    private string[] value;
 
     private void Awake()
     {
         instance = this;
 
+        value = FileManager.ReadTextOneLine(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/").Split('/');
+    }
+
+    private void Start()
+    {
         for (i = 0; i < 16; i++)
             Init(_shortNote, _queue_shortNote, "ShortNote", i);
-        for(i=0;i< _longNotes.Length;i++)
+        for (i = 0; i < _longNotes.Length; i++)
         {
             Queue<LongNote> longNotes = new Queue<LongNote>(); // 딕셔너리 안에 들어갈 큐 할당
             for (int j = 0; j < 3; j++)
@@ -34,6 +40,8 @@ public class NotePoolingManager : MonoBehaviour
     private void Init(ShortNote _prefab, Queue<ShortNote> _inputQueue, string _objName, int turnNum)
     {
         ShortNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
+
+        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1])); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
         temp.name = _objName + "(" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);

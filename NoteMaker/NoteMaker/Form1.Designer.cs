@@ -54,6 +54,10 @@
             this._picture_joint_Rshoulder = new System.Windows.Forms.PictureBox();
             this._picture_joint_Lshoulder = new System.Windows.Forms.PictureBox();
             this._picturebox_Character = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this._textbox_lineTocircle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this._textbox_reducevalue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
@@ -221,9 +225,9 @@
             // 
             this._listbox_noteInfo.FormattingEnabled = true;
             this._listbox_noteInfo.ItemHeight = 12;
-            this._listbox_noteInfo.Location = new System.Drawing.Point(403, 73);
+            this._listbox_noteInfo.Location = new System.Drawing.Point(403, 109);
             this._listbox_noteInfo.Name = "_listbox_noteInfo";
-            this._listbox_noteInfo.Size = new System.Drawing.Size(248, 496);
+            this._listbox_noteInfo.Size = new System.Drawing.Size(248, 460);
             this._listbox_noteInfo.TabIndex = 15;
             this._listbox_noteInfo.DoubleClick += new System.EventHandler(this._listbox_noteInfo_DoubleClick);
             this._listbox_noteInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this._listbox_noteInfo_KeyDown);
@@ -231,7 +235,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(403, 55);
+            this.label4.Location = new System.Drawing.Point(401, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(203, 12);
             this.label4.TabIndex = 16;
@@ -357,11 +361,55 @@
             this._picturebox_Character.TabIndex = 6;
             this._picturebox_Character.TabStop = false;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(399, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 12);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "판정선 거리";
+            // 
+            // _textbox_lineTocircle
+            // 
+            this._textbox_lineTocircle.Enabled = false;
+            this._textbox_lineTocircle.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_lineTocircle.Location = new System.Drawing.Point(494, 40);
+            this._textbox_lineTocircle.Name = "_textbox_lineTocircle";
+            this._textbox_lineTocircle.Size = new System.Drawing.Size(47, 21);
+            this._textbox_lineTocircle.TabIndex = 25;
+            this._textbox_lineTocircle.TabStop = false;
+            this._textbox_lineTocircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_lineTocircle_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(399, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "판정선감소속도";
+            // 
+            // _textbox_reducevalue
+            // 
+            this._textbox_reducevalue.Enabled = false;
+            this._textbox_reducevalue.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_reducevalue.Location = new System.Drawing.Point(494, 67);
+            this._textbox_reducevalue.Name = "_textbox_reducevalue";
+            this._textbox_reducevalue.Size = new System.Drawing.Size(47, 21);
+            this._textbox_reducevalue.TabIndex = 27;
+            this._textbox_reducevalue.TabStop = false;
+            this._textbox_reducevalue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_reducevalue_KeyPress);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 580);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this._textbox_reducevalue);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this._textbox_lineTocircle);
             this.Controls.Add(this._picture_joint_Rfoot);
             this.Controls.Add(this._picture_joint_Lfoot);
             this.Controls.Add(this._picture_joint_Rknee);
@@ -392,7 +440,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.0";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
@@ -437,6 +485,10 @@
         private System.Windows.Forms.PictureBox _picture_joint_Rknee;
         private System.Windows.Forms.PictureBox _picture_joint_Lfoot;
         private System.Windows.Forms.PictureBox _picture_joint_Rfoot;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox _textbox_lineTocircle;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox _textbox_reducevalue;
     }
 }
 

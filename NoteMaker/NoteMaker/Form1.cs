@@ -106,6 +106,8 @@ namespace NoteMaker
                 _trackbar_musicline.Enabled = true; // 음악 재생 위치 조절 트랙바 활성화
                 _button_play.Enabled = true;
                 _button_stop.Enabled = true;
+                _textbox_lineTocircle.Enabled = true;
+                _textbox_reducevalue.Enabled = true;
                 ChangeState(MP3MODE.Stop);
             }
         }
@@ -116,12 +118,17 @@ namespace NoteMaker
             {
                 _streamReader = new StreamReader(_ofd_Getnote.FileName);
                 _textbox_nownote.Text = _ofd_Getnote.SafeFileName;
-                _streamReader.ReadLine();
+                _temp = _streamReader.ReadLine();
+                _temparray = _temp.Split('/');
+                _textbox_lineTocircle.Text = _temparray[0];
+                _textbox_reducevalue.Text = _temparray[1];
+                _textbox_lineTocircle.Enabled = true;
+                _textbox_reducevalue.Enabled = true;
                 while (_streamReader.Peek() != -1)
                 {
                     _temp = _streamReader.ReadLine();
                     _temparray = _temp.Split('/');
-                    
+
                     if (_temparray.Length == 3) // Animation이 작성되지 않은 경우
                         _inputValue = new Note(Convert.ToDouble(_temparray[0]), _temparray[1], _temparray[2]);
                     else // Animation이 작성된 경우
@@ -143,14 +150,18 @@ namespace NoteMaker
             else
             {
                 if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                    SetStream(_ofd_Savenote);
+                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
+                                    SetStream(_ofd_Savenote);
             }
         }
         private void SetStream<T>(T _fd) where T : FileDialog
         {
             _streamWriter = new StreamWriter(_fd.FileName);
 
-            _streamWriter.WriteLine("");
+            _streamWriter.WriteLine(_textbox_lineTocircle.Text + "/" + _textbox_reducevalue.Text);
             for (int i = 0; i < _note.Count; i++)
                 _streamWriter.WriteLine(_note[i]._showlist);
             _streamWriter.Close();
@@ -453,7 +464,21 @@ namespace NoteMaker
         private void _textbox_playtime_KeyPress(object sender, KeyPressEventArgs e) // 숫자와 소수점만 받아야하므로 별도의 처리 필요 
         {
             //숫자만 입력되도록 필터링
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지를 바로 처리
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지는 입력 불가능
+                e.Handled = true;
+        }
+
+        private void _textbox_lineTocircle_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지는 입력 불가능
+                e.Handled = true;
+        }
+
+        private void _textbox_reducevalue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지는 입력 불가능
                 e.Handled = true;
         }
 

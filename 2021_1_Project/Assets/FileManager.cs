@@ -47,7 +47,7 @@ public class FileManager : MonoBehaviour
         return divList;
     }
 
-    public static List<string> ReadFile_TXT(string _filename, string _filepath = "")
+    public static List<string> ReadFile_TXT(string _filename, string _filepath = "", bool _isTitle = false)
     {
         // LastIndexOf(char) : 뒤에서부터 검색하면서 첫 char 포함 뒤 문자열을 짤라준다.
         // SubString(index1, index2) : index1부터 index2의 직전 텍스트까지만 잘라서 반환한다.
@@ -60,7 +60,8 @@ public class FileManager : MonoBehaviour
         List<string> divList = new List<string>();
 
         source = stringReader.ReadLine();
-        source = stringReader.ReadLine();
+        if(_isTitle)
+            source = stringReader.ReadLine();
         while (source != null)
         {
             divList.Add(source);
@@ -70,5 +71,17 @@ public class FileManager : MonoBehaviour
         stringReader.Close();
 
         return divList;
+    }
+
+    public static string ReadTextOneLine(string _filename, string _filepath = "")
+    {
+        // LastIndexOf(char) : 뒤에서부터 검색하면서 첫 char 포함 뒤 문자열을 짤라준다.
+        // SubString(index1, index2) : index1부터 index2의 직전 텍스트까지만 잘라서 반환한다.
+        TextAsset data = Resources.Load<TextAsset>(_filepath + _filename.Substring(0, _filename.LastIndexOf('.')));
+        if (data == null)
+            return null;
+        StringReader stringReader = new StringReader(data.text);
+        
+        return stringReader.ReadLine();
     }
 }

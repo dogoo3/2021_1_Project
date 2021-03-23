@@ -26,19 +26,15 @@ public class SetNote : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
         _animator = GetComponent<Animator>();
-
-        Debug.Log(_animator.runtimeAnimatorController.animationClips[0]); // 애니메이션 가져오는 방법
-        Debug.Log(_animator.runtimeAnimatorController.animationClips[0].frameRate); // 애니메이션의 프레임 가져오는 방법
-        Debug.Log(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name); // 현재 재생중인 애니메이션 가져오는 방법
-        //_animator.Play("motion1", 0, 0.25f); // 애니메이션 재생
-        //_animator.Play("Idle", 0, 0.75f);
+        
         _noteInfo = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
-
+        _getInfo = _noteInfo[0].Split('/');
+        _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime);
+        
         if (_noteInfo != null)
         {
-            for (int i = 0; i < _noteInfo.Count; i++)
+            for (int i = 1; i < _noteInfo.Count; i++)
             {
                 _getInfo = _noteInfo[i].Split('/');
                 if (_getInfo.Length == 3)

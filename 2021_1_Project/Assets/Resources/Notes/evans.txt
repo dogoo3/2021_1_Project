@@ -1,9 +1,9 @@
-
+300/250
 1.6294793/Lshoulder/ShortNote
 1.7813751/Rshoulder/ShortNote
 1.9246251/Lhand/ShortNote
 2.0846251/Rhand/ShortNote/motion1
-5/Lknee/ShortNote/motion1
-8/Lhand/ShortNote/motion1
-11/Lshoulder/ShortNote/motion1
-14/Rshoulder/ShortNote/Idle
+5.0/Lknee/ShortNote/motion1
+8.0/Lhand/ShortNote/motion1
+11.0/Lshoulder/ShortNote/motion1
+14.0/Rshoulder/ShortNote/Idle
