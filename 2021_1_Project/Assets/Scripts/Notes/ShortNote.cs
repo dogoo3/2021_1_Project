@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
-    [SerializeField] private Image _circle, _line;
+    [SerializeField] private Image _circle = default, _line = default;
 
     private bool _isHit; // 노트 터치 여부
 
@@ -14,7 +14,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private string _animationName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
-    private Vector2 _lineSize, _setlineSize, _lineValue; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 판정선과 노트 간격 사이즈
+    private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
 
     private Color _noteColor;
 
@@ -56,7 +56,6 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         _isHit = true;
         _circle.raycastTarget = false;
-        Debug.Log(_message);
         switch(_message) // 애니메이션 처리
         {
             case "AWESOME":
@@ -104,11 +103,11 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         _animationName = _animation;
     }
-    public void SetNoteProperties(float _line, float _reduceValue)
+    public void SetNoteProperties(float _linedistance, float _reduceValue)
     {
-        _lineValue.x = _line;
-        _lineValue.y = _line;
-        _lineSize = _setlineSize = this._line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue;
+        Vector2 _lineValue;
+        _lineValue.x = _lineValue.y = _linedistance;
+        _lineSize = _setlineSize = _line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue;
         this._reduceValue = _reduceValue;
     }
 

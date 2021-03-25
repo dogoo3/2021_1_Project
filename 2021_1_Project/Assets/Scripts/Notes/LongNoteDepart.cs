@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public enum SlideArrow
 {
@@ -14,16 +15,16 @@ public enum SlideArrow
 
 public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
-    private Image _departcircle, _line;
+    [SerializeField] private Image _departcircle = default, _line = default;
 
-    private Vector3 _arrow, _setarrow, _pos, _setpos; // departCircle 진행방향, departCircle 시작 좌표값
+    private Vector3 _arrow, _setarrow;// departCircle 진행방향, departCircle 시작 좌표값
     private Vector2 _lineSize, _setlineSize, _touchPos, _betweenToParent; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표, 도착 노트와의 간격
 
     private Color _noteColor;
 
     private LongNote _longNote;
 
-    private bool _isHit, _isEnd; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
+    private bool _isHit = false, _isEnd; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue;
     [Header("경유노트, 마지막 인덱스는 도착노트")]
@@ -39,16 +40,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     
     private void Awake()
     {
-        _departcircle = GetComponent<Image>();
-        _line = transform.GetChild(0).GetComponent<Image>(); // 판정선 이미지
         _longNote = GetComponentInParent<LongNote>();
-    }
-    private void Start()
-    {
-        _pos = _setpos = transform.position; // 초기 출발노트 좌표값 설정
-        _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
-        _betweenToParent = transform.parent.position - transform.position;
-        _isHit = false;
     }
     private void OnEnable()
     {
@@ -57,7 +49,6 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
         _noteColor = Color.gray;
         _noteColor.a = 0;
-
         _stopOver[0].SpreadNote(_movedepartcircle);
     }
     private void OnDisable()
@@ -66,7 +57,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         _line.gameObject.SetActive(true);
         _lineSize = _line.rectTransform.sizeDelta = _setlineSize; // 초기 라인 사이즈로 변경
 
-        transform.position = _setpos; // 첫 위치로 초기화
+        gameObject.transform.position = transform.parent.position; // 첫 위치로 초기화
 
         for (int i = 0; i < _stopOver.Length; i++) // 시작상태로 Origin 변경
             _stopOver[i].ResetFillOrigin();
@@ -94,7 +85,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         }
     }
 
-    private void BrightenNote()
+    private void BrightenNote() // 노트 판정 이전까지 실행
     {
         _noteColor.a += 0.1f; // 노트가 보여지는 상수값
         _departcircle.color = _noteColor;
@@ -111,7 +102,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             CancelInvoke();
         }
     }
-    private void DarkenNote()
+    private void DarkenNote() // 노트 판정 완료시 실행
     {
         _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
         _departcircle.color = _noteColor;
@@ -121,14 +112,17 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         if (_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
             CancelInvoke();
-            //transform.parent.gameObject.SetActive(false);
             NotePoolingManager.instance.InsertNote(_longNote);
         }
     }
-    public void SetNotePos()
+
+    public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed) // 노트의 초기 설정
     {
-        Vector3 temp = transform.parent.position - transform.position;
-        transform.position += temp;
+        Vector2 _lineValue;
+        _lineValue.x = _lineValue.y = _linedistance;
+        _lineSize = _setlineSize = _line.rectTransform.sizeDelta = _departcircle.rectTransform.sizeDelta + _lineValue;
+        _movedepartcircle = _notemovespeed;
+        this._reduceValue = _reduceValue;
     }
 
     private void FixedUpdate()
@@ -166,9 +160,6 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     }
                     else { }
                 }
-
-                //if (Vector2.Distance(transform.position, ) >= 125.0f)
-                //    Hit("FAIL");
             }
             else // 판정선이 축소되는 부분
             {

@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteName: LongNote1
+  _departNote: {fileID: 5284360604393781855}
 --- !u!1 &5284360604393781849
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da8a0e82da65f84a8708604ea0e4c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _judgeText: {fileID: 0}
+  _departcircle: {fileID: 5284360604393781854}
+  _line: {fileID: 5284360603749208913}
   _stopOver:
   - {fileID: 5284360604449170350}
   _stopOverPoint:

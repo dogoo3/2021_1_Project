@@ -108,6 +108,7 @@ namespace NoteMaker
                 _button_stop.Enabled = true;
                 _textbox_lineTocircle.Enabled = true;
                 _textbox_reducevalue.Enabled = true;
+                _textbox_longNotespeed.Enabled = true;
                 ChangeState(MP3MODE.Stop);
             }
         }
@@ -124,6 +125,7 @@ namespace NoteMaker
                 _textbox_reducevalue.Text = _temparray[1];
                 _textbox_lineTocircle.Enabled = true;
                 _textbox_reducevalue.Enabled = true;
+                _textbox_longNotespeed.Enabled = true;
                 while (_streamReader.Peek() != -1)
                 {
                     _temp = _streamReader.ReadLine();
@@ -150,18 +152,14 @@ namespace NoteMaker
             else
             {
                 if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                if(_ofd_Savenote.ShowDialog() == DialogResult.OK)
-                                    SetStream(_ofd_Savenote);
+                    SetStream(_ofd_Savenote);
             }
         }
         private void SetStream<T>(T _fd) where T : FileDialog
         {
             _streamWriter = new StreamWriter(_fd.FileName);
 
-            _streamWriter.WriteLine(_textbox_lineTocircle.Text + "/" + _textbox_reducevalue.Text);
+            _streamWriter.WriteLine(_textbox_lineTocircle.Text + "/" + _textbox_reducevalue.Text + "/" + _textbox_longNotespeed.Text);
             for (int i = 0; i < _note.Count; i++)
                 _streamWriter.WriteLine(_note[i]._showlist);
             _streamWriter.Close();
@@ -476,6 +474,13 @@ namespace NoteMaker
         }
 
         private void _textbox_reducevalue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력되도록 필터링
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지는 입력 불가능
+                e.Handled = true;
+        }
+
+        private void _textbox_longNotespeed_KeyPress(object sender, KeyPressEventArgs e)
         {
             //숫자만 입력되도록 필터링
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == '.'))    //숫자와 백스페이스, 소수점을 제외한 나머지는 입력 불가능

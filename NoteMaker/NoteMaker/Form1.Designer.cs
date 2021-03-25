@@ -58,6 +58,8 @@
             this._textbox_lineTocircle = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this._textbox_reducevalue = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this._textbox_longNotespeed = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
@@ -225,9 +227,9 @@
             // 
             this._listbox_noteInfo.FormattingEnabled = true;
             this._listbox_noteInfo.ItemHeight = 12;
-            this._listbox_noteInfo.Location = new System.Drawing.Point(403, 109);
+            this._listbox_noteInfo.Location = new System.Drawing.Point(403, 133);
             this._listbox_noteInfo.Name = "_listbox_noteInfo";
-            this._listbox_noteInfo.Size = new System.Drawing.Size(248, 460);
+            this._listbox_noteInfo.Size = new System.Drawing.Size(248, 436);
             this._listbox_noteInfo.TabIndex = 15;
             this._listbox_noteInfo.DoubleClick += new System.EventHandler(this._listbox_noteInfo_DoubleClick);
             this._listbox_noteInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this._listbox_noteInfo_KeyDown);
@@ -235,7 +237,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(401, 95);
+            this.label4.Location = new System.Drawing.Point(401, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(203, 12);
             this.label4.TabIndex = 16;
@@ -401,11 +403,33 @@
             this._textbox_reducevalue.TabStop = false;
             this._textbox_reducevalue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_reducevalue_KeyPress);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(399, 98);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 12);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "롱노트이동속도";
+            // 
+            // _textbox_longNotespeed
+            // 
+            this._textbox_longNotespeed.Enabled = false;
+            this._textbox_longNotespeed.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_longNotespeed.Location = new System.Drawing.Point(494, 95);
+            this._textbox_longNotespeed.Name = "_textbox_longNotespeed";
+            this._textbox_longNotespeed.Size = new System.Drawing.Size(47, 21);
+            this._textbox_longNotespeed.TabIndex = 29;
+            this._textbox_longNotespeed.TabStop = false;
+            this._textbox_longNotespeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_longNotespeed_KeyPress);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(660, 580);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this._textbox_longNotespeed);
             this.Controls.Add(this.label6);
             this.Controls.Add(this._textbox_reducevalue);
             this.Controls.Add(this.label5);
@@ -440,7 +464,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.1";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.2";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
@@ -489,6 +513,8 @@
         private System.Windows.Forms.TextBox _textbox_lineTocircle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox _textbox_reducevalue;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox _textbox_longNotespeed;
     }
 }
 

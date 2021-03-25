@@ -248,6 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1da8a0e82da65f84a8708604ea0e4c76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _departcircle: {fileID: 6528527221779888855}
+  _line: {fileID: 6528527221742054687}
   _stopOver:
   - {fileID: 6528527221741228517}
   - {fileID: 6528527222299779259}
@@ -479,3 +481,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteName: LongNote0
+  _departNote: {fileID: 6528527221779888841}

@@ -50,6 +50,8 @@ public class NotePoolingManager : MonoBehaviour
     private void Init(LongNote _prefab, Queue<LongNote> _inputQueue, string _objName, int turnNum)
     {
         LongNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
+        
+        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), float.Parse(value[2])); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
         temp.name = _objName + "(" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);
