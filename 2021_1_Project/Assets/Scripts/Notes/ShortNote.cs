@@ -25,12 +25,6 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private float _t;
 
-    //private void Awake()
-    //{
-    //    _circle = GetComponent<Image>();
-    //    _line = transform.GetChild(0).GetComponent<Image>(); // 판정선 이미지 호출
-    //}
-
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
@@ -41,8 +35,6 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     }
     private void Start()
     {
-        // _line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue; // 최대 판정선과 노트의 간격 설정
-        // _lineSize = _setlineSize = _line.rectTransform.sizeDelta; // 초기 판정선 크기 지정
         _isHit = false;
     }
 
@@ -61,13 +53,16 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             case "AWESOME":
             case "GOOD":
                 SetNote.instance.SetAnimation(_animationName);
+                ComboManager.instance.CreaseCombo();
                 break;
             case "FAIL":
             case "MISS":
                 // 실패 애니메이션 진행 함수 작성
                 // SetNote.instance.SetAnimation(_animationName);
+                ComboManager.instance.ResetCombo();
                 break;
         }
+        JudgeManager.instance.SetJudgeImage(_message); // 판정
         _animationName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
             CancelInvoke("BrightenNote");
@@ -103,6 +98,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     {
         _animationName = _animation;
     }
+
     public void SetNoteProperties(float _linedistance, float _reduceValue)
     {
         Vector2 _lineValue;
@@ -118,6 +114,14 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             _lineSize.x -= _reduceValue * Time.deltaTime;
             _lineSize.y -= _reduceValue * Time.deltaTime;
             _line.rectTransform.sizeDelta = _lineSize;
+
+            #region AUTOMODE
+            _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
+
+            if (_judgeValue < _awesomeRange)
+                Hit("AWESOME");
+
+            #endregion
             if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
                 Hit("MISS");
         }

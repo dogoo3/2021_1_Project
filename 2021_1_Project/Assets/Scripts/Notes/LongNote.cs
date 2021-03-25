@@ -22,4 +22,9 @@ public class LongNote : MonoBehaviour
     {
         _departNote.SetNoteProperties(_linedistance, _reduceValue, _notemovespeed);
     }
+
+    public void InputAnimation(string _animation)
+    {
+        _departNote.InputAnimation(_animation);
+    }
 }

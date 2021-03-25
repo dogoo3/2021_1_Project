@@ -66,7 +66,10 @@
     <Compile Include="Assets\Scripts\ChoiceStage\Song.cs" />
     <Compile Include="Assets\Scripts\Ingame\PlayMusicInfo.cs" />
     <Compile Include="Assets\Scripts\Ingame\SetNote.cs" />
+    <Compile Include="Assets\Scripts\Manager\ComboManager.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\HPManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\JudgeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NotePoolingManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />

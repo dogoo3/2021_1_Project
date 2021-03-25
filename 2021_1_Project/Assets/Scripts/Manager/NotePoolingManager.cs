@@ -91,6 +91,8 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.transform.position = _origin;
                 _temp.gameObject.SetActive(true);
                 _temp.gameObject.transform.SetAsLastSibling();
+                if (animation != "")
+                    _temp.InputAnimation(animation);
             }
         }
     }
