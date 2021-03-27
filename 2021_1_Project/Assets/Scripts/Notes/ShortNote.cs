@@ -116,10 +116,10 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             _line.rectTransform.sizeDelta = _lineSize;
 
             #region AUTOMODE
-            _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
+            //_judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
 
-            if (_judgeValue < _awesomeRange)
-                Hit("AWESOME");
+            //if (_judgeValue < _awesomeRange)
+            //    Hit("AWESOME");
 
             #endregion
             if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위

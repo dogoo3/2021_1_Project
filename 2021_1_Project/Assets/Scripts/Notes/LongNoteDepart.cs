@@ -146,7 +146,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
                     if (Vector3.Distance(transform.position, _stopOverPoint[_stopindex].position) < 5.0f)
                     {
-                        ComboManager.instance.CreaseCombo();
+                        ComboManager.instance.CreaseCombo(); // 각 경유노트의 목적지 도착 시 Combo 증가
                         _stopOver[_stopindex].SetFillAmount(0);
                         _stopindex++;
                         if (_stopindex < _stopOver.Length) // 인덱스 오버플로우 방지
@@ -161,7 +161,8 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     else if (_judgeValue < _goodRange) // 실제 GOOD 판정 처리
                         JudgeManager.instance.SetJudgeImage("GOOD");
                     else { }
-                    
+
+                    SetNote.instance.SetAnimation(_animationName); // 애니메이션 작동
                     _departcircle.raycastTarget = false;
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;

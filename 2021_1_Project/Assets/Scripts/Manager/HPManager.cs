@@ -44,5 +44,7 @@ public class HPManager : MonoBehaviour
     public void ResetHP()
     {
         _nowliveHeart = _image_heart.Length; // 하트의 최대갯수 설정
+        for (int i = 0; i < _image_heart.Length; i++) // 이미지 변경
+            _image_heart[i].sprite = _normalHeart;
     }
 }

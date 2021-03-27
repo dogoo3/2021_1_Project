@@ -14,7 +14,7 @@ public class ComboManager : MonoBehaviour
     private int _combo;
 
     private float _textsize;
-
+    [SerializeField] private GameOverManager _gameOverManager = default;
     [Header("폰트 사이즈 감소량")]
     [SerializeField] private float _decreaseFontsizeValue = default;
     [Header("콤보증가시 커질 폰트 사이즈 배율")]
@@ -46,15 +46,17 @@ public class ComboManager : MonoBehaviour
         _isUpCombo = true; // 효과를 위한 Update 진행
     }
 
-    public void ResetCombo()
+    public void ResetCombo(bool _isPlaying = true)
     {
         _combo = 0;
         _comboText.text = "";
-        if(HPManager.instance.DecreaseHP() == 0) // HP가 다 죽으면 사망윈도우를 띄운다.
+        if(_isPlaying)
         {
-            // 사망윈도우 띄우는 공간
-            // 음악 중지
-            // SetNote 비활성화
+            if (HPManager.instance.DecreaseHP() == 0) // HP가 다 죽으면 사망윈도우를 띄운다.
+            {
+                SetNote.instance.StopNote();
+                _gameOverManager.Active();
+            }
         }
     }
 }

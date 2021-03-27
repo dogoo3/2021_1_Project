@@ -68,6 +68,8 @@
     <Compile Include="Assets\Scripts\Ingame\SetNote.cs" />
     <Compile Include="Assets\Scripts\Manager\ComboManager.cs" />
     <Compile Include="Assets\Scripts\Manager\FileManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameClearManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\Manager\HPManager.cs" />
     <Compile Include="Assets\Scripts\Manager\JudgeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NotePoolingManager.cs" />

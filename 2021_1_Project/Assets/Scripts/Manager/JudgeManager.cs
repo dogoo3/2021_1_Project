@@ -61,8 +61,15 @@ public class JudgeManager : MonoBehaviour
 
     public void ResetJudge()
     {
-        foreach(KeyValuePair<string,int> items in _judgeCount)
-            _judgeCount[items.Key] = 0;
+        _judgeCount["AWESOME"] = 0;
+        _judgeCount["GOOD"] = 0;
+        _judgeCount["FAIL"] = 0;
+        _judgeCount["MISS"] = 0;
+    }
+
+    public Dictionary<string, int> GetJudge()
+    {
+        return _judgeCount;
     }
 
     private void FixedUpdate()

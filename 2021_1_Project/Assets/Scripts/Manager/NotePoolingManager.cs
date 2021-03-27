@@ -13,6 +13,10 @@ public class NotePoolingManager : MonoBehaviour
     private Queue<ShortNote> _queue_shortNote = new Queue<ShortNote>();
     private Dictionary<string, Queue<LongNote>> _dic_longNote = new Dictionary<string, Queue<LongNote>>(); // 롱노트 프리팹의 개수에 맞게 배열로 선언
 
+    // 활성화 큐
+    private List<ShortNote> _activeShortNote = new List<ShortNote>();
+    private List<LongNote> _activeLongNote = new List<LongNote>();
+
     private int i;
     private string[] value;
 
@@ -57,16 +61,26 @@ public class NotePoolingManager : MonoBehaviour
         _inputQueue.Enqueue(temp);
     }
 
+    public void ResetNote()
+    {
+        for (int i = 0; i < _activeShortNote.Count; i++)
+            InsertNote(_activeShortNote[i]);
+        for (int i = 0; i < _activeLongNote.Count; i++)
+            InsertNote(_activeLongNote[i]);
+    }
+
     public void InsertNote(ShortNote _obj)
     {
         _obj.gameObject.SetActive(false);
         _queue_shortNote.Enqueue(_obj);
+        _activeShortNote.Remove(_obj);
     }
 
     public void InsertNote(LongNote _obj)
     {
         _obj.gameObject.SetActive(false);
         _dic_longNote[_obj.GetNoteName()].Enqueue(_obj);
+        _activeLongNote.Remove(_obj);
     }
 
     public void GetNote(Vector2 _origin, string _noteName, string animation = "")
@@ -81,6 +95,7 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.transform.SetAsLastSibling();
                 if (animation != "")
                     _temp.InputAnimation(animation);
+                _activeShortNote.Add(_temp);
             }
         }
         else
@@ -93,6 +108,7 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.transform.SetAsLastSibling();
                 if (animation != "")
                     _temp.InputAnimation(animation);
+                _activeLongNote.Add(_temp);
             }
         }
     }
