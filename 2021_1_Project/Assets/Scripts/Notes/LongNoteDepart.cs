@@ -27,7 +27,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private bool _isHit = false, _isEnd; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue;
-    private string _animationName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
+    private string _animationName, _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
     [Header("경유노트, 마지막 인덱스는 도착노트")]
     [SerializeField] private LongNoteStopover[] _stopOver = default;
     [Header("경유노트의 방향전환 포인트")]
@@ -75,6 +75,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 ComboManager.instance.CreaseCombo();
                 _arrow = _setarrow = (_stopOver[0].transform.position - transform.position).normalized; // 첫 경유지 방향벡터 설정
                 _stopindex = 0;
+                _judgeName = _message;
                 break;
             case "MISS":
             case "FAIL":
@@ -147,6 +148,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     if (Vector3.Distance(transform.position, _stopOverPoint[_stopindex].position) < 5.0f)
                     {
                         ComboManager.instance.CreaseCombo(); // 각 경유노트의 목적지 도착 시 Combo 증가
+                        JudgeManager.instance.SetJudgeImage(_judgeName);
                         _stopOver[_stopindex].SetFillAmount(0);
                         _stopindex++;
                         if (_stopindex < _stopOver.Length) // 인덱스 오버플로우 방지

@@ -101,7 +101,7 @@ public class SetNote : MonoBehaviour
         _aniIndex = _index = _upIndex = 0;
         CancelInvoke();
         _isStart = false;
-        _animator.SetBool("Idle", false);
+        _animator.SetBool("Idle", true);
         for (int i=1;i<_animator.parameterCount;i++) // 애니메이션 초기화
         {
             if (_animator.parameters[i].type == AnimatorControllerParameterType.Bool) // Bool 타입의 변수(애니메이션 컨트롤)에만 조정
@@ -128,7 +128,7 @@ public class SetNote : MonoBehaviour
             _upIndex = 0; // 처리된 노트 갯수 저장 변수 초기화
             if(_index >= _note.Count)
             {
-                _gameClearManager.Invoke("Active",3.0f);
+                _gameClearManager.Invoke("Active", 3.0f);
                 _isStart = false;
             }
         }

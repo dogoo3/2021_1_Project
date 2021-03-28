@@ -163,7 +163,7 @@ MonoBehaviour:
   _circle: {fileID: 1095997570521280393}
   _line: {fileID: 1095997569634108390}
   _reduceValue: 250
-  _awesomeRange: 30
-  _goodRange: 60
-  _failRange: 70
+  _awesomeRange: 20
+  _goodRange: 35
+  _failRange: 40
   _missRange: 10

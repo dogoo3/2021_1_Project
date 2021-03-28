@@ -47,4 +47,9 @@ public class HPManager : MonoBehaviour
         for (int i = 0; i < _image_heart.Length; i++) // 이미지 변경
             _image_heart[i].sprite = _normalHeart;
     }
+
+    public int GetHP()
+    {
+        return _nowliveHeart;
+    }
 }

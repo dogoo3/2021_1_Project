@@ -1632,6 +1632,7 @@ MonoBehaviour:
   _gameOverManager: {fileID: 1641767819}
   _decreaseFontsizeValue: 3
   _creaseMagnification: 1.18
+  _creaseHpCombo: 2
 --- !u!1 &956073187
 GameObject:
   m_ObjectHideFlags: 0
