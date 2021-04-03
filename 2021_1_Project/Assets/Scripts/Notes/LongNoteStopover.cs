@@ -36,6 +36,7 @@ public class LongNoteStopover : MonoBehaviour
                 }
 
                 _image.fillOrigin = 0; // LEFT 
+                //SetFillOrigin();
                 _isSpread = false; // 현재 오브젝트의 fillAmount 조정해제
             }
         }
@@ -61,6 +62,7 @@ public class LongNoteStopover : MonoBehaviour
     public void ResetFillOrigin() // 롱노트 비활성화시 초기화를 위한 함수
     {
         _image.fillOrigin = 1;
+        //SetFillOrigin();
         _image.fillAmount = 0;
         _movedepartcircle = 0;
         _isSpread = false;
@@ -69,5 +71,13 @@ public class LongNoteStopover : MonoBehaviour
     public void SetColor(Color _color) // 색상 및 투명도 조절 시 사용
     {
         _image.color = _color;
+    }
+
+    private void SetFillOrigin()
+    {
+        if (_image.fillOrigin == 1)
+            _image.fillOrigin = 0;
+        else
+            _image.fillOrigin = 1;
     }
 }

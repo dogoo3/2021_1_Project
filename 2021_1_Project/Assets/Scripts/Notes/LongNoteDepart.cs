@@ -145,7 +145,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     transform.position += _arrow * _movedepartcircle * Time.deltaTime; // 방향벡터에 연산 후 이동
                     _stopOver[_stopindex].SetFillAmount(transform.position); // 진행이 끝난 부분은 없애줌
 
-                    if (Vector3.Distance(transform.position, _stopOverPoint[_stopindex].position) < 5.0f)
+                    if (Vector3.Distance(transform.position, _stopOverPoint[_stopindex].position) < 5.0f) // 경유 노트 도착시 
                     {
                         ComboManager.instance.CreaseCombo(); // 각 경유노트의 목적지 도착 시 Combo 증가
                         JudgeManager.instance.SetJudgeImage(_judgeName);
