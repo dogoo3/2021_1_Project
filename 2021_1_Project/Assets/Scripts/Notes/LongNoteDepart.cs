@@ -16,9 +16,9 @@ public enum SlideArrow
 public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHandler
 {
     [SerializeField] private Image _departcircle = default, _line = default;
-
-    private Vector3 _arrow, _setarrow;// departCircle 진행방향, departCircle 시작 좌표값
-    private Vector2 _lineSize, _setlineSize, _touchPos, _betweenToParent; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표, 도착 노트와의 간격
+    
+    private Vector2 _lineSize, _setlineSize, _touchPos, _betweenToParent, _lerpDpos, _lerpApos; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표, 도착 노트와의 간격
+    // 선형보간 출발지, 도착지
 
     private Color _noteColor;
 
@@ -26,8 +26,8 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     private bool _isHit = false, _isEnd; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
-    private float _judgeValue;
-    private string _animationName, _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
+    private float _judgeValue, _lerpValue;
+    private string _animationName = "", _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
     [Header("경유노트, 마지막 인덱스는 도착노트")]
     [SerializeField] private LongNoteStopover[] _stopOver = default;
     [Header("경유노트의 방향전환 포인트")]
@@ -51,6 +51,10 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         _noteColor = Color.gray;
         _noteColor.a = 0;
         _stopOver[0].SpreadNote(_movedepartcircle);
+
+        _lerpValue = SetLerpValue();
+        _lerpDpos = _longNote.transform.position;
+        _lerpApos = _stopOverPoint[0].position;
     }
     private void OnDisable()
     {
@@ -73,7 +77,6 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             case "AWESOME":
             case "GOOD":
                 ComboManager.instance.CreaseCombo();
-                _arrow = _setarrow = (_stopOver[0].transform.position - transform.position).normalized; // 첫 경유지 방향벡터 설정
                 _stopindex = 0;
                 _judgeName = _message;
                 break;
@@ -82,9 +85,11 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 _departcircle.raycastTarget = false;
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage(_message);
+                SetNote.instance.SetAnimation(_animationName,true);
                 if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
                     CancelInvoke("BrightenNote");
                 InvokeRepeating("DarkenNote", 0f, 0.05f);
+                _stopOver[_stopOver.Length - 1].InvokeRepeating("InActivePointImage", 0f, 0.05f);
                 _isEnd = true;
                 break;
         }
@@ -121,6 +126,11 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         }
     }
 
+    private float SetLerpValue()
+    {
+        return 0.000025f;
+    }
+
     public void InputAnimation(string _animation)
     {
         _animationName = _animation;
@@ -142,20 +152,26 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             {
                 if (_stopindex < _stopOver.Length) // 경유 노트 처리 및 방향벡터 설정
                 {
-                    transform.position += _arrow * _movedepartcircle * Time.deltaTime; // 방향벡터에 연산 후 이동
+                    _lerpValue += SetLerpValue();
+                    transform.position = Vector2.Lerp(_lerpDpos, _lerpApos, _movedepartcircle * _lerpValue); // 출발지에서 도착지까지의 선형보간을 이용함.
                     _stopOver[_stopindex].SetFillAmount(transform.position); // 진행이 끝난 부분은 없애줌
 
-                    if (Vector3.Distance(transform.position, _stopOverPoint[_stopindex].position) < 5.0f) // 경유 노트 도착시 
+                    if(_movedepartcircle * _lerpValue >= 1.0f)
                     {
                         ComboManager.instance.CreaseCombo(); // 각 경유노트의 목적지 도착 시 Combo 증가
                         JudgeManager.instance.SetJudgeImage(_judgeName);
                         _stopOver[_stopindex].SetFillAmount(0);
+                        _stopOver[_stopOver.Length - 1].SetColor(_stopindex); // 출발노트가 지나가면서 중간의 포인트노트를 보이지 않게 하기 위함(도착노트에 등록된 리소스 활용)
                         _stopindex++;
+                        _lerpValue = SetLerpValue();
                         if (_stopindex < _stopOver.Length) // 인덱스 오버플로우 방지
-                            _arrow = _setarrow = (_stopOver[_stopindex].transform.position - transform.position).normalized; // 다음 경유지 방향벡터 설정
+                        {
+                            _lerpDpos = _stopOverPoint[_stopindex-1].position; // 도착 위치 설정
+                            _lerpApos = _stopOverPoint[_stopindex].position; // 출발 위치 설정
+                        }
                     }
                 }
-
+                
                 if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) <= 5.0f) // 최종 목적지에 출발노트가 도착
                 {
                     if (_judgeValue < _awesomeRange) // 실제 AWESOME 판정 처리
@@ -206,13 +222,16 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 CancelInvoke("BrightenNote");
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
+                SetNote.instance.SetAnimation(_animationName, true);
             }
             if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) > 5.0f) // 롱노트 진행중 중간에 이탈한경우
             {
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
+                SetNote.instance.SetAnimation(_animationName, true);
             }
             InvokeRepeating("DarkenNote", 0f, 0.05f);
+            _stopOver[_stopOver.Length - 1].InvokeRepeating("InActivePointImage", 0f, 0.05f);
             _isEnd = true;
         }
     }

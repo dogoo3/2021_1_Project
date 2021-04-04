@@ -12,7 +12,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
 
-    private string _animationName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
+    private string _animationName = ""; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
     private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
 
@@ -58,7 +58,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             case "FAIL":
             case "MISS":
                 // 실패 애니메이션 진행 함수 작성
-                // SetNote.instance.SetAnimation(_animationName);
+                SetNote.instance.SetAnimation(_animationName, true);
                 ComboManager.instance.ResetCombo();
                 break;
         }
