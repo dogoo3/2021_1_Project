@@ -512,7 +512,7 @@ GameObject:
   - component: {fileID: 6528527222605806522}
   - component: {fileID: 6528527222605806521}
   m_Layer: 5
-  m_Name: LongNote
+  m_Name: LongNote0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

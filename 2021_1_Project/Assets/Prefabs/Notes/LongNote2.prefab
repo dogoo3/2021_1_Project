@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3671309355166147814}
   - component: {fileID: 3671309355166147813}
   m_Layer: 5
-  m_Name: LongNote4
+  m_Name: LongNote2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd12100ccf65374aa34cf30a92f1fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteName: LongNote4
+  _noteName: LongNote2
   _departNote: {fileID: 3671309355421377941}
 --- !u!1 &3671309355295149331
 GameObject:

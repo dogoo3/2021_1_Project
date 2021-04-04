@@ -93,7 +93,7 @@ public class SetNote : MonoBehaviour
             else // 지속적으로 실패할 경우
             {
                 _failIndex++;
-                _animator.Play(animation, -1, _failIndex % 2 / _animator.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate);
+                _animator.Play("FAIL", -1, _failIndex / _animator.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate);
             }
         }
         else // 성공

@@ -9,15 +9,13 @@ public class HPManager : MonoBehaviour
 
     [SerializeField] private Sprite _normalHeart = default;
     [SerializeField] private Sprite[] _brokenHeart = default;
-
-    private Image[] _image_heart;
+    [SerializeField] private Image[] _image_heart = default;
 
     private int _nowliveHeart;
 
     private void Awake()
     {
         instance = this;
-        _image_heart = GetComponentsInChildren<Image>();
         ResetHP(); // 하트의 최대갯수 설정
     }
 
