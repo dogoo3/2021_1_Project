@@ -24,7 +24,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     private LongNote _longNote;
 
-    private bool _isHit = false, _isEnd; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
+    private bool _isHit = false, _isEnd, _isAuto; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue, _lerpValue;
     private string _animationName = "", _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
@@ -135,13 +135,14 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         _animationName = _animation;
     }
-    public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed) // 노트의 초기 설정
+    public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed, bool _isAuto = false) // 노트의 초기 설정
     {
         Vector2 _lineValue;
         _lineValue.x = _lineValue.y = _linedistance;
         _lineSize = _setlineSize = _line.rectTransform.sizeDelta = _departcircle.rectTransform.sizeDelta + _lineValue;
         _movedepartcircle = _notemovespeed;
         this._reduceValue = _reduceValue;
+        this._isAuto = _isAuto;
     }
 
     private void FixedUpdate()
@@ -191,6 +192,15 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 _lineSize.x -= _reduceValue * Time.deltaTime;
                 _lineSize.y -= _reduceValue * Time.deltaTime;
                 _line.rectTransform.sizeDelta = _lineSize;
+
+                #region AutoMode
+                if(_isAuto)
+                {
+                    _judgeValue = _line.rectTransform.sizeDelta.x - _departcircle.rectTransform.sizeDelta.x;
+                    if (_judgeValue < _awesomeRange)
+                        Hit("AWESOME");
+                }
+                #endregion
                 if (_line.rectTransform.sizeDelta.x < _departcircle.rectTransform.sizeDelta.x - _missRange)
                     Hit("MISS");
             }
@@ -215,6 +225,10 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        #region AutoMode
+        if (_isAuto)
+            return;
+        #endregion
         if (!_isEnd)
         {
             if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제

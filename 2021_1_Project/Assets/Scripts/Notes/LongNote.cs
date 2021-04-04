@@ -18,9 +18,9 @@ public class LongNote : MonoBehaviour
         return _noteName;
     }
 
-    public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed = 700.0f)
+    public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed = 700.0f, bool _isAuto = false)
     {
-        _departNote.SetNoteProperties(_linedistance, _reduceValue, _notemovespeed);
+        _departNote.SetNoteProperties(_linedistance, _reduceValue, _notemovespeed, _isAuto);
     }
 
     public void InputAnimation(string _animation)

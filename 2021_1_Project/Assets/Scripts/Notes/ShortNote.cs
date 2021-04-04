@@ -8,7 +8,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Image _circle = default, _line = default;
 
-    private bool _isHit; // 노트 터치 여부
+    private bool _isHit, _isAuto; // 노트 터치 여부
 
     private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
 
@@ -99,12 +99,13 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         _animationName = _animation;
     }
 
-    public void SetNoteProperties(float _linedistance, float _reduceValue)
+    public void SetNoteProperties(float _linedistance, float _reduceValue, bool _isAuto = false)
     {
         Vector2 _lineValue;
         _lineValue.x = _lineValue.y = _linedistance;
         _lineSize = _setlineSize = _line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue;
         this._reduceValue = _reduceValue;
+        this._isAuto = _isAuto;
     }
 
     private void FixedUpdate()
@@ -116,11 +117,14 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             _line.rectTransform.sizeDelta = _lineSize;
 
             #region AUTOMODE
-            //_judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
+            if(_isAuto)
+            {
+                _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
 
-            //if (_judgeValue < _awesomeRange)
-            //    Hit("AWESOME");
+                if (_judgeValue < _awesomeRange)
+                    Hit("AWESOME");
 
+            }
             #endregion
             if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
                 Hit("MISS");

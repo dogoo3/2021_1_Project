@@ -45,7 +45,7 @@ public class NotePoolingManager : MonoBehaviour
     {
         ShortNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
 
-        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1])); // 판정선거리, 감소속도
+        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), PlayMusicInfo.ReturnAutoMode()); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
         temp.name = _objName + "(" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);
@@ -55,7 +55,7 @@ public class NotePoolingManager : MonoBehaviour
     {
         LongNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
         
-        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), float.Parse(value[2])); // 판정선거리, 감소속도
+        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), float.Parse(value[2]), PlayMusicInfo.ReturnAutoMode()); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
         temp.name = _objName + "(" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);
