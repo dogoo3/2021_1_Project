@@ -24,6 +24,7 @@ public class GameOverManager : MonoBehaviour
     public void Back() // 선택창으로 돌아가기
     {
         gameObject.SetActive(false);
+        SoundManager.instance.Stop();
         SceneManager.LoadScene("ChoiceStage");
     }
 }

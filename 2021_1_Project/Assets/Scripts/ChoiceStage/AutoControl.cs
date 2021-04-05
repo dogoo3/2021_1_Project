@@ -10,6 +10,8 @@ public class AutoControl : MonoBehaviour
     private void Awake()
     {
         _toggle = GetComponent<Toggle>();
+        if (PlayMusicInfo.ReturnAutoMode())
+            _toggle.isOn = true;
     }
 
     public void SetAutoMode()
