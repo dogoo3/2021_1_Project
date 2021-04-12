@@ -123,6 +123,7 @@ namespace NoteMaker
                 _temparray = _temp.Split('/');
                 _textbox_lineTocircle.Text = _temparray[0];
                 _textbox_reducevalue.Text = _temparray[1];
+                _textbox_longNotespeed.Text = _temparray[2];
                 _textbox_lineTocircle.Enabled = true;
                 _textbox_reducevalue.Enabled = true;
                 _textbox_longNotespeed.Enabled = true;
@@ -533,6 +534,38 @@ namespace NoteMaker
             _inputValue = new Note(_activeTime, _joint, _activeNote, _animation);
             _note.Insert(i, _inputValue); // 노트를 중간에 삽입
             _listbox_noteInfo.Items.Insert(i, _inputValue._showlist);
+
+            SetJoint("Lshoulder", _activeTime, _picture_joint_Lshoulder, true);
+            SetJoint("Rshoulder", _activeTime, _picture_joint_Rshoulder, true);
+            SetJoint("Lhand", _activeTime, _picture_joint_Lhand, true);
+            SetJoint("Rhand", _activeTime, _picture_joint_Rhand, true);
+            SetJoint("Lknee", _activeTime, _picture_joint_Lknee, true);
+            SetJoint("Rknee", _activeTime, _picture_joint_Rknee, true);
+            SetJoint("Lfoot", _activeTime, _picture_joint_Lfoot, true);
+            SetJoint("Rfoot", _activeTime, _picture_joint_Rfoot, true);
+        }
+
+        private void _listbox_noteInfo_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && _listbox_noteInfo.SelectedIndex != -1)
+            {
+                _textbox_playtime.Text = _note[_listbox_noteInfo.SelectedIndex]._activeTime.ToString();
+                if (_trackbar_musicline.Enabled)
+                {
+                    _mp3player.CurrentPosition = Convert.ToDouble(_textbox_playtime.Text);
+                    _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
+                }
+
+                SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder, true);
+                SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder, true);
+                SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand, true);
+                SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand, true);
+                SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee, true);
+                SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
+                SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
+                SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
+                label1.Focus();
+            }
         }
 
         public void ModifyNote(int _index, double _activeTime, string _joint, string _activeNote, string _animation = "")
@@ -544,6 +577,15 @@ namespace NoteMaker
 
             _note[_index].ModifyShowlist();
             _listbox_noteInfo.Items[_index] = _note[_index]._showlist;
+
+            SetJoint("Lshoulder", _activeTime, _picture_joint_Lshoulder, true);
+            SetJoint("Rshoulder", _activeTime, _picture_joint_Rshoulder, true);
+            SetJoint("Lhand", _activeTime, _picture_joint_Lhand, true);
+            SetJoint("Rhand", _activeTime, _picture_joint_Rhand, true);
+            SetJoint("Lknee", _activeTime, _picture_joint_Lknee, true);
+            SetJoint("Rknee", _activeTime, _picture_joint_Rknee, true);
+            SetJoint("Lfoot", _activeTime, _picture_joint_Lfoot, true);
+            SetJoint("Rfoot", _activeTime, _picture_joint_Rfoot, true);
         }
         #endregion
     }

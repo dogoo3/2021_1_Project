@@ -175,6 +175,7 @@
             this._trackbar_musicline.LargeChange = 20;
             this._trackbar_musicline.Location = new System.Drawing.Point(13, 119);
             this._trackbar_musicline.Margin = new System.Windows.Forms.Padding(0);
+            this._trackbar_musicline.Maximum = 999;
             this._trackbar_musicline.Name = "_trackbar_musicline";
             this._trackbar_musicline.Size = new System.Drawing.Size(305, 26);
             this._trackbar_musicline.TabIndex = 0;
@@ -233,6 +234,7 @@
             this._listbox_noteInfo.TabIndex = 15;
             this._listbox_noteInfo.DoubleClick += new System.EventHandler(this._listbox_noteInfo_DoubleClick);
             this._listbox_noteInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this._listbox_noteInfo_KeyDown);
+            this._listbox_noteInfo.MouseDown += new System.Windows.Forms.MouseEventHandler(this._listbox_noteInfo_MouseDown);
             // 
             // label4
             // 
