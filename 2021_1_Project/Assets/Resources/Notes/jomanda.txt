@@ -1,0 +1,14 @@
+350/300/1000
+1.5340626/Lshoulder/ShortNote
+1.6928334/Rshoulder/ShortNote
+1.8475834/Lhand/ShortNote
+2.0067501/Rhand/ShortNote
+3.0213336/Lknee/ShortNote
+3.0213336/Rknee/ShortNote
+3.5208545/Rfoot/ShortNote
+3.5208545/Lfoot/ShortNote
+3.8377921/Lshoulder/ShortNote
+4.1848547/Lknee/ShortNote
+4.3357297/Rknee/ShortNote
+4.4905838/Lfoot/ShortNote
+4.6504172/Rfoot/ShortNote

@@ -16,7 +16,6 @@ public class AutoControl : MonoBehaviour
 
     public void SetAutoMode()
     {
-        Debug.Log(_toggle.isOn);
         PlayMusicInfo.SetAutoMode(_toggle.isOn);
     }
 }

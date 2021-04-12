@@ -4,16 +4,16 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 177477502720434074
-    second: motion1_0
+    second: MOTION1_1
   - first:
       213: 1718699582636731009
-    second: motion1_1
+    second: MOTION1_2
   - first:
       213: -2819959856142065473
-    second: motion1_2
+    second: MOTION1_3
   - first:
       213: 8615856762844625223
-    second: motion1_3
+    second: MOTION1_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: motion1_0
+      name: MOTION1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: motion1_1
+      name: MOTION1_2
       rect:
         serializedVersion: 2
         x: 800
@@ -139,7 +139,7 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: motion1_2
+      name: MOTION1_3
       rect:
         serializedVersion: 2
         x: 1600
@@ -160,7 +160,7 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: motion1_3
+      name: MOTION1_4
       rect:
         serializedVersion: 2
         x: 2400
@@ -181,7 +181,7 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

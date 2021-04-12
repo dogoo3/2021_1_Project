@@ -5,13 +5,13 @@ using UnityEngine;
 public class Note
 {
     public float activeTime;
-    public string joint, notename, animation;
+    public string joint, notename, motion;
 
-    public Note(float _activeTime, string _joint, string _notename, string _animation = "")
+    public Note(float _activeTime, string _joint, string _notename, string _motion = "")
     {
         activeTime = _activeTime;
         joint = _joint;
         notename = _notename;
-        animation = _animation;
+        motion = _motion;
     }
 }

@@ -2,53 +2,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SetNote : MonoBehaviour
 {
     public static SetNote instance;
 
-    private Animator _animator;
-
     [SerializeField] private GameClearManager _gameClearManager = default;
-    [SerializeField] private Transform[] _joints = default;
+    [SerializeField] private RectTransform[] _joints = default;
 
-    private List<string> _noteInfo = new List<string>();
+    private Image _image;
+    
     private List<Note> _note = new List<Note>();
-    private Dictionary<string, Transform> _jointPoints = new Dictionary<string, Transform>();
-    private Dictionary<string, int> _animationIndex = new Dictionary<string, int>();
-    private string[] _getInfo;
+    private Dictionary<string, RectTransform> _jointPoints = new Dictionary<string, RectTransform>();
+    private Dictionary<string, Motion> _motion = new Dictionary<string, Motion>(); 
 
     private bool _isStart = false;
 
-    private int _index = 0, _afterIndex, _upIndex = 0, _aniIndex = 0, _failIndex = 0;
+    private int _index = 0, _upIndex = 0;
+    private int _index_idleFSM = 0, _index_dabFSM = 0, _index_failFSM = 0;
 
     private float _startTime, _songDelay = 1.2f;
 
-    private string _oldaniname; // 이전 애니메이션 이름
-
+    private string _nowMotion;
+    private string[]
+        _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
+        _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
+        _failFSM = { "FAIL_1", "FAIL_2" };
     private void Awake()
     {
         instance = this;
-        _animator = GetComponent<Animator>();
-        
-        _noteInfo = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
-        _getInfo = _noteInfo[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도
+
+        _image = GetComponent<Image>();
+
+        #region ReadNoteFIle
+        List<string> _tempStringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
+        string[] _getInfo = _tempStringList[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도
         _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime); // 노트 활성화 간격 조정
         
-        if (_noteInfo != null)
+        if (_tempStringList != null)
         {
-            for (int i = 1; i < _noteInfo.Count; i++)
+            for (int i = 1; i < _tempStringList.Count; i++)
             {
-                _getInfo = _noteInfo[i].Split('/');
+                _getInfo = _tempStringList[i].Split('/');
                 if (_getInfo.Length == 3)
-                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2]));
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2])); // 시간, 관절, 노트
                 else
-                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3]));
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3])); // 시간, 관절, 노트, 모션
             }
 
             Invoke("StartMusic", 5.0f); // 음악 재생
         }
+        #endregion
+        #region ReadMotionFile
+        _tempStringList = FileManager.ReadFile_TXT("Motion_posInfo.csv", "", true);
 
+        for (int i = 0; i < _tempStringList.Count; i++)
+        {
+            string[] _t = _tempStringList[i].Split(',');
+            _motion.Add(_t[0], new Motion(_t, transform.position));
+        }
+        #endregion
+        #region InputJointObject
         _jointPoints.Add("Lshoulder", _joints[0]);
         _jointPoints.Add("Rshoulder", _joints[1]);
         _jointPoints.Add("Lhand", _joints[2]);
@@ -57,10 +72,9 @@ public class SetNote : MonoBehaviour
         _jointPoints.Add("Rknee", _joints[5]);
         _jointPoints.Add("Lfoot", _joints[6]);
         _jointPoints.Add("Rfoot", _joints[7]);
+        #endregion
 
-        // 애니메이션 클립에 쉽게 접근할 수 있도록 딕셔너리화
-        for (int i = 0; i < _animator.runtimeAnimatorController.animationClips.Length; i++)
-            _animationIndex.Add(_animator.runtimeAnimatorController.animationClips[i].name, i);
+        InvokeRepeating("FSM_IDLE", 0, 0.1f);
     }
 
     private void StartMusic()
@@ -70,62 +84,54 @@ public class SetNote : MonoBehaviour
         SoundManager.instance.Play();
     }
 
-    public void SetAnimation(string animation, bool _isFail = false)
+    private void FSM_DAB()
     {
-        if (animation == "" && !_isFail)
+        _image.sprite = _motion[_dabFSM[_index_dabFSM]]._sprite;
+        _index_dabFSM++;
+        if (_index_dabFSM >= _dabFSM.Length)
+            CancelInvoke("FSM_DAB");
+    }
+
+    private void FSM_IDLE()
+    {
+        _image.sprite = _motion[_idleFSM[_index_idleFSM % _idleFSM.Length]]._sprite;
+        _index_idleFSM++;
+        foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
+            _jointPoints[items.Key].position = _motion[_idleFSM[_index_idleFSM % _idleFSM.Length]].joint[items.Key];
+    }
+
+    public void SetMotion(string _motion, bool _isFail = false)
+    {
+        if (_isFail)
+        {
+            _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
+
+            foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
+                _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
+            _index_failFSM++;
+        }
+        else if (_motion != "")
+        {
+            _image.sprite = this._motion[_motion]._sprite;
+            if (_motion == "DAB")
+            {
+                if (IsInvoking("FSM_IDLE"))
+                    CancelInvoke("FSM_IDLE");
+                InvokeRepeating("FSM_DAB", 0, 0.1f);
+            }
+            else if (_motion == "IDLE")
+                InvokeRepeating("FSM_IDLE", 0, 0.1f);
+            else
+            {
+                if (IsInvoking("FSM_IDLE"))
+                    CancelInvoke("FSM_IDLE");
+            }
+            foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
+                _jointPoints[items.Key].position = this._motion[_motion].joint[items.Key];
+            _index_failFSM = 0;
+        }
+        else
             return;
-
-        if(_isFail) // 노트 판정 실패
-        {
-            if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != "FAIL") // First FAIL
-            {
-                // 어느 클립에서 실패했는지를 체크해줌
-                if (animation == null)
-                    _oldaniname = "IDLE";
-                else
-                    _oldaniname = animation;
-
-                _animator.SetBool(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name, false); // 현재 클립을 False로 변경
-                _animator.SetBool("FAIL", true);
-                _aniIndex++;
-                _failIndex = 0;
-            }
-            else // 지속적으로 실패할 경우
-            {
-                _failIndex++;
-                _animator.Play("FAIL", -1, _failIndex / _animator.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate);
-            }
-        }
-        else // 성공
-        {
-            if (_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name != animation) // 새로운 애니메이션을 실행해야 하는 경우
-            {
-                if(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name == "FAIL") // 실패 애니메이션에서 넘어가는 경우라면
-                {
-                    _animator.SetBool("FAIL", false); // FAIL 해제
-                    _animator.SetBool(animation, true); // 새 애니메이션으로 변경
-                    
-                    if (animation == _oldaniname) // 실패 전에 실행된 애니메이션과 넘어가려는 애니메이션이 같은 경우
-                        _aniIndex++;
-                    else // 다른 경우
-                        _aniIndex = 0;
-                    _animator.Play(animation, -1, _aniIndex / _animator.runtimeAnimatorController.animationClips[_animationIndex[animation]].frameRate);
-                }
-                else // 단순히 동작이 바뀌는 경우라면
-                {
-                    _animator.SetBool(_animator.GetCurrentAnimatorClipInfo(0)[0].clip.name, false);
-                    _animator.SetBool(animation, true);
-                    _aniIndex = 0;
-                }
-            }
-            else // 현재 애니메이션에서 1프레임씩 올려야 하는 경우
-            {
-                _aniIndex++;
-                _animator.Play(animation, -1, _aniIndex / _animator.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate);
-                if (_aniIndex == _animator.GetCurrentAnimatorClipInfo(0)[0].clip.frameRate)
-                    _aniIndex = 0;
-            }
-        }
     }
     public void StopNote()
     {
@@ -134,16 +140,10 @@ public class SetNote : MonoBehaviour
     }
     public void ResetNote()
     {
-        _aniIndex = _index = _upIndex = 0;
+        _index = _upIndex = _index_idleFSM = _index_dabFSM = 0;
         CancelInvoke();
         _isStart = false;
-        _animator.SetBool("IDLE", true);
-        _oldaniname = "";
-        for (int i=1;i<_animator.parameterCount;i++) // 애니메이션 초기화
-        {
-            if (_animator.parameters[i].type == AnimatorControllerParameterType.Bool) // Bool 타입의 변수(애니메이션 컨트롤)에만 조정
-                _animator.SetBool(_animator.parameters[i].name, false);
-        }
+        InvokeRepeating("FSM_IDLE", 0, 0.1f);
         Invoke("StartMusic", 5.0f); // 음악 재생
     }
 
@@ -156,7 +156,11 @@ public class SetNote : MonoBehaviour
                 if(_note[i].activeTime - _songDelay <= Time.time - _startTime)
                 {
                     // 노트 출력
-                    NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename, _note[i].animation);
+                    if (_note[i].motion == "")
+                        NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename);
+                    else
+                        NotePoolingManager.instance.GetNote(_motion[_note[i].motion].joint[_note[i].joint], _note[i].notename, _note[i].motion);
+
                     _upIndex++;
                 }
             }
@@ -165,7 +169,7 @@ public class SetNote : MonoBehaviour
             _upIndex = 0; // 처리된 노트 갯수 저장 변수 초기화
             if(_index >= _note.Count)
             {
-                _gameClearManager.Invoke("Active", 3.0f);
+                _gameClearManager.Invoke("Active", 5.0f);
                 _isStart = false;
             }
         }

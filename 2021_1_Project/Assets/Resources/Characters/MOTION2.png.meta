@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 5029bb7a9c8063a4ab7d56cd3a8aadab
+guid: 4e547d41324e4d24d8f4abe85422cebe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8975729074515196753
-    second: MISS&FAIL_0
+      213: 1764187598343556989
+    second: MOTION2_1
   - first:
-      213: 1933219126805929459
-    second: MISS&FAIL_1
+      213: -8669082138930314660
+    second: MOTION2_2
+  - first:
+      213: 3496263720419882251
+    second: MOTION2_3
+  - first:
+      213: 5410401240038183817
+    second: MOTION2_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MISS&FAIL_0
+      name: MOTION2_1
       rect:
         serializedVersion: 2
         x: 0
@@ -112,20 +118,20 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4406156fdcf6380800000000000000
-      internalID: -8975729074515196753
+      spriteID: d7fca6c0647ab7810800000000000000
+      internalID: 1764187598343556989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MISS&FAIL_1
+      name: MOTION2_2
       rect:
         serializedVersion: 2
         x: 800
@@ -133,14 +139,56 @@ TextureImporter:
         width: 800
         height: 1100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fd124e9d8c24da10800000000000000
-      internalID: 1933219126805929459
+      spriteID: c520064b9bb31b780800000000000000
+      internalID: -8669082138930314660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOTION2_3
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0576b86459358030800000000000000
+      internalID: 3496263720419882251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOTION2_4
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9831fc4234b951b40800000000000000
+      internalID: 5410401240038183817
       vertices: []
       indices: 
       edges: []

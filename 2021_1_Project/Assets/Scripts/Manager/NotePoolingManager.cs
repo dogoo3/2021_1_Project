@@ -83,19 +83,22 @@ public class NotePoolingManager : MonoBehaviour
         _activeLongNote.Remove(_obj);
     }
 
-    public void GetNote(Vector2 _origin, string _noteName, string animation = "")
+    public void GetNote(Vector2 _origin, string _noteName, string _motion = null)
     {
         if (_noteName == "ShortNote")
         {
             if (_queue_shortNote.Count > 0)
             {
                 ShortNote _temp = _queue_shortNote.Dequeue();
+
+                if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
+                    _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
+
                 _temp.transform.position = _origin;
+
                 _temp.gameObject.SetActive(true);
-                _temp.gameObject.transform.SetAsLastSibling();
-                if (animation != "")
-                    _temp.InputAnimation(animation);
-                _activeShortNote.Add(_temp);
+                _temp.gameObject.transform.SetAsFirstSibling();
+                _activeShortNote.Add(_temp); // 활성화 노트 리스트에 넣어줌
             }
         }
         else
@@ -103,11 +106,14 @@ public class NotePoolingManager : MonoBehaviour
             if (_dic_longNote[_noteName].Count > 0)
             {
                 LongNote _temp = _dic_longNote[_noteName].Dequeue();
+
+                if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
+                    _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
+
                 _temp.transform.position = _origin;
+
                 _temp.gameObject.SetActive(true);
-                _temp.gameObject.transform.SetAsLastSibling();
-                if (animation != "")
-                    _temp.InputAnimation(animation);
+                _temp.gameObject.transform.SetAsFirstSibling();
                 _activeLongNote.Add(_temp);
             }
         }

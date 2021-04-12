@@ -27,7 +27,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private bool _isHit = false, _isEnd, _isAuto; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue, _lerpValue;
-    private string _animationName = "", _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
+    private string _motionName = "", _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
     [Header("경유노트, 마지막 인덱스는 도착노트")]
     [SerializeField] private LongNoteStopover[] _stopOver = default;
     [Header("경유노트의 방향전환 포인트")]
@@ -85,7 +85,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 _departcircle.raycastTarget = false;
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage(_message);
-                SetNote.instance.SetAnimation(_animationName,true);
+                SetNote.instance.SetMotion(_motionName,true);
                 if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
                     CancelInvoke("BrightenNote");
                 InvokeRepeating("DarkenNote", 0f, 0.05f);
@@ -131,9 +131,9 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         return 0.000025f;
     }
 
-    public void InputAnimation(string _animation)
+    public void InputAnimation(string _motion)
     {
-        _animationName = _animation;
+        _motionName = _motion;
     }
     public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed, bool _isAuto = false) // 노트의 초기 설정
     {
@@ -181,7 +181,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                         JudgeManager.instance.SetJudgeImage("GOOD");
                     else { }
 
-                    SetNote.instance.SetAnimation(_animationName); // 애니메이션 작동
+                    SetNote.instance.SetMotion(_motionName); // 애니메이션 작동
                     _departcircle.raycastTarget = false;
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;
@@ -236,13 +236,13 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 CancelInvoke("BrightenNote");
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
-                SetNote.instance.SetAnimation(_animationName, true);
+                SetNote.instance.SetMotion(_motionName, true);
             }
             if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) > 5.0f) // 롱노트 진행중 중간에 이탈한경우
             {
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
-                SetNote.instance.SetAnimation(_animationName, true);
+                SetNote.instance.SetMotion(_motionName, true);
             }
             InvokeRepeating("DarkenNote", 0f, 0.05f);
             _stopOver[_stopOver.Length - 1].InvokeRepeating("InActivePointImage", 0f, 0.05f);

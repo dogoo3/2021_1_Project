@@ -13,6 +13,7 @@ public class SystemManager : MonoBehaviour
         //Screen.SetResolution(1280, 720, true); // 1280 x 720 으로 조정
         //Screen.SetResolution(Screen.width, (Screen.width / 2) * 3); // 2:3 비율로 개발시
         Screen.SetResolution(1440, 2560, true); // 16:9 로 개발시
+        
         DontDestroyOnLoad(gameObject);
     }
 
