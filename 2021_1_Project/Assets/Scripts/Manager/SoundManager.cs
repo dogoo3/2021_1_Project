@@ -6,7 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    public AudioSource audiosource;
+    [SerializeField] private AudioSource _song;
+    [SerializeField] private AudioSource[] _sfxs;
 
     private void Awake()
     {
@@ -16,23 +17,35 @@ public class SoundManager : MonoBehaviour
 
     public void PlayPreListen(AudioClip _song, float _startpos)
     {
-        audiosource.clip = _song;
-        audiosource.time = _startpos;
-        audiosource.Play();
+        this._song.clip = _song;
+        this._song.time = _startpos;
+        this._song.Play();
     }
 
     public void ResetStartTime()
     {
-        audiosource.time = 0f;
+        _song.time = 0f;
     }
 
     public void Play()
     {
-        audiosource.Play();
+        _song.Play();
+    }
+
+    public void PlaySFX()
+    {
+        for (int i = 0; i < _sfxs.Length; i++)
+        {
+            if (!_sfxs[i].isPlaying)
+            {
+                _sfxs[i].Play();
+                break;
+            }
+        }
     }
 
     public void Stop()
     {
-        audiosource.Stop();
+        _song.Stop();
     }
 }
