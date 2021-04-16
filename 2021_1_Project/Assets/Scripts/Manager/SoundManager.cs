@@ -6,8 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
-    [SerializeField] private AudioSource _song;
-    [SerializeField] private AudioSource[] _sfxs;
+    [SerializeField] private AudioSource _song = default;
+    [SerializeField] private AudioSource[] _sfxs = default;
 
     private void Awake()
     {

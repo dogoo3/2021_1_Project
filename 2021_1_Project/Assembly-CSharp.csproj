@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Motion\Motion.cs" />
+    <Compile Include="Assets\Scripts\Motion\SetEdge.cs" />
     <Compile Include="Assets\Scripts\Notes\LongNote.cs" />
     <Compile Include="Assets\Scripts\Notes\LongNoteDepart.cs" />
     <Compile Include="Assets\Scripts\Notes\LongNoteStopover.cs" />

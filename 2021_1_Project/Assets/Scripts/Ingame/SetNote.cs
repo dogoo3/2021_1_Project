@@ -26,6 +26,7 @@ public class SetNote : MonoBehaviour
 
     private string _nowMotion;
     private string[]
+        _jointName = { "Lshoulder", "Rshoulder", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot", },
         _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
         _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
         _failFSM = { "FAIL_1", "FAIL_2" };
@@ -64,14 +65,8 @@ public class SetNote : MonoBehaviour
         }
         #endregion
         #region InputJointObject
-        _jointPoints.Add("Lshoulder", _joints[0]);
-        _jointPoints.Add("Rshoulder", _joints[1]);
-        _jointPoints.Add("Lhand", _joints[2]);
-        _jointPoints.Add("Rhand", _joints[3]);
-        _jointPoints.Add("Lknee", _joints[4]);
-        _jointPoints.Add("Rknee", _joints[5]);
-        _jointPoints.Add("Lfoot", _joints[6]);
-        _jointPoints.Add("Rfoot", _joints[7]);
+        for (int i = 0; i < _joints.Length; i++)
+            _jointPoints.Add(_jointName[i], _joints[i]);
         #endregion
 
         InvokeRepeating("FSM_IDLE", 0, 0.1f);
@@ -102,7 +97,7 @@ public class SetNote : MonoBehaviour
 
     public void SetMotion(string _motion, bool _isFail = false)
     {
-        if (_isFail)
+        if (_isFail) // 실패 애니메이션일 경우
         {
             _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
 
@@ -110,20 +105,20 @@ public class SetNote : MonoBehaviour
                 _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
             _index_failFSM++;
         }
-        else if (_motion != "")
+        else if (_motion != "") // 다른 모션일 경우
         {
             _image.sprite = this._motion[_motion]._sprite;
-            if (_motion == "DAB")
+            if (_motion == "DAB") // 노래가 끝나는 모션
             {
                 if (IsInvoking("FSM_IDLE"))
                     CancelInvoke("FSM_IDLE");
                 InvokeRepeating("FSM_DAB", 0, 0.1f);
             }
-            else if (_motion == "IDLE")
+            else if (_motion == "IDLE") 
                 InvokeRepeating("FSM_IDLE", 0, 0.1f);
             else
             {
-                if (IsInvoking("FSM_IDLE"))
+                if (IsInvoking("FSM_IDLE")) // 아이들에서 다른 모션으로 넘어갈 때
                     CancelInvoke("FSM_IDLE");
             }
             foreach (KeyValuePair<string, RectTransform> items in _jointPoints)

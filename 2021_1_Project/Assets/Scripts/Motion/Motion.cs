@@ -2,26 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//public enum JOINT
-//{
-//    Lshoulder_x,
-//    Lshoulder_y,
-//    Rshoulder_x,
-//    Rshoulder_y,
-//    Lhand_x,
-//    Lhand_y,
-//    Rhand_x,
-//    Rhand_y,
-//    Lknee_x,
-//    Lknee_y,
-//    Rknee_x,
-//    Rknee_y,
-//    Lfoot_x,
-//    Lfoot_y,
-//    Rfoot_x,
-//    Rfoot_y,
-//}
-
 public class Motion
 {
     public Dictionary<string, Vector2> joint = new Dictionary<string, Vector2>();
