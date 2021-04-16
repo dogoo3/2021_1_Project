@@ -1,0 +1,7 @@
+350/300/1000
+9.2113955/Rhand/ShortNote
+9.2113955/Lhand/ShortNote
+9.5937913/Lshoulder/ShortNote
+10.1400205/Lshoulder/ShortNote
+10.2901246/Rshoulder/ShortNote
+10.6395205/Lshoulder/ShortNote
