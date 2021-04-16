@@ -6,13 +6,12 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager instance;
 
+    [SerializeField] private Sprite[] _atlas = default;
     private Dictionary<string, Sprite> _character = new Dictionary<string, Sprite>();
 
     private void Awake()
     {
         instance = this;
-        
-        Sprite[] _atlas = Resources.LoadAll<Sprite>("Characters/");
 
         for (int i = 0; i < _atlas.Length; i++)
             _character.Add(_atlas[i].name, _atlas[i]);

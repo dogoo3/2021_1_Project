@@ -86,6 +86,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage(_message);
                 SetNote.instance.SetMotion(_motionName,true);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
                 if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
                     CancelInvoke("BrightenNote");
                 InvokeRepeating("DarkenNote", 0f, 0.05f);
@@ -182,6 +183,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     else { }
 
                     SetNote.instance.SetMotion(_motionName); // 애니메이션 작동
+                    SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
                     _departcircle.raycastTarget = false;
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;
@@ -237,12 +239,14 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
                 SetNote.instance.SetMotion(_motionName, true);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
             }
             if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) > 5.0f) // 롱노트 진행중 중간에 이탈한경우
             {
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
                 SetNote.instance.SetMotion(_motionName, true);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
             }
             InvokeRepeating("DarkenNote", 0f, 0.05f);
             _stopOver[_stopOver.Length - 1].InvokeRepeating("InActivePointImage", 0f, 0.05f);

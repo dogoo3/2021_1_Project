@@ -62,6 +62,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 ComboManager.instance.ResetCombo();
                 break;
         }
+        SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
         JudgeManager.instance.SetJudgeImage(_message); // 판정
         _motionName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
