@@ -39,6 +39,4 @@ public class SetEdge : MonoBehaviour
             InvokeRepeating("Transparent", 0f, 0.05f);
         }
     }
-
-
 }
