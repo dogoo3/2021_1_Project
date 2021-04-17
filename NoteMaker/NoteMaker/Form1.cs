@@ -22,10 +22,11 @@ namespace NoteMaker
     {
         NoteInfoEditor _noteinfoEditor;
 
-        Timer _timer;
+        Timer _timer, _sfxTimer;
         OpenFileDialog _ofd_music, _ofd_Getnote;
         SaveFileDialog _ofd_Savenote;
         MediaPlayer.MediaPlayerClass _mp3player;
+        MediaPlayer.MediaPlayerClass[] _sfxPlayers;
 
         StreamReader _streamReader;
         StreamWriter _streamWriter;
@@ -33,8 +34,11 @@ namespace NoteMaker
         List<Note> _note = new List<Note>();
         Note _inputValue;
 
-        string _temp;
+        FileInfo _fInfo;
+        string _temp, _filepath;
         string[] _temparray;
+
+        int _playindex; 
 
         public Form1()
         {
@@ -63,6 +67,17 @@ namespace NoteMaker
             _timer = new Timer();
             _timer.Interval = 10;
             _timer.Tick += _timer_tick;
+
+            _sfxPlayers = new MediaPlayer.MediaPlayerClass[4];
+
+            for (int i = 0; i < _sfxPlayers.Length; i++)
+            {
+                _sfxPlayers[i] = new MediaPlayer.MediaPlayerClass();
+                _sfxPlayers[i].Volume = 0;
+            }
+            _sfxTimer = new Timer();
+            _sfxTimer.Interval = 10;
+            _sfxTimer.Tick += _sfxTimer_tick;
             #endregion
             _noteinfoEditor = new NoteInfoEditor(this);
         }
@@ -85,15 +100,58 @@ namespace NoteMaker
             SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
             SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
             SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
+
+            if(_mp3player.Duration != 0)
+            {
+                if (_mp3player.CurrentPosition >= _mp3player.Duration)
+                    ChangeState(MP3MODE.Stop);
+            }
             #endregion
         } // 음악이 재생되고 있을 때
 
+        private void _sfxTimer_tick(object sender, EventArgs e)
+        {
+            for (int i = _playindex; i < Clamp(_playindex + 2, 0, _note.Count); i++)
+            {
+                if (_note[i]._activeTime < _mp3player.CurrentPosition)
+                {
+                    _filepath = Application.StartupPath + "\\SFX\\" + _note[i]._SFXname + ".mp3";
+                    _fInfo = new FileInfo(_filepath);
+                    if (_fInfo.Exists) // 파일 존재 시
+                    {
+                        for (int j = 0; j < _sfxPlayers.Length; j++)
+                        {
+                            if (_sfxPlayers[j].PlayState == MediaPlayer.MPPlayStateConstants.mpClosed ||
+                                _sfxPlayers[j].PlayState == MediaPlayer.MPPlayStateConstants.mpStopped)
+                            {
+                                _sfxPlayers[j].FileName = _filepath;
+                                _sfxPlayers[j].Play();
+                                _playindex++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private int Clamp(int val, int min, int max)
+        {
+            if (min > val)
+                return min;
+            else if (max < val)
+                return max;
+            else
+                return val;
+        }
         #region MP3/NOTE IO
         private void _button_loadmp3_Click(object sender, EventArgs e)
         {
             if(_ofd_music.ShowDialog() == DialogResult.OK)
             {
                 _mp3player.FileName = _ofd_music.FileName; // mp3 플레이어에 파일 경로 저장
+                _mp3player.Play();
+                _mp3player.Stop();
                 _textbox_nowmusic.Text = _ofd_music.SafeFileName; // textbox에 불러온 파일 이름 표시
 
                 _trackbar_musicline.Value = (int)_mp3player.CurrentPosition; // mp3 파일의 현재 재생 위치
@@ -113,6 +171,7 @@ namespace NoteMaker
             }
         }
 
+        // 활성화시간, 관절이름, 노트이름, 효과음이름, 애니메이션이름 -> 0, 1, 2, 3, 4
         private void _button_loadnote_Click(object sender, EventArgs e) // 노트 파일 불러오기
         {
             if(_ofd_Getnote.ShowDialog() == DialogResult.OK)
@@ -132,10 +191,10 @@ namespace NoteMaker
                     _temp = _streamReader.ReadLine();
                     _temparray = _temp.Split('/');
 
-                    if (_temparray.Length == 3) // Animation이 작성되지 않은 경우
-                        _inputValue = new Note(Convert.ToDouble(_temparray[0]), _temparray[1], _temparray[2]);
-                    else // Animation이 작성된 경우
+                    if (_temparray.Length == 4) // Animation이 작성되지 않은 경우
                         _inputValue = new Note(Convert.ToDouble(_temparray[0]), _temparray[1], _temparray[2], _temparray[3]);
+                    else // Animation이 작성된 경우
+                        _inputValue = new Note(Convert.ToDouble(_temparray[0]), _temparray[1], _temparray[2], _temparray[3], _temparray[4]);
 
                     _note.Add(_inputValue); // 노트에 집어넣고
                     _listbox_noteInfo.Items.Add(_note.Last()._showlist); // 리스트에 집어넣음
@@ -170,6 +229,14 @@ namespace NoteMaker
         #region MUSIC CONTROL(PLAY,PAUSE,VOLUME)
         private void _button_play_Click(object sender, EventArgs e)
         {
+            for(int i=0;i<_note.Count;i++)
+            {
+                if(_note[i]._activeTime > _mp3player.CurrentPosition)
+                {
+                    _playindex = i;
+                    break;
+                }
+            }
             ChangeState(MP3MODE.Play);
         }
         private void _button_stop_Click(object sender, EventArgs e)
@@ -188,12 +255,14 @@ namespace NoteMaker
                         {
                             _mp3player.Play();
                             _timer.Start();
+                            _sfxTimer.Start();
                             _textbox_playtime.Enabled = false;
                         }
                         else if (_mode == MP3MODE.Pause)
                         {
                             _mp3player.Pause();
                             _timer.Stop();
+                            _sfxTimer.Stop();
                             _textbox_playtime.Enabled = true;
                             _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
                         }
@@ -204,6 +273,7 @@ namespace NoteMaker
                 case MP3MODE.Stop:
                     _mp3player.Stop();
                     _timer.Stop();
+                    _sfxTimer.Stop();
                     break;
             }
             label1.Focus();
@@ -227,7 +297,17 @@ namespace NoteMaker
                     if (_mp3player.PlayState == MediaPlayer.MPPlayStateConstants.mpPlaying)
                         ChangeState(MP3MODE.Pause);
                     else
+                    {
+                        for (int i = 0; i < _note.Count; i++)
+                        {
+                            if (_note[i]._activeTime > _mp3player.CurrentPosition)
+                            {
+                                _playindex = i;
+                                break;
+                            }
+                        }
                         ChangeState(MP3MODE.Play);
+                    }
                 }
                 else
                     MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -263,6 +343,25 @@ namespace NoteMaker
                     MakeNote(_mp3player.CurrentPosition, "", "", "");
                 else
                     MessageBox.Show("음악이 없습니다!", "경고", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            if(e.KeyCode == Keys.F12)
+            {
+                string _filepath = Application.StartupPath + "\\SFX\\" + "FFF" + ".mp3";
+                _fInfo = new FileInfo(_filepath);
+                if (_fInfo.Exists) // 파일 존재 시
+                {
+                    for (int j = 0; j < _sfxPlayers.Length; j++)
+                    {
+                        if (_sfxPlayers[j].PlayState == MediaPlayer.MPPlayStateConstants.mpClosed || 
+                            _sfxPlayers[j].PlayState == MediaPlayer.MPPlayStateConstants.mpStopped)
+                        {
+                            _sfxPlayers[j].FileName = _filepath;
+                            _sfxPlayers[j].Play();
+                            _playindex++;
+                            break;
+                        }
+                    }
+                }
             }
         }
 
@@ -403,6 +502,14 @@ namespace NoteMaker
         {
             _mp3player.CurrentPosition = _trackbar_musicline.Value;
             _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
+            for (int i = 0; i < _note.Count; i++)
+            {
+                if (_note[i]._activeTime > _mp3player.CurrentPosition)
+                {
+                    _playindex = i;
+                    break;
+                }
+            }
         }
 
         #region CONTROL LISTBOX
@@ -489,19 +596,19 @@ namespace NoteMaker
         }
 
         #region NOTE MAKE&MODIFY
-        public bool MakeNote(double _activeTime, string _joint, string _activeNote, string _animation = "")
+        public bool MakeNote(double _activeTime, string _joint, string _activeNote, string _SFXname, string _animation = "")
         {
             if (_note.Count == 0) // 노트 안에 아무것도 없으면
             {
-                InsertNote(0, _activeTime, _joint, _activeNote, _animation);
+                InsertNote(0, _activeTime, _joint, _activeNote, _SFXname, _animation);
                 return true;
             }
             if(_note.Count == 1) // 노트가 1개만 있으면
             {
                 if(_note[0]._activeTime > _activeTime)
-                    InsertNote(0, _activeTime, _joint, _activeNote, _animation);
+                    InsertNote(0, _activeTime, _joint, _activeNote, _SFXname, _animation);
                 else
-                    InsertNote(1, _activeTime, _joint, _activeNote, _animation);
+                    InsertNote(1, _activeTime, _joint, _activeNote, _SFXname, _animation);
                 return true;
             }
 
@@ -511,7 +618,7 @@ namespace NoteMaker
                 {
                     if (_activeTime > _note[i]._activeTime) // 넣을려는 노트의 시간이 더 작으면
                     {
-                        InsertNote(i+1, _activeTime, _joint, _activeNote, _animation);
+                        InsertNote(i+1, _activeTime, _joint, _activeNote, _SFXname, _animation);
                         return true;
                     }
                 }
@@ -522,16 +629,17 @@ namespace NoteMaker
                 {
                     if(_activeTime < _note[i]._activeTime) // 넣을려는 노트의 시간이 더 커지면
                     {
-                        InsertNote(i, _activeTime, _joint, _activeNote, _animation);
+                        InsertNote(i, _activeTime, _joint, _activeNote, _SFXname, _animation);
                         return true;
                     }
                 }
             }
             return false;
         }
-        private void InsertNote(int i, double _activeTime, string _joint, string _activeNote, string _animation)
+
+        private void InsertNote(int i, double _activeTime, string _joint, string _activeNote, string _SFXname, string _animation)
         {
-            _inputValue = new Note(_activeTime, _joint, _activeNote, _animation);
+            _inputValue = new Note(_activeTime, _joint, _activeNote, _SFXname, _animation);
             _note.Insert(i, _inputValue); // 노트를 중간에 삽입
             _listbox_noteInfo.Items.Insert(i, _inputValue._showlist);
 
@@ -567,12 +675,12 @@ namespace NoteMaker
                 label1.Focus();
             }
         }
-
-        public void ModifyNote(int _index, double _activeTime, string _joint, string _activeNote, string _animation = "")
+        public void ModifyNote(int _index, double _activeTime, string _joint, string _activeNote, string _SFXname, string _animation = "")
         {
             _note[_index]._activeTime = _activeTime;
             _note[_index]._joint = _joint;
             _note[_index]._activeNote = _activeNote;
+            _note[_index]._SFXname = _SFXname;
             _note[_index]._animation = _animation;
 
             _note[_index].ModifyShowlist();

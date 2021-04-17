@@ -152,17 +152,17 @@
             // 
             // _textbox_nownote
             // 
-            this._textbox_nownote.Location = new System.Drawing.Point(517, 10);
+            this._textbox_nownote.Location = new System.Drawing.Point(511, 10);
             this._textbox_nownote.Name = "_textbox_nownote";
             this._textbox_nownote.ReadOnly = true;
-            this._textbox_nownote.Size = new System.Drawing.Size(134, 21);
+            this._textbox_nownote.Size = new System.Drawing.Size(261, 21);
             this._textbox_nownote.TabIndex = 9;
             this._textbox_nownote.TabStop = false;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(446, 14);
+            this.label2.Location = new System.Drawing.Point(436, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 12);
             this.label2.TabIndex = 8;
@@ -230,7 +230,7 @@
             this._listbox_noteInfo.ItemHeight = 12;
             this._listbox_noteInfo.Location = new System.Drawing.Point(403, 133);
             this._listbox_noteInfo.Name = "_listbox_noteInfo";
-            this._listbox_noteInfo.Size = new System.Drawing.Size(248, 436);
+            this._listbox_noteInfo.Size = new System.Drawing.Size(369, 436);
             this._listbox_noteInfo.TabIndex = 15;
             this._listbox_noteInfo.DoubleClick += new System.EventHandler(this._listbox_noteInfo_DoubleClick);
             this._listbox_noteInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this._listbox_noteInfo_KeyDown);
@@ -241,9 +241,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(401, 118);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(203, 12);
+            this.label4.Size = new System.Drawing.Size(253, 12);
             this.label4.TabIndex = 16;
-            this.label4.Text = "재생시간 / 관절 / 노트 / 애니메이션";
+            this.label4.Text = "재생시간 / 관절 / 노트 / 효과음 / 애니메이션";
             // 
             // _picture_joint_Rfoot
             // 
@@ -429,7 +429,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 580);
+            this.ClientSize = new System.Drawing.Size(784, 580);
             this.Controls.Add(this.label7);
             this.Controls.Add(this._textbox_longNotespeed);
             this.Controls.Add(this.label6);

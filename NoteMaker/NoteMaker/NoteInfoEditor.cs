@@ -37,6 +37,7 @@ namespace NoteMaker
             _textbox_activetime.Text = _note._activeTime.ToString();
             _textbox_joint.Text = _note._joint;
             _textbox_activenote.Text = _note._activeNote;
+            _textbox_sfxName.Text = _note._SFXname;
             _textbox_animation.Text = _note._animation;
             _getIndex = _index;
 
@@ -47,9 +48,9 @@ namespace NoteMaker
         private void _button_OK_Click(object sender, EventArgs e)
         {
             if (_isModify) // 수정상태
-                _parentForm.ModifyNote(_getIndex, Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_animation.Text);
+                _parentForm.ModifyNote(_getIndex, Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_sfxName.Text, _textbox_animation.Text);
             else // 생성상태
-                _parentForm.MakeNote(Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_animation.Text);
+                _parentForm.MakeNote(Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_sfxName.Text, _textbox_animation.Text);
             Close();
         }
 
@@ -58,9 +59,9 @@ namespace NoteMaker
             if(e.KeyCode == Keys.Enter)
             {
                 if (_isModify) // 수정상태
-                    _parentForm.ModifyNote(_getIndex, Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_animation.Text);
+                    _parentForm.ModifyNote(_getIndex, Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_sfxName.Text, _textbox_animation.Text);
                 else // 생성상태
-                    _parentForm.MakeNote(Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_animation.Text);
+                    _parentForm.MakeNote(Convert.ToDouble(_textbox_activetime.Text), _textbox_joint.Text, _textbox_activenote.Text, _textbox_sfxName.Text, _textbox_animation.Text);
                 Close();
             }
         }
