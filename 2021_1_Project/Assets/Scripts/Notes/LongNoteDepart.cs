@@ -27,7 +27,8 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private bool _isHit = false, _isEnd, _isAuto; // 노트 터치 여부, 노트 펼쳐짐 여부, 출발노트와 도착노트가 만났을 때
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue, _lerpValue;
-    private string _motionName = "", _judgeName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
+    private string _motionName = "", _judgeName, _sfxName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
+
     [Header("경유노트, 마지막 인덱스는 도착노트")]
     [SerializeField] private LongNoteStopover[] _stopOver = default;
     [Header("경유노트의 방향전환 포인트")]
@@ -77,6 +78,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             case "AWESOME":
             case "GOOD":
                 ComboManager.instance.CreaseCombo();
+                SoundManager.instance.PlaySFX(_sfxName);
                 _stopindex = 0;
                 _judgeName = _message;
                 break;
@@ -136,6 +138,11 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     {
         _motionName = _motion;
     }
+
+    public void InputSfxName(string _sfxName)
+    {
+        this._sfxName = _sfxName;
+    }
     public void SetNoteProperties(float _linedistance, float _reduceValue, float _notemovespeed, bool _isAuto = false) // 노트의 초기 설정
     {
         Vector2 _lineValue;
@@ -182,6 +189,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                         JudgeManager.instance.SetJudgeImage("GOOD");
                     else { }
 
+                    SoundManager.instance.PlaySFX(_sfxName);
                     SetNote.instance.SetMotion(_motionName); // 애니메이션 작동
                     SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
                     _departcircle.raycastTarget = false;

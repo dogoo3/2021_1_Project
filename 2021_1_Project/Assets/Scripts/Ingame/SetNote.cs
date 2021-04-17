@@ -46,10 +46,10 @@ public class SetNote : MonoBehaviour
             for (int i = 1; i < _tempStringList.Count; i++)
             {
                 _getInfo = _tempStringList[i].Split('/');
-                if (_getInfo.Length == 3)
-                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2])); // 시간, 관절, 노트
+                if (_getInfo.Length == 4)
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3])); // 시간, 관절, 노트, 효과음
                 else
-                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3])); // 시간, 관절, 노트, 모션
+                    _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3], _getInfo[4])); // 시간, 관절, 노트, 효과음, 모션
             }
 
             Invoke("StartMusic", 5.0f); // 음악 재생
@@ -95,15 +95,19 @@ public class SetNote : MonoBehaviour
             _jointPoints[items.Key].position = _motion[_idleFSM[_index_idleFSM % _idleFSM.Length]].joint[items.Key];
     }
 
-    public void SetMotion(string _motion, bool _isFail = false)
+    public int SetMotion(string _motion, bool _isFail = false)
     {
         if (_isFail) // 실패 애니메이션일 경우
         {
+            if (IsInvoking("FSM_IDLE"))
+                CancelInvoke("FSM_IDLE");
+
             _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
 
             foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
                 _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
             _index_failFSM++;
+            return _index_failFSM - 1;
         }
         else if (_motion != "") // 다른 모션일 경우
         {
@@ -126,7 +130,8 @@ public class SetNote : MonoBehaviour
             _index_failFSM = 0;
         }
         else
-            return;
+            return 0;
+        return 0;
     }
     public void StopNote()
     {
@@ -138,6 +143,7 @@ public class SetNote : MonoBehaviour
         _index = _upIndex = _index_idleFSM = _index_dabFSM = 0;
         CancelInvoke();
         _isStart = false;
+        _index_failFSM = 0;
         InvokeRepeating("FSM_IDLE", 0, 0.1f);
         Invoke("StartMusic", 5.0f); // 음악 재생
     }
@@ -152,9 +158,9 @@ public class SetNote : MonoBehaviour
                 {
                     // 노트 출력
                     if (_note[i].motion == "")
-                        NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename);
+                        NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename, _note[i].sfxName);
                     else
-                        NotePoolingManager.instance.GetNote(_motion[_note[i].motion].joint[_note[i].joint], _note[i].notename, _note[i].motion);
+                        NotePoolingManager.instance.GetNote(_motion[_note[i].motion].joint[_note[i].joint], _note[i].notename, _note[i].sfxName, _note[i].motion);
 
                     _upIndex++;
                 }

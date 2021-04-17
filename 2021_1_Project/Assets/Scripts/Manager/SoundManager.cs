@@ -9,10 +9,15 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource _song = default;
     [SerializeField] private AudioSource[] _sfxs = default;
 
+    private Dictionary<string, AudioClip> _sfxList = new Dictionary<string, AudioClip>(16);
+    
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         instance = this;
+        AudioClip[] _audio = Resources.LoadAll<AudioClip>("Sounds/SFX/");
+        for (int i = 0; i < _audio.Length; i++)
+            _sfxList.Add(_audio[i].name, _audio[i]);
+        DontDestroyOnLoad(this);
     }
 
     public void PlayPreListen(AudioClip _song, float _startpos)
@@ -32,14 +37,18 @@ public class SoundManager : MonoBehaviour
         _song.Play();
     }
 
-    public void PlaySFX()
+    public void PlaySFX(string _sfxName)
     {
-        for (int i = 0; i < _sfxs.Length; i++)
+        if (_sfxList.ContainsKey(_sfxName))
         {
-            if (!_sfxs[i].isPlaying)
+            for (int i = 0; i < _sfxs.Length; i++)
             {
-                _sfxs[i].Play();
-                break;
+                if (!_sfxs[i].isPlaying)
+                {
+                    _sfxs[i].clip = _sfxList[_sfxName];
+                    _sfxs[i].Play();
+                    break;
+                }
             }
         }
     }

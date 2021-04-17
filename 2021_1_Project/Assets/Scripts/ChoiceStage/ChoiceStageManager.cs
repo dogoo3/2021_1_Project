@@ -23,7 +23,7 @@ public class ChoiceStageManager : MonoBehaviour
     {
         instance = this;
 
-        _songInfo = FileManager.ReadFile_TXT("SongInfo.csv","",true); // 곡 정보를 불러온다
+        _songInfo = FileManager.ReadFile_TXT("SongInfo.txt","",true); // 곡 정보를 불러온다
         
         _content.sizeDelta = new Vector2(_content.sizeDelta.x, _heightSize * _songInfo.Count); // content의 height를 맞춰 scroll이 가능하도록 조정
 

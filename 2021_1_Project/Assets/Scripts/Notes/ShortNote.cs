@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System;
 
 public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
@@ -12,7 +13,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
 
-    private string _motionName = ""; // 정상 판정시 수행할 캐릭터 애니메이션 변수
+    private string _motionName = "", _sfxName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
     private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
 
@@ -54,15 +55,16 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             case "GOOD":
                 SetNote.instance.SetMotion(_motionName);
                 ComboManager.instance.CreaseCombo();
+                SoundManager.instance.PlaySFX(_sfxName);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
                 break;
             case "FAIL":
             case "MISS":
                 // 실패 애니메이션 진행 함수 작성
-                SetNote.instance.SetMotion(_motionName, true);
+                SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
                 ComboManager.instance.ResetCombo();
                 break;
         }
-        SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
         JudgeManager.instance.SetJudgeImage(_message); // 판정
         _motionName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
@@ -107,6 +109,11 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         _lineSize = _setlineSize = _line.rectTransform.sizeDelta = _circle.rectTransform.sizeDelta + _lineValue;
         this._reduceValue = _reduceValue;
         this._isAuto = _isAuto;
+    }
+
+    public void InputSfxName(string _sfxName)
+    {
+        this._sfxName = _sfxName;
     }
 
     private void FixedUpdate()

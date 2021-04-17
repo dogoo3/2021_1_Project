@@ -27,4 +27,9 @@ public class LongNote : MonoBehaviour
     {
         _departNote.InputAnimation(_animation);
     }
+
+    public void InputSfxName(string _sfxName)
+    {
+        _departNote.InputSfxName(_sfxName);
+    }
 }

@@ -83,14 +83,14 @@ public class NotePoolingManager : MonoBehaviour
         _activeLongNote.Remove(_obj);
     }
 
-    public void GetNote(Vector2 _origin, string _noteName, string _motion = null)
+    public void GetNote(Vector2 _origin, string _noteName, string _sfxName, string _motion = null)
     {
         if (_noteName == "ShortNote")
         {
             if (_queue_shortNote.Count > 0)
             {
                 ShortNote _temp = _queue_shortNote.Dequeue();
-
+                _temp.InputSfxName(_sfxName);
                 if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
                     _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
 
@@ -106,7 +106,7 @@ public class NotePoolingManager : MonoBehaviour
             if (_dic_longNote[_noteName].Count > 0)
             {
                 LongNote _temp = _dic_longNote[_noteName].Dequeue();
-
+                _temp.InputSfxName(_sfxName);
                 if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
                     _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
 
