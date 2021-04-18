@@ -109,6 +109,13 @@ public class SetNote : MonoBehaviour
             _index_failFSM++;
             return _index_failFSM - 1;
         }
+        else if(_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
+        {
+            if (_image.sprite.name.Substring(0, 7) == "MOTION3") // 이전 노트 판정에 성공했을 경우
+                _image.sprite = this._motion[_motion]._sprite;
+            else // 이전 노트 판정에 실패했을 경우
+                InvokeRepeating("FSM_IDLE", 0, 0.1f);
+        }
         else if (_motion != "") // 다른 모션일 경우
         {
             _image.sprite = this._motion[_motion]._sprite;

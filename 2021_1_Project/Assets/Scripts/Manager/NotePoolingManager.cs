@@ -8,7 +8,7 @@ public class NotePoolingManager : MonoBehaviour
 
     [SerializeField] private ShortNote _shortNote = default;
     [SerializeField] private LongNote[] _longNotes = default;
-
+    [SerializeField] private SkullNote[] _skullNotes = default;
     // 저장 큐
     private Queue<ShortNote> _queue_shortNote = new Queue<ShortNote>();
     private Dictionary<string, Queue<LongNote>> _dic_longNote = new Dictionary<string, Queue<LongNote>>(); // 롱노트 프리팹의 개수에 맞게 배열로 선언
@@ -101,7 +101,7 @@ public class NotePoolingManager : MonoBehaviour
                 _activeShortNote.Add(_temp); // 활성화 노트 리스트에 넣어줌
             }
         }
-        else
+        else if(_noteName.Substring(0,8) == "LongNote")
         {
             if (_dic_longNote[_noteName].Count > 0)
             {
@@ -116,6 +116,13 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.transform.SetAsFirstSibling();
                 _activeLongNote.Add(_temp);
             }
+        }
+        else 
+        {
+            if (_noteName == "SKULL_L")
+                _skullNotes[0].gameObject.SetActive(true);
+            else
+                _skullNotes[1].gameObject.SetActive(true);
         }
     }
 }

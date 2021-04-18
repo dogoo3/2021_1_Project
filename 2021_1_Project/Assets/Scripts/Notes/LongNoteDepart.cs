@@ -246,14 +246,14 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 CancelInvoke("BrightenNote");
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
-                SetNote.instance.SetMotion(_motionName, true);
+                SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
             }
             if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) > 5.0f) // 롱노트 진행중 중간에 이탈한경우
             {
                 ComboManager.instance.ResetCombo();
                 JudgeManager.instance.SetJudgeImage("FAIL");
-                SetNote.instance.SetMotion(_motionName, true);
+                SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
             }
             InvokeRepeating("DarkenNote", 0f, 0.05f);
