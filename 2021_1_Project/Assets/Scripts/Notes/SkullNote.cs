@@ -15,6 +15,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     private Vector2 _departPos, _resetPos;
 
     private float _lerpValue, _time;
+    private bool _isMove;
 
     private void Awake()
     {
@@ -55,20 +56,39 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     }
     private void FixedUpdate()
     {
-        _time += Time.deltaTime;
-        transform.position = Vector2.Lerp(_departPos, _arrivePos.position, _lerpValue);
-        _lerpValue += 600 * 0.000033f;
+        if(_isMove)
+        {
+            _time += Time.deltaTime;
+            transform.position = Vector2.Lerp(_departPos, _arrivePos.position, _lerpValue);
+            _lerpValue += 600 * 0.000033f;
 
-        if (transform.position == _arrivePos.position)
-            FAIL();
+            if (transform.position == _arrivePos.position)
+            {
+                FAIL();
+                _isMove = false;
+            }
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (Vector2.Distance(_arrivePos.position, transform.position) > 30.0f) // 실패
-            FAIL();
-        else // 성공
-            Success();
+        if(_isMove)
+        {
+            if (Vector2.Distance(_arrivePos.position, transform.position) > 30.0f) // 실패
+                FAIL();
+            else // 성공
+                Success();
+            _isMove = false;
+        }
+    }
+
+    public void FailActive()
+    {
+        // 공격 모션 표현
+        _isMove = false;
+        transform.position = _arrivePos.position;
+        gameObject.SetActive(true);
+        InvokeRepeating("Transparent", 0f, 0.05f);
     }
 
     private void OnDisable()

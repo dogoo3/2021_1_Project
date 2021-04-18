@@ -99,15 +99,22 @@ public class SetNote : MonoBehaviour
     {
         if (_isFail) // 실패 애니메이션일 경우
         {
-            if (IsInvoking("FSM_IDLE"))
-                CancelInvoke("FSM_IDLE");
+            if(_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
+            {
+                
+            }
+            else
+            {
+                if (IsInvoking("FSM_IDLE"))
+                    CancelInvoke("FSM_IDLE");
 
-            _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
+                _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
 
-            foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
-                _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
-            _index_failFSM++;
-            return _index_failFSM - 1;
+                foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
+                    _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
+                _index_failFSM++;
+                return _index_failFSM - 1;
+            }
         }
         else if(_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
         {

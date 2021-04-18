@@ -125,4 +125,13 @@ public class NotePoolingManager : MonoBehaviour
                 _skullNotes[1].gameObject.SetActive(true);
         }
     }
+
+    public void GetFailSkullNote(string _noteName)
+    {
+        if (_noteName == "SKULL_L")
+            _skullNotes[0].FailActive();
+        else
+            _skullNotes[1].FailActive();
+    }
+
 }
