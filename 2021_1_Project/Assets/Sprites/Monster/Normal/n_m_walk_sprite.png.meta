@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: e22de714404ed804caee8a54f8ccc3cf
+guid: 4109b252c12e06141bc48b5d2a78a721
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -734360699424541339
-    second: FAIL_0_EDGE
+      213: 7743557758129901544
+    second: n_m_walk_sprite_0
   - first:
-      213: 50263088987316421
-    second: FAIL_1_EDGE
+      213: -6883391253435522601
+    second: n_m_walk_sprite_1
   - first:
-      213: 4777526855493906259
-    second: FAIL_L_EDGE_1
+      213: 318069852561104952
+    second: n_m_walk_sprite_2
   - first:
-      213: 8288845972312135034
-    second: FAIL_L_EDGE_2
+      213: 3722245510084598010
+    second: n_m_walk_sprite_3
   - first:
-      213: 800759205730829754
-    second: FAIL_R_EDGE_1
+      213: 6406019642490793202
+    second: n_m_walk_sprite_4
   - first:
-      213: -3341861233303666965
-    second: FAIL_R_EDGE_2
+      213: -2476690625726742037
+    second: n_m_walk_sprite_5
+  - first:
+      213: 4732801351563341648
+    second: n_m_walk_sprite_6
+  - first:
+      213: 6223235240375633923
+    second: n_m_walk_sprite_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,85 +122,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FAIL_L_EDGE_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1100
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35f6a96dc5f2d4240800000000000000
-      internalID: 4777526855493906259
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FAIL_L_EDGE_2
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 1100
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a759791ee75e70370800000000000000
-      internalID: 8288845972312135034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FAIL_R_EDGE_1
+      name: n_m_walk_sprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 800
-        height: 1100
+        width: 400
+        height: 630
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab5c538414edc1b00800000000000000
-      internalID: 800759205730829754
+      spriteID: 8ef8d0ff0c4a67b60800000000000000
+      internalID: 7743557758129901544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FAIL_R_EDGE_2
+      name: n_m_walk_sprite_1
       rect:
         serializedVersion: 2
-        x: 800
+        x: 400
         y: 0
-        width: 800
-        height: 1100
+        width: 400
+        height: 630
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee394c0ae25f91d0800000000000000
-      internalID: -3341861233303666965
+      spriteID: 7d1e1f0ff184970a0800000000000000
+      internalID: -6883391253435522601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_2
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8306aaf78d20a6400800000000000000
+      internalID: 318069852561104952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_3
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af89263f19218a330800000000000000
+      internalID: 3722245510084598010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fca6de9ce0c6e850800000000000000
+      internalID: 6406019642490793202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_5
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1840b7ff601add0800000000000000
+      internalID: -2476690625726742037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_6
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05feb68f0c94ea140800000000000000
+      internalID: 4732801351563341648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: n_m_walk_sprite_7
+      rect:
+        serializedVersion: 2
+        x: 2800
+        y: 0
+        width: 400
+        height: 630
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3084840aa7f5d5650800000000000000
+      internalID: 6223235240375633923
       vertices: []
       indices: 
       edges: []

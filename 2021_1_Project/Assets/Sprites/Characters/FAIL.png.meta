@@ -4,10 +4,22 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8975729074515196753
-    second: FAIL_1
+    second: FAIL_L_1
   - first:
       213: 1933219126805929459
-    second: FAIL_2
+    second: FAIL_R_1
+  - first:
+      213: 661557287021335792
+    second: FAIL_L_0
+  - first:
+      213: 8286661332798455517
+    second: FAIL_L_1
+  - first:
+      213: -7914258535676319176
+    second: FAIL_R_1
+  - first:
+      213: 5619389782299252999
+    second: FAIL_R_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,7 +116,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FAIL_1
+      name: FAIL_L_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f45a73f8d25e2900800000000000000
+      internalID: 661557287021335792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FAIL_L_1
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddeba6bd392200370800000000000000
+      internalID: 8286661332798455517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FAIL_R_1
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa4406156fdcf6380800000000000000
-      internalID: -8975729074515196753
+      spriteID: 83ae8681bc7ea2290800000000000000
+      internalID: -7914258535676319176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FAIL_2
+      name: FAIL_R_2
       rect:
         serializedVersion: 2
         x: 800
@@ -139,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fd124e9d8c24da10800000000000000
-      internalID: 1933219126805929459
+      spriteID: 7091864fb351cfd40800000000000000
+      internalID: 5619389782299252999
       vertices: []
       indices: 
       edges: []
