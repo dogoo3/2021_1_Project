@@ -61,6 +61,11 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
             transform.position = Vector2.Lerp(_departPos, _arrivePos.position, _lerpValue);
             _lerpValue += 300 * 0.000033f;
 
+            if(PlayMusicInfo.ReturnAutoMode())
+            {
+                if (Vector2.Distance(_arrivePos.position, transform.position) < 50f)
+                    Success();
+            }
             if (transform.position == _arrivePos.position)
             {
                 FAIL();
