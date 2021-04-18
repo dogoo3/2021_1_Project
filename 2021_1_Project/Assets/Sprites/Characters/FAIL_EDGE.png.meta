@@ -10,16 +10,16 @@ TextureImporter:
     second: FAIL_1_EDGE
   - first:
       213: 4777526855493906259
-    second: FAIL_L_EDGE_1
+    second: FAIL_1_EDGE
   - first:
       213: 8288845972312135034
-    second: FAIL_L_EDGE_2
+    second: FAIL_2_EDGE
   - first:
       213: 800759205730829754
-    second: FAIL_R_EDGE_1
+    second: FAIL_3_EDGE
   - first:
       213: -3341861233303666965
-    second: FAIL_R_EDGE_2
+    second: FAIL_4_EDGE
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FAIL_L_EDGE_1
+      name: FAIL_1_EDGE
       rect:
         serializedVersion: 2
         x: 0
@@ -137,7 +137,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FAIL_L_EDGE_2
+      name: FAIL_2_EDGE
       rect:
         serializedVersion: 2
         x: 800
@@ -158,7 +158,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FAIL_R_EDGE_1
+      name: FAIL_3_EDGE
       rect:
         serializedVersion: 2
         x: 0
@@ -179,7 +179,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FAIL_R_EDGE_2
+      name: FAIL_4_EDGE
       rect:
         serializedVersion: 2
         x: 800

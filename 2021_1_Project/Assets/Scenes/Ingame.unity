@@ -589,7 +589,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 3303170505800814105, guid: bfd80ca366b86fc4d96d1bba498dd027,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -620,7 +621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _edgeSprite:
-  - {fileID: 4777526855493906259, guid: e22de714404ed804caee8a54f8ccc3cf, type: 3}
+  - {fileID: 50263088987316421, guid: e22de714404ed804caee8a54f8ccc3cf, type: 3}
   - {fileID: 8288845972312135034, guid: e22de714404ed804caee8a54f8ccc3cf, type: 3}
   - {fileID: -3341861233303666965, guid: e22de714404ed804caee8a54f8ccc3cf, type: 3}
   - {fileID: 800759205730829754, guid: e22de714404ed804caee8a54f8ccc3cf, type: 3}
@@ -637,7 +638,7 @@ MonoBehaviour:
   - {fileID: -8983001244374547467, guid: 5b970f128409c114fb37da5812222181, type: 3}
   - {fileID: 4402949921847937635, guid: 5b970f128409c114fb37da5812222181, type: 3}
   - {fileID: -8029272993224827436, guid: 5d944cf5b7f4bc84db748c2dfb6524a0, type: 3}
-  - {fileID: 2859291967529987536, guid: 5d944cf5b7f4bc84db748c2dfb6524a0, type: 3}
+  - {fileID: -3053178182925892699, guid: 5d944cf5b7f4bc84db748c2dfb6524a0, type: 3}
 --- !u!1 &251107509
 GameObject:
   m_ObjectHideFlags: 0

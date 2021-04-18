@@ -29,7 +29,7 @@ public class SetNote : MonoBehaviour
         _jointName = { "Lshoulder", "Rshoulder", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot", },
         _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
         _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
-        _failFSM = { "FAIL_1", "FAIL_2" };
+        _failFSM = { "FAIL_1", "FAIL_2", "FAIL_3", "FAIL_4"};
     private void Awake()
     {
         instance = this;
@@ -99,27 +99,30 @@ public class SetNote : MonoBehaviour
     {
         if (_isFail) // 실패 애니메이션일 경우
         {
-            if(_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
+            if(_image.sprite.name == "MOTION3_L_1" || _image.sprite.name == "MOTION3_R_1")
             {
-                
+                if (_image.sprite.name == "MOPTION3_L_1")
+                    NotePoolingManager.instance.GetFailSkullNote("Skull_L");
+                else
+                    NotePoolingManager.instance.GetFailSkullNote("Skull_R");
             }
-            else
-            {
-                if (IsInvoking("FSM_IDLE"))
-                    CancelInvoke("FSM_IDLE");
+            if (IsInvoking("FSM_IDLE"))
+                CancelInvoke("FSM_IDLE");
 
-                _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
+            _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
 
-                foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
-                    _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
-                _index_failFSM++;
-                return _index_failFSM - 1;
-            }
+            foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
+                _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
+            _index_failFSM++;
+            return _index_failFSM;
         }
-        else if(_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
+        else if (_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
         {
-            if (_image.sprite.name.Substring(0, 7) == "MOTION3") // 이전 노트 판정에 성공했을 경우
-                _image.sprite = this._motion[_motion]._sprite;
+            if(_image.sprite.name.Length >= 7)
+            {
+                if (_image.sprite.name.Substring(0, 7) == "MOTION3") // 이전 노트 판정에 성공했을 경우
+                    _image.sprite = this._motion[_motion]._sprite;
+            }
             else // 이전 노트 판정에 실패했을 경우
                 InvokeRepeating("FSM_IDLE", 0, 0.1f);
         }
@@ -132,7 +135,7 @@ public class SetNote : MonoBehaviour
                     CancelInvoke("FSM_IDLE");
                 InvokeRepeating("FSM_DAB", 0, 0.1f);
             }
-            else if (_motion == "IDLE") 
+            else if (_motion == "IDLE")
                 InvokeRepeating("FSM_IDLE", 0, 0.1f);
             else
             {

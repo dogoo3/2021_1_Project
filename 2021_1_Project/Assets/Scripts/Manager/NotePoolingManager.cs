@@ -101,7 +101,7 @@ public class NotePoolingManager : MonoBehaviour
                 _activeShortNote.Add(_temp); // 활성화 노트 리스트에 넣어줌
             }
         }
-        else if(_noteName.Substring(0,8) == "LongNote")
+        else if(_noteName.Substring(0,6) == "LongNo")
         {
             if (_dic_longNote[_noteName].Count > 0)
             {
@@ -119,7 +119,7 @@ public class NotePoolingManager : MonoBehaviour
         }
         else 
         {
-            if (_noteName == "SKULL_L")
+            if (_noteName == "Skull_L")
                 _skullNotes[0].gameObject.SetActive(true);
             else
                 _skullNotes[1].gameObject.SetActive(true);
@@ -128,10 +128,9 @@ public class NotePoolingManager : MonoBehaviour
 
     public void GetFailSkullNote(string _noteName)
     {
-        if (_noteName == "SKULL_L")
+        if (_noteName == "Skull_L")
             _skullNotes[0].FailActive();
         else
             _skullNotes[1].FailActive();
     }
-
 }

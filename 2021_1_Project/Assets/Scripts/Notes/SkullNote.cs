@@ -14,8 +14,8 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
 
     private Vector2 _departPos, _resetPos;
 
-    private float _lerpValue, _time;
-    private bool _isMove;
+    private float _lerpValue;
+    private bool _isMove = true;
 
     private void Awake()
     {
@@ -27,7 +27,6 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         _departPos = _resetPos;
         _lerpValue = 0;
-        _time = 0;
     }
 
     private void FAIL()
@@ -41,6 +40,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     private void Success()
     {
         SetNote.instance.SetMotion(_motionName);
+        SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
         gameObject.SetActive(false);
     }
 
@@ -58,9 +58,8 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         if(_isMove)
         {
-            _time += Time.deltaTime;
             transform.position = Vector2.Lerp(_departPos, _arrivePos.position, _lerpValue);
-            _lerpValue += 600 * 0.000033f;
+            _lerpValue += 300 * 0.000033f;
 
             if (transform.position == _arrivePos.position)
             {
@@ -74,7 +73,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         if(_isMove)
         {
-            if (Vector2.Distance(_arrivePos.position, transform.position) > 30.0f) // 실패
+            if (Vector2.Distance(_arrivePos.position, transform.position) > 100f) // 실패
                 FAIL();
             else // 성공
                 Success();
@@ -95,5 +94,6 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         transform.position = _departPos;
         _color = _image.color = Color.white;
+        _isMove = true;
     }
 }

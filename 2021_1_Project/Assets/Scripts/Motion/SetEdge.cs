@@ -34,6 +34,9 @@ public class SetEdge : MonoBehaviour
     {
         if(_edge.ContainsKey(_edgeName))
         {
+            if (_edgeName == "MOTION3_L_2_EDGE" && _image.sprite.name != "MOTION3_L_1_EDGE" ||
+                _edgeName == "MOTION3_R_2_EDGE" && _image.sprite.name != "MOTION3_R_1_EDGE")
+                return;
             _image.sprite = _edge[_edgeName];
             _color = Color.white;
             InvokeRepeating("Transparent", 0f, 0.05f);

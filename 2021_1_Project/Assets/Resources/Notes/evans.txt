@@ -1,9 +1,9 @@
 350/300/1000
 1.6821668/Lshoulder/ShortNote/FFF
-1.9707293/Rfoot/ShortNote/FFF/MOTION1_1
-3.1629378/Lknee/LongNote1/FFF/MOTION1_2
-4.2383963/Lhand/ShortNote/FFF/MOTION1_3
-4.5593755/Rhand/ShortNote/FFF/MOTION1_4
+1.9707293/Rfoot/Skull_R/FFF/
+3.1629378/Lknee/LongNote1/FFF/
+4.2383963/Lhand/ShortNote/FFF/MOTION3_R_2
+4.5593755/Rhand/ShortNote/FFF/
 6.1872925/Rhand/LongNote1/FFF/IDLE
 8.2898136/Rknee/ShortNote/FFF
 9.4194388/Rshoulder/ShortNote/FFF/MOTION1_1
