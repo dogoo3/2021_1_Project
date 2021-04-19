@@ -33,7 +33,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         // 공격 모션 변환
         // 사운드 재생
-        SetNote.instance.SetMotion("", true);
+        SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
         transform.position = _arrivePos.position;
         InvokeRepeating("Transparent", 0f, 0.05f);
         ComboManager.instance.ResetCombo();
