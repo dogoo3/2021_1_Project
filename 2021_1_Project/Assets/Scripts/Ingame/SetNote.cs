@@ -40,7 +40,6 @@ public class SetNote : MonoBehaviour
         List<string> _tempStringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
         string[] _getInfo = _tempStringList[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도
         _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime); // 노트 활성화 간격 조정
-        
         if (_tempStringList != null)
         {
             for (int i = 1; i < _tempStringList.Count; i++)

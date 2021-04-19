@@ -29,18 +29,23 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         _lerpValue = 0;
     }
 
-    private void FAIL()
+    private void FAIL(string _message)
     {
         // 공격 모션 변환
+        // 사운드 재생
         SetNote.instance.SetMotion("", true);
         transform.position = _arrivePos.position;
         InvokeRepeating("Transparent", 0f, 0.05f);
+        ComboManager.instance.ResetCombo();
+        JudgeManager.instance.SetJudgeImage(_message); // 판정
     }
 
     private void Success()
     {
         SetNote.instance.SetMotion(_motionName);
         SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+        ComboManager.instance.CreaseCombo();
+        JudgeManager.instance.SetJudgeImage("AWESOME"); // 판정
         gameObject.SetActive(false);
     }
 
@@ -68,7 +73,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
             }
             if (transform.position == _arrivePos.position)
             {
-                FAIL();
+                FAIL("MISS");
                 _isMove = false;
             }
         }
@@ -79,7 +84,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         if(_isMove)
         {
             if (Vector2.Distance(_arrivePos.position, transform.position) > 100f) // 실패
-                FAIL();
+                FAIL("FAIL");
             else // 성공
                 Success();
             _isMove = false;
