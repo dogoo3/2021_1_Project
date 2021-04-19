@@ -82,6 +82,38 @@ namespace NoteMaker
             _noteinfoEditor = new NoteInfoEditor(this);
         }
 
+        private void ShowJoint(bool _is)
+        {
+            if(_is)
+            {
+                SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder, true);
+                SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder, true);
+                SetJoint("Lelbow", _mp3player.CurrentPosition, _picture_joint_Lelbow, true);
+                SetJoint("Relbow", _mp3player.CurrentPosition, _picture_joint_Relbow, true);
+                SetJoint("stomach", _mp3player.CurrentPosition, _picture_joint_stomach, true);
+                SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand, true);
+                SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand, true);
+                SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee, true);
+                SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
+                SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
+                SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
+            }
+            else
+            {
+                SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder);
+                SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder);
+                SetJoint("Lelbow", _mp3player.CurrentPosition, _picture_joint_Lelbow);
+                SetJoint("Relbow", _mp3player.CurrentPosition, _picture_joint_Relbow);
+                SetJoint("stomach", _mp3player.CurrentPosition, _picture_joint_stomach);
+                SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand);
+                SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand);
+                SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee);
+                SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
+                SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
+                SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
+            }
+        }
+
         private void _timer_tick(object sender, EventArgs e)
         {
             #region Trackbar and Show time
@@ -92,14 +124,7 @@ namespace NoteMaker
 
             _textbox_playtime.Text = _mp3player.CurrentPosition.ToString();
 
-            SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder);
-            SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder);
-            SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand);
-            SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand);
-            SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee);
-            SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
-            SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
-            SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
+            ShowJoint(false);
 
             if(_mp3player.Duration != 0)
             {
@@ -323,14 +348,7 @@ namespace NoteMaker
                         _mp3player.CurrentPosition = Convert.ToDouble(_textbox_playtime.Text);
                         _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
 
-                        SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder, true);
-                        SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder, true);
-                        SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand, true);
-                        SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand, true);
-                        SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee, true);
-                        SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
-                        SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
-                        SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
+                        ShowJoint(true);
                         label1.Focus();
                     }
                     else
@@ -422,9 +440,25 @@ namespace NoteMaker
         {
             OpenNoteInfoEditor("Lshoulder");
         }
+
         private void _picture_joint_Rshoulder_Click(object sender, EventArgs e)
         {
             OpenNoteInfoEditor("Rshoulder");
+        }
+
+        private void _picture_joint_Lelbow_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Lelbow");
+        }
+
+        private void _picture_joint_Relbow_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("Relbow");
+        }
+
+        private void _picture_joint_stomach_Click(object sender, EventArgs e)
+        {
+            OpenNoteInfoEditor("stomach");
         }
 
         private void _picture_joint_Lhand_Click(object sender, EventArgs e)
@@ -538,6 +572,15 @@ namespace NoteMaker
                             case "Rshoulder":
                                 _picture_joint_Rshoulder.Image = null;
                                 break;
+                            case "Lelbow":
+                                _picture_joint_Lelbow.Image = null;
+                                break;
+                            case "Relbow":
+                                _picture_joint_Relbow.Image = null;
+                                break;
+                            case "stomach":
+                                _picture_joint_stomach.Image = null;
+                                break;
                             case "Lhand":
                                 _picture_joint_Lhand.Image = null;
                                 break;
@@ -642,15 +685,7 @@ namespace NoteMaker
             _inputValue = new Note(_activeTime, _joint, _activeNote, _SFXname, _animation);
             _note.Insert(i, _inputValue); // 노트를 중간에 삽입
             _listbox_noteInfo.Items.Insert(i, _inputValue._showlist);
-
-            SetJoint("Lshoulder", _activeTime, _picture_joint_Lshoulder, true);
-            SetJoint("Rshoulder", _activeTime, _picture_joint_Rshoulder, true);
-            SetJoint("Lhand", _activeTime, _picture_joint_Lhand, true);
-            SetJoint("Rhand", _activeTime, _picture_joint_Rhand, true);
-            SetJoint("Lknee", _activeTime, _picture_joint_Lknee, true);
-            SetJoint("Rknee", _activeTime, _picture_joint_Rknee, true);
-            SetJoint("Lfoot", _activeTime, _picture_joint_Lfoot, true);
-            SetJoint("Rfoot", _activeTime, _picture_joint_Rfoot, true);
+            ShowJoint(true);
         }
 
         private void _listbox_noteInfo_MouseDown(object sender, MouseEventArgs e)
@@ -664,14 +699,7 @@ namespace NoteMaker
                     _trackbar_musicline.Value = (int)_mp3player.CurrentPosition;
                 }
 
-                SetJoint("Lshoulder", _mp3player.CurrentPosition, _picture_joint_Lshoulder, true);
-                SetJoint("Rshoulder", _mp3player.CurrentPosition, _picture_joint_Rshoulder, true);
-                SetJoint("Lhand", _mp3player.CurrentPosition, _picture_joint_Lhand, true);
-                SetJoint("Rhand", _mp3player.CurrentPosition, _picture_joint_Rhand, true);
-                SetJoint("Lknee", _mp3player.CurrentPosition, _picture_joint_Lknee, true);
-                SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
-                SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
-                SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
+                ShowJoint(true);
                 label1.Focus();
             }
         }
@@ -685,15 +713,7 @@ namespace NoteMaker
 
             _note[_index].ModifyShowlist();
             _listbox_noteInfo.Items[_index] = _note[_index]._showlist;
-
-            SetJoint("Lshoulder", _activeTime, _picture_joint_Lshoulder, true);
-            SetJoint("Rshoulder", _activeTime, _picture_joint_Rshoulder, true);
-            SetJoint("Lhand", _activeTime, _picture_joint_Lhand, true);
-            SetJoint("Rhand", _activeTime, _picture_joint_Rhand, true);
-            SetJoint("Lknee", _activeTime, _picture_joint_Lknee, true);
-            SetJoint("Rknee", _activeTime, _picture_joint_Rknee, true);
-            SetJoint("Lfoot", _activeTime, _picture_joint_Lfoot, true);
-            SetJoint("Rfoot", _activeTime, _picture_joint_Rfoot, true);
+            ShowJoint(true);
         }
         #endregion
     }

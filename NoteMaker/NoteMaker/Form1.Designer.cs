@@ -60,6 +60,9 @@
             this._textbox_reducevalue = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this._textbox_longNotespeed = new System.Windows.Forms.TextBox();
+            this._picture_joint_Relbow = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lelbow = new System.Windows.Forms.PictureBox();
+            this._picture_joint_stomach = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
@@ -71,6 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).BeginInit();
             this.SuspendLayout();
             // 
             // _button_loadmp3
@@ -425,11 +431,53 @@
             this._textbox_longNotespeed.TabStop = false;
             this._textbox_longNotespeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_longNotespeed_KeyPress);
             // 
+            // _picture_joint_Relbow
+            // 
+            this._picture_joint_Relbow.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Relbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Relbow.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Relbow.Location = new System.Drawing.Point(184, 337);
+            this._picture_joint_Relbow.Name = "_picture_joint_Relbow";
+            this._picture_joint_Relbow.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Relbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Relbow.TabIndex = 32;
+            this._picture_joint_Relbow.TabStop = false;
+            this._picture_joint_Relbow.Click += new System.EventHandler(this._picture_joint_Relbow_Click);
+            // 
+            // _picture_joint_Lelbow
+            // 
+            this._picture_joint_Lelbow.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lelbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lelbow.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lelbow.Location = new System.Drawing.Point(106, 337);
+            this._picture_joint_Lelbow.Name = "_picture_joint_Lelbow";
+            this._picture_joint_Lelbow.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lelbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Lelbow.TabIndex = 31;
+            this._picture_joint_Lelbow.TabStop = false;
+            this._picture_joint_Lelbow.Click += new System.EventHandler(this._picture_joint_Lelbow_Click);
+            // 
+            // _picture_joint_stomach
+            // 
+            this._picture_joint_stomach.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_stomach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_stomach.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_stomach.Location = new System.Drawing.Point(145, 337);
+            this._picture_joint_stomach.Name = "_picture_joint_stomach";
+            this._picture_joint_stomach.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_stomach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_stomach.TabIndex = 33;
+            this._picture_joint_stomach.TabStop = false;
+            this._picture_joint_stomach.Click += new System.EventHandler(this._picture_joint_stomach_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 580);
+            this.Controls.Add(this._picture_joint_stomach);
+            this.Controls.Add(this._picture_joint_Relbow);
+            this.Controls.Add(this._picture_joint_Lelbow);
             this.Controls.Add(this.label7);
             this.Controls.Add(this._textbox_longNotespeed);
             this.Controls.Add(this.label6);
@@ -466,7 +514,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.2";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.5";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
@@ -479,6 +527,9 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -517,6 +568,9 @@
         private System.Windows.Forms.TextBox _textbox_reducevalue;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox _textbox_longNotespeed;
+        private System.Windows.Forms.PictureBox _picture_joint_Relbow;
+        private System.Windows.Forms.PictureBox _picture_joint_Lelbow;
+        private System.Windows.Forms.PictureBox _picture_joint_stomach;
     }
 }
 
