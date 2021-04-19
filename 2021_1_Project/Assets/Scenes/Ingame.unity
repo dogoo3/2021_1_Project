@@ -2556,8 +2556,7 @@ MonoBehaviour:
   _shortNote: {fileID: 1095997570521280391, guid: 820808592941dab4d9c32fa8d3807fb0,
     type: 3}
   _longNotes:
-  - {fileID: 6528527222605806521, guid: 67b7e2ff938c95c49b027c801dec9015, type: 3}
-  - {fileID: 2575987968619909113, guid: 8b622f87678ad4840b0a1dc6934d4729, type: 3}
+  - {fileID: 2288489555666616853, guid: 9492fa83300673d408b302abd3d105eb, type: 3}
   _skullNotes:
   - {fileID: 200284823}
   - {fileID: 1216447459}
