@@ -26,10 +26,10 @@ public class SetNote : MonoBehaviour
 
     private string _nowMotion;
     private string[]
-        _jointName = { "Lshoulder", "Rshoulder", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot", },
+        _jointName = { "Lshoulder", "Rshoulder", "Lelbow", "Relbow", "stomach", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot" },
         _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
         _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
-        _failFSM = { "FAIL_1", "FAIL_2", "FAIL_3", "FAIL_4"};
+        _failFSM = { "FAIL_1", "FAIL_2", "FAIL_3", "FAIL_4" };
     private void Awake()
     {
         instance = this;

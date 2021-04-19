@@ -8,23 +8,13 @@ public class Motion
     public Sprite _sprite;
     public Motion(string[] _motionInfo, Vector2 _characterPos)
     {
+        string[] temp;
         _sprite = CharacterManager.instance.GetSprite(_motionInfo[0]);
-        string[] temp = _motionInfo[1].Split('/');
-        joint.Add("Lshoulder", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[2].Split('/');
-        joint.Add("Rshoulder", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[3].Split('/');
-        joint.Add("Lhand", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[4].Split('/');
-        joint.Add("Rhand", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[5].Split('/');
-        joint.Add("Lknee", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[6].Split('/');
-        joint.Add("Rknee", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[7].Split('/');
-        joint.Add("Lfoot", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
-        temp = _motionInfo[8].Split('/');
-        joint.Add("Rfoot", new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
+        for(int i=1;i<12;i++) // 인덱스는 1부터 시작, 
+        {
+            temp = _motionInfo[i].Split('/');
+            joint.Add(PlayMusicInfo.ReturnJointName(i - 1), new Vector2(int.Parse(temp[0]) + _characterPos.x, int.Parse(temp[1]) + _characterPos.y));
+        }
     }
 
     public Vector2 ReturnJointPos(string _joint)
