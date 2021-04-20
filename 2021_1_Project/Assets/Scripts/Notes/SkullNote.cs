@@ -9,6 +9,8 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     [SerializeField] private Transform _arrivePos = default;
     [SerializeField] private string _motionName = default;
 
+    private Animator _animator;
+
     private Image _image;
     private Color _color;
 
@@ -21,6 +23,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         _image = GetComponent<Image>();
+        _animator = GetComponent<Animator>();
         _color = Color.white;
         _departPos = _resetPos = transform.position;
     }
@@ -33,6 +36,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     private void FAIL(string _message)
     {
         // 공격 모션 변환
+        _animator.SetTrigger("attack");
         // 사운드 재생
         SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
         transform.position = _arrivePos.position;
@@ -93,9 +97,10 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    public void FailActive()
+    public void FailActive() // 모션만 부활시켜놓는 함수
     {
         // 공격 모션 표현
+        _animator.SetTrigger("attack");
         _isMove = false;
         transform.position = _arrivePos.position;
         gameObject.SetActive(true);
