@@ -32,22 +32,22 @@
             this._button_OK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this._textbox_activetime = new System.Windows.Forms.TextBox();
-            this._textbox_joint = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this._textbox_animation = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this._textbox_activenote = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this._textbox_sfxName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this._combobox_joint = new System.Windows.Forms.ComboBox();
+            this._combobox_activenote = new System.Windows.Forms.ComboBox();
+            this._combobox_sfxName = new System.Windows.Forms.ComboBox();
+            this._combobox_animation = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // _button_OK
             // 
-            this._button_OK.Location = new System.Drawing.Point(65, 181);
+            this._button_OK.Location = new System.Drawing.Point(95, 181);
             this._button_OK.Name = "_button_OK";
             this._button_OK.Size = new System.Drawing.Size(75, 23);
-            this._button_OK.TabIndex = 3;
+            this._button_OK.TabIndex = 5;
             this._button_OK.Text = "노트 설정";
             this._button_OK.UseVisualStyleBackColor = true;
             this._button_OK.Click += new System.EventHandler(this._button_OK_Click);
@@ -69,16 +69,8 @@
             this._textbox_activetime.Location = new System.Drawing.Point(95, 6);
             this._textbox_activetime.Name = "_textbox_activetime";
             this._textbox_activetime.ReadOnly = true;
-            this._textbox_activetime.Size = new System.Drawing.Size(100, 29);
+            this._textbox_activetime.Size = new System.Drawing.Size(135, 29);
             this._textbox_activetime.TabIndex = 99;
-            // 
-            // _textbox_joint
-            // 
-            this._textbox_joint.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_joint.Location = new System.Drawing.Point(95, 41);
-            this._textbox_joint.Name = "_textbox_joint";
-            this._textbox_joint.Size = new System.Drawing.Size(100, 29);
-            this._textbox_joint.TabIndex = 1;
             // 
             // label2
             // 
@@ -91,14 +83,6 @@
             this.label2.Text = "관절";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // _textbox_animation
-            // 
-            this._textbox_animation.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_animation.Location = new System.Drawing.Point(95, 146);
-            this._textbox_animation.Name = "_textbox_animation";
-            this._textbox_animation.Size = new System.Drawing.Size(100, 29);
-            this._textbox_animation.TabIndex = 5;
-            // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 12F);
@@ -109,14 +93,6 @@
             this.label3.TabIndex = 99;
             this.label3.Text = "애니메이션";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // _textbox_activenote
-            // 
-            this._textbox_activenote.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_activenote.Location = new System.Drawing.Point(95, 76);
-            this._textbox_activenote.Name = "_textbox_activenote";
-            this._textbox_activenote.Size = new System.Drawing.Size(100, 29);
-            this._textbox_activenote.TabIndex = 2;
             // 
             // label4
             // 
@@ -129,14 +105,6 @@
             this.label4.Text = "노트";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // _textbox_sfxName
-            // 
-            this._textbox_sfxName.Font = new System.Drawing.Font("맑은 고딕", 12F);
-            this._textbox_sfxName.Location = new System.Drawing.Point(95, 111);
-            this._textbox_sfxName.Name = "_textbox_sfxName";
-            this._textbox_sfxName.Size = new System.Drawing.Size(100, 29);
-            this._textbox_sfxName.TabIndex = 3;
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 12F);
@@ -148,18 +116,58 @@
             this.label5.Text = "효과음";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // _combobox_joint
+            // 
+            this._combobox_joint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._combobox_joint.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._combobox_joint.FormattingEnabled = true;
+            this._combobox_joint.Location = new System.Drawing.Point(95, 41);
+            this._combobox_joint.Name = "_combobox_joint";
+            this._combobox_joint.Size = new System.Drawing.Size(135, 29);
+            this._combobox_joint.TabIndex = 1;
+            // 
+            // _combobox_activenote
+            // 
+            this._combobox_activenote.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._combobox_activenote.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._combobox_activenote.FormattingEnabled = true;
+            this._combobox_activenote.Location = new System.Drawing.Point(95, 76);
+            this._combobox_activenote.Name = "_combobox_activenote";
+            this._combobox_activenote.Size = new System.Drawing.Size(135, 29);
+            this._combobox_activenote.TabIndex = 2;
+            // 
+            // _combobox_sfxName
+            // 
+            this._combobox_sfxName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._combobox_sfxName.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._combobox_sfxName.FormattingEnabled = true;
+            this._combobox_sfxName.Location = new System.Drawing.Point(95, 111);
+            this._combobox_sfxName.Name = "_combobox_sfxName";
+            this._combobox_sfxName.Size = new System.Drawing.Size(135, 29);
+            this._combobox_sfxName.TabIndex = 3;
+            // 
+            // _combobox_animation
+            // 
+            this._combobox_animation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this._combobox_animation.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this._combobox_animation.FormattingEnabled = true;
+            this._combobox_animation.Location = new System.Drawing.Point(95, 146);
+            this._combobox_animation.Name = "_combobox_animation";
+            this._combobox_animation.Size = new System.Drawing.Size(135, 29);
+            this._combobox_animation.TabIndex = 4;
+            // 
             // NoteInfoEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(205, 216);
-            this.Controls.Add(this._textbox_sfxName);
+            this.ClientSize = new System.Drawing.Size(242, 216);
+            this.Controls.Add(this._combobox_animation);
+            this.Controls.Add(this._combobox_sfxName);
+            this.Controls.Add(this._combobox_activenote);
+            this.Controls.Add(this._combobox_joint);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this._textbox_activenote);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this._textbox_animation);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this._textbox_joint);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._textbox_activetime);
             this.Controls.Add(this.label1);
@@ -181,13 +189,13 @@
         private System.Windows.Forms.Button _button_OK;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox _textbox_activetime;
-        private System.Windows.Forms.TextBox _textbox_joint;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox _textbox_animation;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox _textbox_activenote;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox _textbox_sfxName;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox _combobox_joint;
+        private System.Windows.Forms.ComboBox _combobox_activenote;
+        private System.Windows.Forms.ComboBox _combobox_sfxName;
+        private System.Windows.Forms.ComboBox _combobox_animation;
     }
 }

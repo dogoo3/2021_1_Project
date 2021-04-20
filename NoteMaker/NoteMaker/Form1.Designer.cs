@@ -514,7 +514,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.5";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.6";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
