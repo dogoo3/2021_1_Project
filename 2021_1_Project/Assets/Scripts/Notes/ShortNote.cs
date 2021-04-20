@@ -78,7 +78,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         _noteColor.a += 0.1f; // 노트가 보여지는 상수값
         _circle.color = _noteColor;
         _line.color = _noteColor;
-
+        
         if (_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < _failRange + 1.0f) // Fail 판정시 Note가 밝아지지 않은 경우도 있기 때문에 미세한 값 수정
         {
             _circle.color = _line.color = _noteColor = Color.white;

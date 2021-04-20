@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 5d944cf5b7f4bc84db748c2dfb6524a0
+guid: 2be40c328ece7c6449f247df50d84f52
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8029272993224827436
-    second: MOTION3_R_2_EDGE
+      213: -794582070831502317
+    second: MOTION3_R_1_EDGE
   - first:
-      213: 2859291967529987536
-    second: MOTION3_R_2_EDGE
+      213: 372951085675642807
+    second: MOTION3_R_1_EDGE
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MOTION3_R_1_EDGE
+      name: MOTION3_R_2_EDGE
       rect:
         serializedVersion: 2
-        x: 443
-        y: 144
-        width: 751
-        height: 1039
+        x: 0
+        y: 0
+        width: 800
+        height: 1100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4dd523ae0ca429090800000000000000
-      internalID: -8029272993224827436
+      spriteID: 31ca13301d319f4f0800000000000000
+      internalID: -794582070831502317
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MOTION3_R_2_EDGE
+      name: MOTION3_R_1_EDGE
       rect:
         serializedVersion: 2
-        x: 1703
-        y: 146
-        width: 1054
-        height: 891
+        x: 800
+        y: 0
+        width: 800
+        height: 1100
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0dda0c135ee3ea720800000000000000
-      internalID: 2859291967529987536
+      spriteID: 7bffa44590dfc2500800000000000000
+      internalID: 372951085675642807
       vertices: []
       indices: 
       edges: []

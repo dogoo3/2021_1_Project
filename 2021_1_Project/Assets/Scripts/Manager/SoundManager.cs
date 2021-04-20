@@ -47,6 +47,7 @@ public class SoundManager : MonoBehaviour
                 {
                     _sfxs[i].clip = _sfxList[_sfxName];
                     _sfxs[i].Play();
+                    Debug.Log("SoundPlay");
                     break;
                 }
             }

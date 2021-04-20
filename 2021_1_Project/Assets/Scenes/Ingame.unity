@@ -670,10 +670,10 @@ MonoBehaviour:
   - {fileID: -3136685356561547625, guid: 99b48d70d4321e043ab6f4905371ab01, type: 3}
   - {fileID: -7951938283182153077, guid: 99b48d70d4321e043ab6f4905371ab01, type: 3}
   - {fileID: -6095635310654189074, guid: 99b48d70d4321e043ab6f4905371ab01, type: 3}
-  - {fileID: -8983001244374547467, guid: 5b970f128409c114fb37da5812222181, type: 3}
-  - {fileID: 4402949921847937635, guid: 5b970f128409c114fb37da5812222181, type: 3}
-  - {fileID: -8029272993224827436, guid: 5d944cf5b7f4bc84db748c2dfb6524a0, type: 3}
-  - {fileID: -3053178182925892699, guid: 5d944cf5b7f4bc84db748c2dfb6524a0, type: 3}
+  - {fileID: -1362546295138374377, guid: bdc0f42409d885347b1488c928339049, type: 3}
+  - {fileID: 6290467784705233092, guid: bdc0f42409d885347b1488c928339049, type: 3}
+  - {fileID: -794582070831502317, guid: 2be40c328ece7c6449f247df50d84f52, type: 3}
+  - {fileID: -4909251893036318838, guid: 2be40c328ece7c6449f247df50d84f52, type: 3}
 --- !u!1 &251107509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,7 +2158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 51.390015}
+  m_AnchoredPosition: {x: 0, y: 51.390137}
   m_SizeDelta: {x: 254.88, y: 102.78003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984701915

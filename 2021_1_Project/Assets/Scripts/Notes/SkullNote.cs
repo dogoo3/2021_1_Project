@@ -16,6 +16,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
 
     private float _lerpValue;
     private bool _isMove = true;
+    private string _sfxName;
 
     private void Awake()
     {
@@ -43,6 +44,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     private void Success()
     {
         SetNote.instance.SetMotion(_motionName);
+        SoundManager.instance.PlaySFX(_sfxName);
         SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
         ComboManager.instance.CreaseCombo();
         JudgeManager.instance.SetJudgeImage("AWESOME"); // 판정
@@ -98,6 +100,12 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         transform.position = _arrivePos.position;
         gameObject.SetActive(true);
         InvokeRepeating("Transparent", 0f, 0.05f);
+    }
+
+    public void ActiveNote(string _sfxName)
+    {
+        this._sfxName = _sfxName;
+        gameObject.SetActive(true);
     }
 
     private void OnDisable()
