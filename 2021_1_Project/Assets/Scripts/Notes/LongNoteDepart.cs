@@ -181,7 +181,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     }
                 }
                 
-                if (Vector3.Distance(transform.position, _stopOverPoint[_stopOver.Length - 1].position) <= 5.0f) // 최종 목적지에 출발노트가 도착
+                if (transform.position == _stopOverPoint[_stopOver.Length - 1].position) // 최종 목적지에 출발노트가 도착
                 {
                     if (_judgeValue < _awesomeRange) // 실제 AWESOME 판정 처리
                         JudgeManager.instance.SetJudgeImage("AWESOME");

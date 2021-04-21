@@ -91,6 +91,13 @@ public class LongNoteStopover : MonoBehaviour
 
     public void SetColor(int _index) // 포인트 노트 이미지 투명화 시 사용
     {
+        if(IsInvoking("ActivePointImage"))
+        {
+            _color.a = 1;
+            for (int i = 0; i < _pointImage.Length; i++)
+                _pointImage[i].color = _color;
+            CancelInvoke("ActivePointImage");
+        }
         _pointImage[_index].color = Color.clear;
     }
 
