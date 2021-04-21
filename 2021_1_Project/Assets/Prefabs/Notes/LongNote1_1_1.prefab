@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 9146112792634161500}
   - component: {fileID: 9146112792634161503}
   m_Layer: 5
-  m_Name: 'LongNote1_1_1 '
+  m_Name: LongNote1_1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd12100ccf65374aa34cf30a92f1fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteName: 'LongNote1_1_1 '
+  _noteName: LongNote1_1_1
   _departNote: {fileID: 9146112790775724079}
 --- !u!1001 &607432622244064071
 PrefabInstance:

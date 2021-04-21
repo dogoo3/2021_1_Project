@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd12100ccf65374aa34cf30a92f1fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteName: 'LongNote2_4_1 '
+  _noteName: LongNote2_4_1
   _departNote: {fileID: 6423320758303865630}
 --- !u!1001 &4346051505472020633
 PrefabInstance:

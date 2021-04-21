@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dd12100ccf65374aa34cf30a92f1fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteName: 'LongNote0_L_1 '
+  _noteName: LongNote0_L_1
   _departNote: {fileID: 1995977939562626487}
 --- !u!1 &1995977939562626475
 GameObject:
