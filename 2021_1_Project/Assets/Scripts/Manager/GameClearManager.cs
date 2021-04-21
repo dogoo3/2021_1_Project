@@ -30,7 +30,6 @@ public class GameClearManager : MonoBehaviour
         JudgeManager.instance.ResetJudge();
         SetNote.instance.ResetNote();
         CutSceneManager.instance.ResetTime();
-        NotePoolingManager.instance.ResetNote();
         SoundManager.instance.Stop();
         gameObject.SetActive(false);
     }

@@ -35,8 +35,8 @@ public class NotePoolingManager : MonoBehaviour
         {
             Queue<LongNote> longNotes = new Queue<LongNote>(); // 딕셔너리 안에 들어갈 큐 할당
             for (int j = 0; j < 3; j++)
-                Init(_longNotes[i], longNotes, "LongNote" + i.ToString(), i); // 큐 안에 자료 삽입
-            _dic_longNote.Add("LongNote" + i.ToString(), longNotes); // 딕셔너리 안에 자료 삽입
+                Init(_longNotes[i], longNotes, _longNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
+            _dic_longNote.Add(_longNotes[i].GetNoteName(), longNotes); // 딕셔너리 안에 자료 삽입
             longNotes = null;
         }
     }
@@ -47,7 +47,7 @@ public class NotePoolingManager : MonoBehaviour
 
         temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), PlayMusicInfo.ReturnAutoMode()); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
-        temp.name = _objName + "(" + turnNum.ToString() + ")";
+        temp.name = _objName + " (" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);
     }
 

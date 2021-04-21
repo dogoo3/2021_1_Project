@@ -57,6 +57,7 @@ public class ComboManager : MonoBehaviour
             if (HPManager.instance.DecreaseHP() == 0) // HP가 다 죽으면 사망윈도우를 띄운다.
             {
                 SetNote.instance.StopNote();
+                NotePoolingManager.instance.ResetNote();
                 _gameOverManager.Active();
             }
         }

@@ -17,7 +17,6 @@ public class GameOverManager : MonoBehaviour
         JudgeManager.instance.ResetJudge();
         CutSceneManager.instance.ResetTime();
         SetNote.instance.ResetNote();
-        NotePoolingManager.instance.ResetNote();
         SoundManager.instance.Stop();
         gameObject.SetActive(false);
     }
