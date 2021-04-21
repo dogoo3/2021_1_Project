@@ -34,13 +34,13 @@ public class CutSceneManager : MonoBehaviour
     public void SetTime()
     {
         _startTime = Time.time; // 타임 설정 후
-        _animator.enabled = true; // 애니메이션 컨트롤러 활성화
+        _animator.Rebind();
         _isAllShow = false;
     }
 
     public void ResetTime()
     {
-        _animator.enabled = false;
+        _index = 0;
         _isAllShow = true;
     }
 
