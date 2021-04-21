@@ -29,6 +29,7 @@ public class GameClearManager : MonoBehaviour
         ComboManager.instance.ResetCombo(false); // 실행 전 반드시 HPManager의 Reset을 해줘야함!
         JudgeManager.instance.ResetJudge();
         SetNote.instance.ResetNote();
+        CutSceneManager.instance.ResetTime();
         NotePoolingManager.instance.ResetNote();
         SoundManager.instance.Stop();
         gameObject.SetActive(false);

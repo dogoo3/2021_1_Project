@@ -37,11 +37,13 @@ public class SetNote : MonoBehaviour
         _image = GetComponent<Image>();
 
         #region ReadNoteFIle
+        // 채보 파일을 읽어온다
         List<string> _tempStringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
-        string[] _getInfo = _tempStringList[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도
-        _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime); // 노트 활성화 간격 조정
-        if (_tempStringList != null)
+        if (_tempStringList != null) // 채보 파일을 ㅇ릭어오는 데 성공하면
         {
+            string[] _getInfo = _tempStringList[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도 (첫줄)
+            _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime); // 노트 활성화 간격 조정
+
             for (int i = 1; i < _tempStringList.Count; i++)
             {
                 _getInfo = _tempStringList[i].Split('/');
@@ -51,7 +53,7 @@ public class SetNote : MonoBehaviour
                     _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3], _getInfo[4])); // 시간, 관절, 노트, 효과음, 모션
             }
 
-            Invoke("StartMusic", 5.0f); // 음악 재생
+            Invoke("StartMusic", 3.0f); // 3초 뒤 음악 재생
         }
         #endregion
         #region ReadMotionFile
@@ -76,6 +78,7 @@ public class SetNote : MonoBehaviour
         _startTime = Time.time;
         _isStart = true;
         SoundManager.instance.Play();
+        CutSceneManager.instance.SetTime();
     }
 
     private void FSM_DAB()
