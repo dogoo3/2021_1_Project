@@ -69,7 +69,7 @@
             this._textbox_activetime.Location = new System.Drawing.Point(95, 6);
             this._textbox_activetime.Name = "_textbox_activetime";
             this._textbox_activetime.ReadOnly = true;
-            this._textbox_activetime.Size = new System.Drawing.Size(135, 29);
+            this._textbox_activetime.Size = new System.Drawing.Size(173, 29);
             this._textbox_activetime.TabIndex = 99;
             // 
             // label2
@@ -123,7 +123,7 @@
             this._combobox_joint.FormattingEnabled = true;
             this._combobox_joint.Location = new System.Drawing.Point(95, 41);
             this._combobox_joint.Name = "_combobox_joint";
-            this._combobox_joint.Size = new System.Drawing.Size(135, 29);
+            this._combobox_joint.Size = new System.Drawing.Size(173, 29);
             this._combobox_joint.TabIndex = 1;
             // 
             // _combobox_activenote
@@ -133,7 +133,7 @@
             this._combobox_activenote.FormattingEnabled = true;
             this._combobox_activenote.Location = new System.Drawing.Point(95, 76);
             this._combobox_activenote.Name = "_combobox_activenote";
-            this._combobox_activenote.Size = new System.Drawing.Size(135, 29);
+            this._combobox_activenote.Size = new System.Drawing.Size(173, 29);
             this._combobox_activenote.TabIndex = 2;
             // 
             // _combobox_sfxName
@@ -143,7 +143,7 @@
             this._combobox_sfxName.FormattingEnabled = true;
             this._combobox_sfxName.Location = new System.Drawing.Point(95, 111);
             this._combobox_sfxName.Name = "_combobox_sfxName";
-            this._combobox_sfxName.Size = new System.Drawing.Size(135, 29);
+            this._combobox_sfxName.Size = new System.Drawing.Size(173, 29);
             this._combobox_sfxName.TabIndex = 3;
             // 
             // _combobox_animation
@@ -153,14 +153,14 @@
             this._combobox_animation.FormattingEnabled = true;
             this._combobox_animation.Location = new System.Drawing.Point(95, 146);
             this._combobox_animation.Name = "_combobox_animation";
-            this._combobox_animation.Size = new System.Drawing.Size(135, 29);
+            this._combobox_animation.Size = new System.Drawing.Size(173, 29);
             this._combobox_animation.TabIndex = 4;
             // 
             // NoteInfoEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(242, 216);
+            this.ClientSize = new System.Drawing.Size(280, 216);
             this.Controls.Add(this._combobox_animation);
             this.Controls.Add(this._combobox_sfxName);
             this.Controls.Add(this._combobox_activenote);
