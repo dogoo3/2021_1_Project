@@ -123,7 +123,6 @@ public class NotePoolingManager : MonoBehaviour
                 _skullNotes[0].ActiveNote(_sfxName);
             else
                 _skullNotes[1].ActiveNote(_sfxName);
-
         }
     }
 
