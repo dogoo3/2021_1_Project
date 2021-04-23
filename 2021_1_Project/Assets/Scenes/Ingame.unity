@@ -2397,7 +2397,6 @@ GameObject:
   - component: {fileID: 1216447461}
   - component: {fileID: 1216447460}
   - component: {fileID: 1216447459}
-  - component: {fileID: 1216447463}
   m_Layer: 5
   m_Name: RightSkull
   m_TagString: Untagged
@@ -2494,18 +2493,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216447457}
   m_CullTransparentMesh: 0
---- !u!114 &1216447463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216447457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1b75f40755d6f34b8117117cf133729, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1340592315
 GameObject:
   m_ObjectHideFlags: 0
