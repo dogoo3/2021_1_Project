@@ -25,6 +25,8 @@ public class CutSceneManager : MonoBehaviour
             return;
         }
         instance = this;
+
+        _animator = Instantiate(_animator);
         _animator.transform.SetParent(transform, false);
 
         // 컷씬 타이밍 저장 파일 가져오기
