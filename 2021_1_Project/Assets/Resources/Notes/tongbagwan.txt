@@ -54,9 +54,9 @@
 37.925186/Lhand/Skull_L/Snare01
 38.5036026/Rfoot/ShortNote/Snare01/MOTION3_L_2
 39.6021651/Rshoulder/LongNote0_R_1/Snare01/MOTION0_R
-41.271415/Rknee/ShortNote/Snare01/MOTION2_4
+41.271415/Rknee/LongNote2_4_1/Snare01/MOTION2_4
 42.4304566/Rhand/Skull_R/Snare01
-42.9632066/Lfoot/ShortNote/Snare01/MOTION3_R_2
+42.9632066/Lfoot/LongNote3_R_2_1/Snare01/MOTION3_R_2
 44.0270207/Lelbow/ShortNote//MOTION1_2
 44.0270207/Relbow/ShortNote/Snare01/MOTION1_2
 44.1804582/Lhand/ShortNote/Snare01/MOTION1_3
@@ -64,11 +64,11 @@
 45.6693958/Rhand/ShortNote/Snare01/MOTION0_R
 46.2327708/Rhand/ShortNote//MOTION2_4
 46.7831874/Rhand/Skull_R/Snare01
-47.9619999/Lfoot/ShortNote/Snare01/MOTION3_R_2
+47.9619999/Lfoot/LongNote3_R_2_1/Snare01/MOTION3_R_2
 48.6014999/Lhand/ShortNote/Snare01/MOTION2_2
 48.746604/Rhand/ShortNote/Snare01/MOTION2_1
 49.4015417/Lfoot/ShortNote/Snare01/MOTION2_3
-50.1325416/Rknee/ShortNote/Snare01/MOTION2_4
+50.1325416/Rknee/LongNote2_4_1/Snare01/MOTION2_4
 50.6659583/Rhand/ShortNote/Snare01/MOTION2_1
 51.2967291/Rhand/ShortNote/Snare01/MOTION1_1
 51.2967291/Lhand/ShortNote/Snare01/MOTION1_1
@@ -81,7 +81,7 @@
 54.6334789/Rhand/ShortNote/Snare01/MOTION2_1
 55.1932706/Lhand/ShortNote/Snare01/MOTION0_L
 55.7159372/Rhand/Skull_R/Snare01
-56.8132913/Lfoot/ShortNote/Snare01/MOTION3_R_2
+56.8132913/Lfoot/LongNote3_R_2_1/Snare01/MOTION3_R_2
 57.3586871/Rhand/ShortNote/Snare01/MOTION2_1
 57.6173538/Lhand/ShortNote/Snare01/MOTION2_2
 57.9163121/Rhand/ShortNote/Snare01/MOTION2_1
