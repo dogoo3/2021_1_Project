@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 public class CutSceneManager : MonoBehaviour
 {
     public static CutSceneManager instance;
 
     private Animator _animator;
-
+    
     private bool _isAllShow = true; // 모든 애니메이션을 다 보여줬는지를 판별하는 변수
     private int _index;
 
@@ -16,9 +17,14 @@ public class CutSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         // 노래에 맞는 컷씬 연출 프리팹 가져오기
-        _animator = Instantiate(Resources.Load<Animator>("Cutscene/" + PlayMusicInfo.ReturnSongName() + "/" + PlayMusicInfo.ReturnSongName()));
+        _animator = Resources.Load<Animator>("Cutscene/" + PlayMusicInfo.ReturnSongName() + "/" + PlayMusicInfo.ReturnSongName());
+        if(_animator == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        instance = this;
         _animator.transform.SetParent(transform, false);
 
         // 컷씬 타이밍 저장 파일 가져오기
