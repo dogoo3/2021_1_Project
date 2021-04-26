@@ -227,6 +227,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _departcircle: {fileID: 3671309355421377931}
   _line: {fileID: 3671309355459473987}
+  _effectSprite: {fileID: 4015791115160461521, guid: c1e7c0d59a1a62b43924903670181c8f,
+    type: 3}
   _stopOver:
   - {fileID: 3671309355456089785}
   - {fileID: 3004380166927415343}
