@@ -1,42 +1,42 @@
 fileFormatVersion: 2
-guid: 55316377e22427e47a262a4be259c91f
+guid: 2d0de16f99761b141b0bcfadfc968506
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1482479322807511148
+      213: 4857125793321517139
     second: DAB
   - first:
-      213: -6612937150791415823
+      213: 4816149497727422924
     second: DAB_1
   - first:
-      213: 6248796063848928035
+      213: 8953040102047385083
     second: DAB_2
   - first:
-      213: 7074272984476458984
+      213: 4281416066681855630
     second: DAB_3
   - first:
-      213: -5369292325163850857
+      213: 5860050961211493951
     second: DAB_4
   - first:
-      213: -6557209619978315421
+      213: 8901933775174991485
     second: DAB_5
   - first:
-      213: 665748754095781618
+      213: -9089316278589493068
     second: DAB_6
   - first:
-      213: -121108279404817577
+      213: -5258452896359444806
     second: DAB_7
   - first:
-      213: 4711245042181191995
+      213: 4473294774648530333
     second: DAB_8
   - first:
-      213: -2772989382440353050
+      213: 7889146038882533792
     second: DAB_9
   - first:
-      213: 1789311166483569976
+      213: -7394896040132151286
     second: DAB_10
   - first:
-      213: -6583779522565886311
+      213: -2604170819882069152
     second: DAB_11
   externalObjects: {}
   serializedVersion: 10
@@ -96,7 +96,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 8192
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -108,7 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 8192
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -120,7 +120,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 8192
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -138,6 +138,174 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 2200
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3500154cc2af76340800000000000000
+      internalID: 4857125793321517139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_1
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 2200
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1183d737666d240800000000000000
+      internalID: 4816149497727422924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_2
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 2200
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf58c5e99869f3c70800000000000000
+      internalID: 8953040102047385083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_3
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 2200
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ed83e8a35aa6b30800000000000000
+      internalID: 4281416066681855630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3e82b42d45135150800000000000000
+      internalID: 5860050961211493951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_5
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e7b53aa950a8b70800000000000000
+      internalID: 8901933775174991485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_6
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b07f7b70034cd180800000000000000
+      internalID: -9089316278589493068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_7
+      rect:
+        serializedVersion: 2
+        x: 2400
+        y: 1100
+        width: 800
+        height: 1100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abe0f5483f83607b0800000000000000
+      internalID: -5258452896359444806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DAB_8
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 800
         height: 1100
@@ -148,14 +316,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 497523119ec2d6be0800000000000000
-      internalID: -1482479322807511148
+      spriteID: d956982a5e5541e30800000000000000
+      internalID: 4473294774648530333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DAB_1
+      name: DAB_9
       rect:
         serializedVersion: 2
         x: 800
@@ -169,14 +337,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f7081db2b02a34a0800000000000000
-      internalID: -6612937150791415823
+      spriteID: 0a106cc1680eb7d60800000000000000
+      internalID: 7889146038882533792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DAB_2
+      name: DAB_10
       rect:
         serializedVersion: 2
         x: 1600
@@ -190,14 +358,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 323139b99ee28b650800000000000000
-      internalID: 6248796063848928035
+      spriteID: a08faf83b3d006990800000000000000
+      internalID: -7394896040132151286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DAB_3
+      name: DAB_11
       rect:
         serializedVersion: 2
         x: 2400
@@ -211,176 +379,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ef9cdb5ccddc2260800000000000000
-      internalID: 7074272984476458984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_4
-      rect:
-        serializedVersion: 2
-        x: 3200
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 793a067f3117c75b0800000000000000
-      internalID: -5369292325163850857
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_5
-      rect:
-        serializedVersion: 2
-        x: 4000
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3691b6b979c1005a0800000000000000
-      internalID: -6557209619978315421
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_6
-      rect:
-        serializedVersion: 2
-        x: 4800
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f6b98de6f63d3900800000000000000
-      internalID: 665748754095781618
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_7
-      rect:
-        serializedVersion: 2
-        x: 5600
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 75397ba59acb15ef0800000000000000
-      internalID: -121108279404817577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_8
-      rect:
-        serializedVersion: 2
-        x: 6400
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b39b7059764b16140800000000000000
-      internalID: 4711245042181191995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_9
-      rect:
-        serializedVersion: 2
-        x: 7200
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e286bd39dc5489d0800000000000000
-      internalID: -2772989382440353050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_10
-      rect:
-        serializedVersion: 2
-        x: 8000
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83d94e69609e4d810800000000000000
-      internalID: 1789311166483569976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: DAB_11
-      rect:
-        serializedVersion: 2
-        x: 8800
-        y: 0
-        width: 800
-        height: 1100
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99e28f51867b1a4a0800000000000000
-      internalID: -6583779522565886311
+      spriteID: 063dd72df602cdbd0800000000000000
+      internalID: -2604170819882069152
       vertices: []
       indices: 
       edges: []
