@@ -9,6 +9,10 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] private Image _circle = default, _line = default;
 
+    [Header("성공시 이펙트 이미지")]
+    [SerializeField] private Sprite _effectSprite = default;
+
+    private Sprite _noteSprite;
     private bool _isHit, _isAuto; // 노트 터치 여부
 
     private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
@@ -16,7 +20,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private string _motionName = "", _sfxName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
     private Vector2 _lineSize, _setlineSize; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈
-
+    private Vector2 _orirect, _effrect; // 노트 표현시의 W/H값, 이펙트 표현시의 W/H값
     private Color _noteColor;
 
     [Header("판정선 축소 속도")]
@@ -29,26 +33,31 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
-        _circle.raycastTarget = true;
         _noteColor = Color.gray;
         _noteColor.a = 0;
+        _line.color = _noteColor;
         _t = Time.time;
     }
     private void Start()
     {
         _isHit = false;
+        _noteSprite = _circle.sprite;
+        _orirect = Vector2.one * 200.0f;
+        _effrect = Vector2.one * 300.0f;
     }
 
     private void OnDisable()
     {
         _lineSize = _line.rectTransform.sizeDelta = _setlineSize; // 초기 라인 사이즈로 복구
+        _circle.sprite = _noteSprite; // 원래 노트 스프라이트로 복구
+        _circle.rectTransform.sizeDelta = _orirect; // 원래 노트 사이즈로 변경
+        _circle.raycastTarget = true; // 터치 감지 활성화
         _isHit = false;
     }
 
     private void Hit(string _message)
     {
         _isHit = true;
-        _circle.raycastTarget = false;
         switch(_message) // 애니메이션 처리
         {
             case "AWESOME":
@@ -57,6 +66,8 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 ComboManager.instance.CreaseCombo();
                 SoundManager.instance.PlaySFX(_sfxName);
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                _circle.sprite = _effectSprite;
+                _circle.rectTransform.sizeDelta = _effrect;
                 break;
             case "FAIL":
             case "MISS":
@@ -65,31 +76,33 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 ComboManager.instance.ResetCombo();
                 break;
         }
+        _circle.raycastTarget = false; // 터치 감지 비활성화
         JudgeManager.instance.SetJudgeImage(_message); // 판정
         _motionName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
             CancelInvoke("BrightenNote");
 
+        _line.color = Color.clear;
         InvokeRepeating("DarkenNote", 0f, 0.05f); 
     }
 
     private void BrightenNote()
     {
-        _noteColor.a += 0.1f; // 노트가 보여지는 상수값
+        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 0.8f);
         _circle.color = _noteColor;
         _line.color = _noteColor;
-        
+
         if (_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < _failRange + 1.0f) // Fail 판정시 Note가 밝아지지 않은 경우도 있기 때문에 미세한 값 수정
         {
-            _circle.color = _line.color = _noteColor = Color.white;
+            _circle.color = _line.color = _noteColor;
+            _noteColor = Color.white;
             CancelInvoke();
         }
     }
     private void DarkenNote()
-    {
-        _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
+    { 
         _circle.color = _noteColor;
-        _line.color = _noteColor;
+        _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
         if(_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
             CancelInvoke();
@@ -130,8 +143,10 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
 
                 if (_judgeValue < _awesomeRange)
+                {
                     Hit("AWESOME");
-
+                    return;
+                }
             }
             #endregion
             if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위

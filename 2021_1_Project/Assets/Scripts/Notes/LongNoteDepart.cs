@@ -19,6 +19,8 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     
     private Vector2 _lineSize, _setlineSize, _touchPos, _betweenToParent, _lerpDpos, _lerpApos; // 변동시킬 판정선 사이즈, 복구시킬 판정선 사이즈, 터치 좌표, 도착 노트와의 간격
     // 선형보간 출발지, 도착지
+    
+    private Vector2 _orirect, _effrect; // 노트 표현시의 W/H값, 이펙트 표현시의 W/H값
 
     private Color _noteColor;
 
@@ -28,6 +30,10 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     private int _stopindex; // _stopOver 배열 인덱스
     private float _judgeValue, _lerpValue;
     private string _motionName = "", _judgeName, _sfxName; // 정상 판정시 수행할 캐릭터 애니메이션 변수, 첫 터치 시 판정
+
+    [Header("성공시 이펙트 이미지")]
+    [SerializeField] private Sprite _effectSprite = default;
+    private Sprite _noteSprite;
 
     [Header("경유노트, 마지막 인덱스는 도착노트")]
     [SerializeField] private LongNoteStopover[] _stopOver = default;
@@ -57,6 +63,14 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         _lerpDpos = _longNote.transform.position;
         _lerpApos = _stopOverPoint[0].position;
     }
+
+    private void Start()
+    {
+        _noteSprite = _departcircle.sprite;
+
+        _orirect = Vector2.one * 200.0f;
+        _effrect = Vector2.one * 300.0f;
+    }
     private void OnDisable()
     {
         _isEnd = _isHit = false; // bool 초기화
@@ -64,6 +78,10 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         _lineSize = _line.rectTransform.sizeDelta = _setlineSize; // 초기 라인 사이즈로 변경
 
         gameObject.transform.position = transform.parent.position; // 첫 위치로 초기화
+
+        _departcircle.sprite = _noteSprite; // 원래 노트 스프라이트로 복구
+        _departcircle.rectTransform.sizeDelta = _orirect; // 원래 노트 사이즈로 변경
+        _departcircle.raycastTarget = true; // 터치 감지 활성화
 
         for (int i = 0; i < _stopOver.Length; i++) // 시작상태로 Origin 변경
             _stopOver[i].ResetFillOrigin();
@@ -89,6 +107,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 JudgeManager.instance.SetJudgeImage(_message);
                 SetNote.instance.SetMotion(_motionName,true);
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                _departcircle.raycastTarget = false;
                 if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
                     CancelInvoke("BrightenNote");
                 InvokeRepeating("DarkenNote", 0f, 0.05f);
@@ -100,14 +119,14 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     private void BrightenNote() // 노트 판정 이전까지 실행
     {
-        _noteColor.a += 0.1f; // 노트가 보여지는 상수값
+        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 0.8f);
         _departcircle.color = _noteColor;
         _line.color = _noteColor;
         for (int i = 0; i < _stopOver.Length; i++)
             _stopOver[i].SetColor(_noteColor);
 
         // 활성화 상태로 변경
-        if(_line.rectTransform.sizeDelta.x - _departcircle.rectTransform.sizeDelta.x < _failRange + 1.0f)
+        if (_line.rectTransform.sizeDelta.x - _departcircle.rectTransform.sizeDelta.x < _failRange + 1.0f)
         {
             _departcircle.color = _line.color = _noteColor = Color.white;
             for (int i = 0; i < _stopOver.Length; i++)
@@ -117,8 +136,8 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
     }
     private void DarkenNote() // 노트 판정 완료시 실행
     {
-        _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
         _departcircle.color = _noteColor;
+        _noteColor.a -= 0.1f; // 노트가 사라지는 상수값
         for (int i = 0; i < _stopOver.Length; i++)
             _stopOver[i].SetColor(_noteColor);
 
@@ -192,7 +211,10 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     SoundManager.instance.PlaySFX(_sfxName);
                     SetNote.instance.SetMotion(_motionName); // 애니메이션 작동
                     SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                    _departcircle.sprite = _effectSprite;
+                    _departcircle.rectTransform.sizeDelta = _effrect;
                     _departcircle.raycastTarget = false;
+                    _noteColor = Color.white;
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;
                 }
@@ -256,6 +278,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
             }
+            _departcircle.color = Color.white;
             InvokeRepeating("DarkenNote", 0f, 0.05f);
             _stopOver[_stopOver.Length - 1].InvokeRepeating("InActivePointImage", 0f, 0.05f);
             _isEnd = true;

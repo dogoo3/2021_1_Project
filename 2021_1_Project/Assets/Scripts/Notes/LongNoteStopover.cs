@@ -28,7 +28,6 @@ public class LongNoteStopover : MonoBehaviour
         _color.a = 0f;
     }
 
-
     private void FixedUpdate()
     {
         if(_isSpread)
@@ -111,10 +110,10 @@ public class LongNoteStopover : MonoBehaviour
 
     private void ActivePointImage()
     {
-        _color.a += 0.1f;
+        _color.a = Mathf.Clamp(_color.a + 0.1f, 0f, 0.8f);
         for (int i=0;i<_pointImage.Length;i++)
             _pointImage[i].color = _color;
-        if (_color.a >= 1)
+        if (_color.a >= 0.8f)
             CancelInvoke("ActivePointImage");
     }
 
