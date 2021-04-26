@@ -530,7 +530,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4732801351563341648, guid: 4109b252c12e06141bc48b5d2a78a721,
+  m_Sprite: {fileID: 7617068826033809904, guid: 519b8ca750b263a4b9fa35680afa6425,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2455,7 +2455,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4732801351563341648, guid: 4109b252c12e06141bc48b5d2a78a721,
+  m_Sprite: {fileID: 7617068826033809904, guid: 519b8ca750b263a4b9fa35680afa6425,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2581,8 +2581,9 @@ GameObject:
   - component: {fileID: 1349097404}
   - component: {fileID: 1349097406}
   - component: {fileID: 1349097405}
+  - component: {fileID: 1349097407}
   m_Layer: 5
-  m_Name: Image
+  m_Name: BossSkull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2625,7 +2626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1865040817350158062, guid: ef32a218367d0714db9097337c13c8db,
+  m_Sprite: {fileID: 8793639957104055765, guid: 5391913655b4101419435b2a3c21b1a6,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2644,6 +2645,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349097403}
   m_CullTransparentMesh: 0
+--- !u!95 &1349097407
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349097403}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 92252427511a0f94ebf7fd146d03a46f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1373177151
 GameObject:
   m_ObjectHideFlags: 0
