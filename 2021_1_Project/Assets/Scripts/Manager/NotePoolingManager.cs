@@ -64,9 +64,22 @@ public class NotePoolingManager : MonoBehaviour
     public void ResetNote()
     {
         for (int i = 0; i < _activeShortNote.Count; i++)
-            InsertNote(_activeShortNote[i]);
+        {
+            _activeShortNote[i].gameObject.SetActive(false);
+            _queue_shortNote.Enqueue(_activeShortNote[i]);
+        }
         for (int i = 0; i < _activeLongNote.Count; i++)
-            InsertNote(_activeLongNote[i]);
+        {
+            _activeLongNote[i].gameObject.SetActive(false);
+            _dic_longNote[_activeLongNote[i].GetNoteName()].Enqueue(_activeLongNote[i]);
+        }
+        for (int i = 0; i < _skullNotes.Length; i++)
+        {
+            if (_skullNotes[i].gameObject.activeSelf)
+                _skullNotes[i].gameObject.SetActive(false);
+        }
+        _activeShortNote.Clear();
+        _activeLongNote.Clear();
     }
 
     public void InsertNote(ShortNote _obj)
