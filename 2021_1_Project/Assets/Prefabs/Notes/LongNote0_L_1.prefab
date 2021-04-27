@@ -159,10 +159,10 @@ MonoBehaviour:
   - {fileID: 8543980467115666414}
   _reduceValue: 250
   _movedepartcircle: 700
-  _awesomeRange: 20
-  _goodRange: 35
-  _failRange: 40
-  _missRange: 10
+  _awesomeRange: 35
+  _goodRange: 45
+  _failRange: 50
+  _missRange: 25
 --- !u!1 &1995977939743287907
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ArriveNote
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505699631622454809, guid: e022b40e08347404385c781c1591c034,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7505699631622454811, guid: e022b40e08347404385c781c1591c034,
         type: 3}

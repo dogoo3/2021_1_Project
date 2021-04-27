@@ -264,10 +264,10 @@ MonoBehaviour:
   - {fileID: 6528527222584887627}
   _reduceValue: 250
   _movedepartcircle: 700
-  _awesomeRange: 20
-  _goodRange: 35
-  _failRange: 40
-  _missRange: 10
+  _awesomeRange: 35
+  _goodRange: 45
+  _failRange: 50
+  _missRange: 25
 --- !u!1 &6528527222299779257
 GameObject:
   m_ObjectHideFlags: 0

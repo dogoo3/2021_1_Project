@@ -233,10 +233,10 @@ MonoBehaviour:
   - {fileID: 5459440825352694258}
   _reduceValue: 250
   _movedepartcircle: 700
-  _awesomeRange: 20
-  _goodRange: 35
-  _failRange: 40
-  _missRange: 10
+  _awesomeRange: 35
+  _goodRange: 45
+  _failRange: 50
+  _missRange: 25
 --- !u!1001 &2587967304996459599
 PrefabInstance:
   m_ObjectHideFlags: 0
