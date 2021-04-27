@@ -198,7 +198,7 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 2144919016}
-  toggleTransition: 1
+  toggleTransition: 0
   graphic: {fileID: 621951547}
   m_Group: {fileID: 0}
   onValueChanged:
@@ -1121,6 +1121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _volumeControl: {fileID: 392645405}
   _soundControl: {fileID: 46432245}
+  _soundOffToggleImage: {fileID: 2144919016}
 --- !u!1 &1526968235
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,7 +2843,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144919014}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
