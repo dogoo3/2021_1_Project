@@ -58,6 +58,7 @@ public class ComboManager : MonoBehaviour
             {
                 SetNote.instance.StopNote();
                 NotePoolingManager.instance.ResetNote();
+                CutSceneManager.instance.ResetTime();
                 _gameOverManager.Active();
             }
         }
