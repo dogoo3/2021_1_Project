@@ -37,13 +37,10 @@
 26.2314373/Rhand/ShortNote/Snare01/MOTION0_R
 26.937875/Lknee/ShortNote/Snare01/MOTION2_3
 27.3183331/stomach/ShortNote/Snare01/MOTION1_2
-27.85/Lshoulder/ShortNote/Snare01/MOTION0_L
 28.4243539/Rshoulder/LongNote0_R_1/Snare01/MOTION0_R
 29.6715207/Lelbow/LongNote1_1_1/Snare01/MOTION1_1
 29.6715207/Relbow/LongNote1_1_2/Snare01/MOTION1_1
-30.6720208/Lelbow/ShortNote//MOTION1_2
-30.6720208/Relbow/ShortNote/Snare01/MOTION1_2
-30.8384166/Lelbow/ShortNote//MOTION1_3
+30.8384166/Lelbow/ShortNote/Snare01/
 30.9899999/stomach/ShortNote/Snare01/IDLE
 35.1599373/Rhand/ShortNote//MOTION2_1
 35.3206248/Lhand/ShortNote//MOTION2_2
