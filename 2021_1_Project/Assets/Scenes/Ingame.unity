@@ -2716,7 +2716,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2a746adcfce4b940b442b1c100b13ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shortNote: {fileID: 1095997570521280391, guid: 820808592941dab4d9c32fa8d3807fb0,
+  _shortNote: {fileID: 1095997570521280391, guid: 528306cdbc2c33b47901e2ee71ad3321,
+    type: 3}
+  _multiShortNote: {fileID: 1095997570521280391, guid: 820808592941dab4d9c32fa8d3807fb0,
     type: 3}
   _longNotes:
   - {fileID: 3439388875631655062, guid: 0ff84e09e47227347a44f9ca0e9d551d, type: 3}

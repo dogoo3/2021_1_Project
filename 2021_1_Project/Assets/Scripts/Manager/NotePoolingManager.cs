@@ -7,14 +7,17 @@ public class NotePoolingManager : MonoBehaviour
     public static NotePoolingManager instance;
 
     [SerializeField] private ShortNote _shortNote = default;
+    [SerializeField] private ShortNote _multiShortNote = default;
     [SerializeField] private LongNote[] _longNotes = default;
     [SerializeField] private SkullNote[] _skullNotes = default;
     // 저장 큐
     private Queue<ShortNote> _queue_shortNote = new Queue<ShortNote>();
+    private Queue<ShortNote> _queue_multiShortNote = new Queue<ShortNote>();
     private Dictionary<string, Queue<LongNote>> _dic_longNote = new Dictionary<string, Queue<LongNote>>(); // 롱노트 프리팹의 개수에 맞게 배열로 선언
 
     // 활성화 큐
     private List<ShortNote> _activeShortNote = new List<ShortNote>();
+    private List<ShortNote> _activeMultiShortNote = new List<ShortNote>();
     private List<LongNote> _activeLongNote = new List<LongNote>();
 
     private int i;
@@ -30,7 +33,11 @@ public class NotePoolingManager : MonoBehaviour
     private void Start()
     {
         for (i = 0; i < 16; i++)
+        {
             Init(_shortNote, _queue_shortNote, "ShortNote", i);
+            Init(_multiShortNote, _queue_multiShortNote, "MultiShortNote", i);
+        }
+
         for (i = 0; i < _longNotes.Length; i++)
         {
             Queue<LongNote> longNotes = new Queue<LongNote>(); // 딕셔너리 안에 들어갈 큐 할당
@@ -78,15 +85,30 @@ public class NotePoolingManager : MonoBehaviour
             if (_skullNotes[i].gameObject.activeSelf)
                 _skullNotes[i].gameObject.SetActive(false);
         }
+        for(int i=0;i<_activeMultiShortNote.Count;i++)
+        {
+            _activeMultiShortNote[i].gameObject.SetActive(false);
+            _queue_multiShortNote.Enqueue(_activeMultiShortNote[i]);
+        }
         _activeShortNote.Clear();
         _activeLongNote.Clear();
+        _activeMultiShortNote.Clear();
     }
 
-    public void InsertNote(ShortNote _obj)
+    public void InsertNote(ShortNote _obj, string _notename)
     {
         _obj.gameObject.SetActive(false);
-        _queue_shortNote.Enqueue(_obj);
-        _activeShortNote.Remove(_obj);
+        switch(_notename)
+        {
+            case "ShortNote":
+                _queue_shortNote.Enqueue(_obj);
+                _activeShortNote.Remove(_obj);
+                break;
+            case "MultiShortNote":
+                _queue_multiShortNote.Enqueue(_obj);
+                _activeMultiShortNote.Remove(_obj);
+                break;
+        }
     }
 
     public void InsertNote(LongNote _obj)
@@ -128,6 +150,22 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.SetActive(true);
                 _temp.gameObject.transform.SetAsFirstSibling();
                 _activeLongNote.Add(_temp);
+            }
+        }
+        else if(_noteName == "MultiShortNote")
+        {
+            if(_queue_multiShortNote.Count > 0)
+            {
+                ShortNote _temp = _queue_multiShortNote.Dequeue();
+                _temp.InputSfxName(_sfxName);
+                if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
+                    _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
+
+                _temp.transform.position = _origin;
+
+                _temp.gameObject.SetActive(true);
+                _temp.gameObject.transform.SetAsFirstSibling();
+                _activeMultiShortNote.Add(_temp); // 활성화 노트 리스트에 넣어줌
             }
         }
         else
