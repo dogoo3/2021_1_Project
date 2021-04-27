@@ -57,4 +57,18 @@ public class SoundManager : MonoBehaviour
     {
         _song.Stop();
     }
+
+    public void SetVolumeValue(float _value)
+    {
+        _song.volume = _value;
+        for (int i = 0; i < _sfxs.Length; i++)
+            _sfxs[i].volume = _value;
+    }
+
+    public void SetSoundPower(bool _is)
+    {
+        _song.mute = _is;
+        for (int i = 0; i < _sfxs.Length; i++)
+            _sfxs[i].mute = _is;
+    }
 }

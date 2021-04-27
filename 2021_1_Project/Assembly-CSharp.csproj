@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MTECLOGO\AdvertiseMTEC.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\AutoControl.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\ChoiceStageManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\Song.cs" />
@@ -77,8 +78,10 @@
     <Compile Include="Assets\Scripts\Manager\HPManager.cs" />
     <Compile Include="Assets\Scripts\Manager\JudgeManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NotePoolingManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\OptionManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\TitleManager.cs" />
     <Compile Include="Assets\Scripts\Motion\Motion.cs" />
     <Compile Include="Assets\Scripts\Motion\SetEdge.cs" />
     <Compile Include="Assets\Scripts\Notes\LongNote.cs" />

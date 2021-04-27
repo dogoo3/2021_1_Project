@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/MTECLOGO/ShowMTECScene.unity
+    guid: ef41d05ce86eb6444a43f4d73a80fa06
+  - enabled: 1
+    path: Assets/Scenes/TItle.unity
+    guid: e96e0687881a54247bbb74946d065911
+  - enabled: 1
     path: Assets/Scenes/ChoiceStage.unity
     guid: 12830eee037dfeb4ebbc10828c712aed
   - enabled: 1
     path: Assets/Scenes/Ingame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   m_configObjects: {}
