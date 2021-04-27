@@ -29,6 +29,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     }
     private void OnEnable()
     {
+        _isMove = true;
         _departPos = _resetPos;
         _lerpValue = 0;
     }
@@ -89,7 +90,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         if(_isMove)
         {
-            if (Vector2.Distance(_arrivePos.position, transform.position) > 100f) // 실패
+            if (Vector2.Distance(_arrivePos.position, transform.position) > 180f) // 실패
                 FAIL("FAIL");
             else // 성공
                 Success();
@@ -100,10 +101,10 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     public void FailActive() // 모션만 부활시켜놓는 함수
     {
         // 공격 모션 표현
-        _animator.SetTrigger("attack");
-        _isMove = false;
-        transform.position = _arrivePos.position;
         gameObject.SetActive(true);
+        _animator.SetTrigger("attack");
+        transform.position = _arrivePos.position;
+        _isMove = false;
         InvokeRepeating("Transparent", 0f, 0.05f);
     }
 
@@ -117,6 +118,5 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         transform.position = _departPos;
         _color = _image.color = Color.white;
-        _isMove = true;
     }
 }

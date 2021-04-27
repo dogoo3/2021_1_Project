@@ -72,7 +72,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             case "FAIL":
             case "MISS":
                 // 실패 애니메이션 진행 함수 작성
-                SetEdge.instance.SetEdgeImage("FAIL_" + SetNote.instance.SetMotion(_motionName, true).ToString() + "_EDGE");
+                SetEdge.instance.SetEdgeImage("FAIL_" + (SetNote.instance.SetMotion(_motionName, true) % 4).ToString() + "_EDGE");
                 ComboManager.instance.ResetCombo();
                 break;
         }
@@ -94,8 +94,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
         if (_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < _failRange + 1.0f) // Fail 판정시 Note가 밝아지지 않은 경우도 있기 때문에 미세한 값 수정
         {
-            _circle.color = _line.color = _noteColor;
-            _noteColor = Color.white;
+            _circle.color = _line.color = _noteColor = Color.white;
             CancelInvoke();
         }
     }
