@@ -29,7 +29,7 @@ public class SetNote : MonoBehaviour
         _jointName = { "Lshoulder", "Rshoulder", "Lelbow", "Relbow", "stomach", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot" },
         _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
         _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
-        _failFSM = { "FAIL_1", "FAIL_2", "FAIL_3", "FAIL_4" };
+        _failFSM = { "FAIL_0", "FAIL_1", "FAIL_2", "FAIL_3" };
     private void Awake()
     {
         instance = this;
@@ -104,7 +104,7 @@ public class SetNote : MonoBehaviour
         {
             if(_image.sprite.name == "MOTION3_L_1" || _image.sprite.name == "MOTION3_R_1")
             {
-                if (_image.sprite.name == "MOPTION3_L_1")
+                if (_image.sprite.name == "MOTION3_L_1")
                     NotePoolingManager.instance.GetFailSkullNote("Skull_L");
                 else
                     NotePoolingManager.instance.GetFailSkullNote("Skull_R");
@@ -117,7 +117,7 @@ public class SetNote : MonoBehaviour
             foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
                 _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
             _index_failFSM++;
-            return _index_failFSM;
+            return _index_failFSM - 1;
         }
         else if (_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
         {
@@ -147,10 +147,11 @@ public class SetNote : MonoBehaviour
             }
             foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
                 _jointPoints[items.Key].position = this._motion[_motion].joint[items.Key];
-            _index_failFSM = 0;
         }
         else
             return 0;
+
+        _index_failFSM = 0;
         return 0;
     }
     public void StopNote()
@@ -181,7 +182,6 @@ public class SetNote : MonoBehaviour
                         NotePoolingManager.instance.GetNote(_jointPoints[_note[i].joint].position, _note[i].notename, _note[i].sfxName);
                     else
                         NotePoolingManager.instance.GetNote(_motion[_note[i].motion].joint[_note[i].joint], _note[i].notename, _note[i].sfxName, _note[i].motion);
-
                     _upIndex++;
                 }
             }
