@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\Notes\ShortNote.cs" />
     <Compile Include="Assets\Scripts\Notes\SkullNote.cs" />
+    <Compile Include="Assets\SelectMonster.cs" />
     <Compile Include="Assets\Temp\Test.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

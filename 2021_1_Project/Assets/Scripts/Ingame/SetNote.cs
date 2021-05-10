@@ -10,7 +10,8 @@ public class SetNote : MonoBehaviour
 
     [SerializeField] private GameClearManager _gameClearManager = default;
     [SerializeField] private RectTransform[] _joints = default;
-
+    [Header("씬이 넘어오자마자 음악이 바로 재생되는가?")]
+    [SerializeField] private bool _isNowStart = true;
     private Image _image;
     
     private List<Note> _note = new List<Note>();
@@ -35,11 +36,16 @@ public class SetNote : MonoBehaviour
         instance = this;
 
         _image = GetComponent<Image>();
+        if (_isNowStart)
+            ReadNoteFile();
+    }
 
+    public void ReadNoteFile()
+    {
         #region ReadNoteFIle
         // 채보 파일을 읽어온다
         List<string> _tempStringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/");
-        if (_tempStringList != null) // 채보 파일을 ㅇ릭어오는 데 성공하면
+        if (_tempStringList != null) // 채보 파일을 읽어오는 데 성공하면
         {
             string[] _getInfo = _tempStringList[0].Split('/'); // 판정선간격, 감소속도, 롱노트진행속도 (첫줄)
             _songDelay = float.Parse(_getInfo[0]) / (float.Parse(_getInfo[1]) * Time.fixedDeltaTime) / (1 / Time.fixedDeltaTime); // 노트 활성화 간격 조정
@@ -52,7 +58,6 @@ public class SetNote : MonoBehaviour
                 else
                     _note.Add(new Note(float.Parse(_getInfo[0]), _getInfo[1], _getInfo[2], _getInfo[3], _getInfo[4])); // 시간, 관절, 노트, 효과음, 모션
             }
-
             Invoke("StartMusic", 3.0f); // 3초 뒤 음악 재생
         }
         #endregion
@@ -166,7 +171,7 @@ public class SetNote : MonoBehaviour
         _isStart = false;
         _index_failFSM = 0;
         InvokeRepeating("FSM_IDLE", 0, 0.1f);
-        Invoke("StartMusic", 5.0f); // 음악 재생
+        Invoke("StartMusic", 3.0f); // 음악 재생
     }
 
     private void FixedUpdate()

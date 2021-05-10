@@ -9,10 +9,9 @@ public class Song : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Image _image_jacket = default;
     [SerializeField] private Text _text_title = default, _text_composer = default;
 
-    [HideInInspector]
-    [SerializeField] AudioClip _song;
-    [HideInInspector]
-    [SerializeField] float _highlightpos;
+    private AudioClip _song;
+    private float _highlightpos;
+    private string _gameMode;
 
     public void SetValue(string[] _filenames)
     {
@@ -21,10 +20,11 @@ public class Song : MonoBehaviour, IPointerClickHandler
         _text_composer.text = _filenames[2];
         _image_jacket.sprite = Resources.Load<Sprite>("JacketImage/" + _filenames[3]);
         _highlightpos = float.Parse(_filenames[4]);
+        _gameMode = _filenames[5];
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        ChoiceStageManager.instance.ChoiceSong(_song, _highlightpos);
+        ChoiceStageManager.instance.ChoiceSong(_song, _highlightpos, _gameMode);
     }
 }

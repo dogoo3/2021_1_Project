@@ -1,3 +1,3 @@
-화면에 표시될 곡 이름,사운드 파일 이름,작곡가,앨범 이미지 이름,하이라이트 시작 시간(s)
-Evans(Game Test),evans,DJ YOSHITAKA,jacket_evans,11
-통배권,tongbagwan,Sultan,jacket_tongbagwan,60
+화면에 표시될 곡 이름,사운드 파일 이름,작곡가,앨범 이미지 이름,하이라이트 시작 시간(s),게임모드
+Evans(Game Test),evans,DJ YOSHITAKA,jacket_evans,11,MODE01
+통배권,tongbagwan,Sultan,jacket_tongbagwan,60,MODE01

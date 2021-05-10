@@ -29,18 +29,18 @@ public class ChoiceStageManager : MonoBehaviour
 
         for (int i = 0; i < _songInfo.Count; i++)
         {
-            _songDefault.SetValue(_songInfo[i].Split(','));
-            Instantiate(_songDefault, Vector2.zero, Quaternion.identity, _content);
+            Song _initSong = Instantiate(_songDefault, Vector2.zero, Quaternion.identity, _content);
+            _initSong.SetValue(_songInfo[i].Split(','));
         }
     }
-    public void ChoiceSong(AudioClip _song, float _highlightpos)
+    public void ChoiceSong(AudioClip _song, float _highlightpos, string _gameMode)
     {
         if(_choiceSongname == _song.name) // 이전에 선택한 악곡과 같은 이름 -> 2번 동시 터치
         {
             SoundManager.instance.ResetStartTime();
             SoundManager.instance.Stop();
             PlayMusicInfo.InputMusicInfo(_song.name);
-            SceneManager.LoadScene("Ingame");
+            SceneManager.LoadScene(_gameMode);
         }
         else
         {

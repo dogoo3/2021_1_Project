@@ -12,6 +12,10 @@ public static class PlayMusicInfo
     {
         PlayMusicInfo._song = _song;
     }
+    public static void AppendMusicInfo(string _appendSong)
+    {
+        _song += _appendSong;
+    }
 
     public static string ReturnSongName()
     {
