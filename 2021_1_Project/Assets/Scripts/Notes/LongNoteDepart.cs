@@ -87,6 +87,11 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             _stopOver[i].ResetFillOrigin();
     }
 
+    private void Vibrate(long _millisec = 150)
+    {
+        Vibration.Vibrate(_millisec);
+    }
+
     private void Hit(string _message)
     {
         _isHit = true;
@@ -97,6 +102,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             case "GOOD":
                 ComboManager.instance.CreaseCombo();
                 SoundManager.instance.PlaySFX(_sfxName);
+                Vibrate();
                 _stopindex = 0;
                 _judgeName = _message;
                 break;
@@ -191,6 +197,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                         _stopOver[_stopOver.Length - 1].SetColor(_stopindex); // 출발노트가 지나가면서 중간의 포인트노트를 보이지 않게 하기 위함(도착노트에 등록된 리소스 활용)
                         _stopindex++;
                         _lerpValue = SetLerpValue();
+                        Vibrate();
                         if (_stopindex < _stopOver.Length) // 인덱스 오버플로우 방지
                         {
                             _lerpDpos = _stopOverPoint[_stopindex-1].position; // 도착 위치 설정
@@ -214,6 +221,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     _departcircle.rectTransform.sizeDelta = _effrect;
                     _departcircle.raycastTarget = false;
                     _noteColor = Color.white;
+                    Vibrate();
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;
                 }

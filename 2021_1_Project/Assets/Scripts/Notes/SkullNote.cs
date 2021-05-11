@@ -34,6 +34,11 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         _lerpValue = 0;
     }
 
+    private void Vibrate(long _millisec = 150)
+    {
+        Vibration.Vibrate(_millisec);
+    }
+
     private void FAIL(string _message)
     {
         // 공격 모션 변환
@@ -53,6 +58,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
         ComboManager.instance.CreaseCombo();
         JudgeManager.instance.SetJudgeImage("AWESOME"); // 판정
+        Vibrate();
         gameObject.SetActive(false);
     }
 

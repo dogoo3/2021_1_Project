@@ -57,6 +57,11 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         _isHit = false;
     }
 
+    private void Vibrate(long _millisec = 150)
+    {
+        Vibration.Vibrate(_millisec);
+    }
+
     private void Hit(string _message)
     {
         _isHit = true;
@@ -68,6 +73,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 ComboManager.instance.CreaseCombo();
                 SoundManager.instance.PlaySFX(_sfxName);
                 SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                Vibrate();
                 _circle.sprite = _effectSprite;
                 _circle.rectTransform.sizeDelta = _effrect;
                 break;
