@@ -1,0 +1,13 @@
+350/300/1000
+2/Lshoulder/ShortNote/NoteTouch1
+5/Rshoulder/ShortNote/NoteTouch1
+8/Lshoulder/ShortNote/NoteTouch1
+11/Lshoulder/ShortNote/NoteTouch1
+14/Rshoulder/ShortNote/NoteTouch1
+17/Rshoulder/ShortNote/NoteTouch1
+20/Lshoulder/ShortNote/NoteTouch1
+23/Rshoulder/ShortNote/NoteTouch1
+26/Lshoulder/ShortNote/NoteTouch1
+29/Rshoulder/ShortNote/NoteTouch1
+32/Lshoulder/ShortNote/NoteTouch1
+35/Rshoulder/ShortNote/NoteTouch1
