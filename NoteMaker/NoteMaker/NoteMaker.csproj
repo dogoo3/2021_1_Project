@@ -114,6 +114,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\bluesquare.png" />
     <Content Include="Resources\circle.png" />
     <None Include="Resources\transparent.png" />
   </ItemGroup>

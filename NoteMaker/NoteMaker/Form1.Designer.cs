@@ -45,6 +45,16 @@
             this.MaxPlayTime = new System.Windows.Forms.Label();
             this._listbox_noteInfo = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this._textbox_lineTocircle = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this._textbox_reducevalue = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this._textbox_longNotespeed = new System.Windows.Forms.TextBox();
+            this._picture_Floor_L = new System.Windows.Forms.PictureBox();
+            this._picture_joint_stomach = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Relbow = new System.Windows.Forms.PictureBox();
+            this._picture_joint_Lelbow = new System.Windows.Forms.PictureBox();
             this._picture_joint_Rfoot = new System.Windows.Forms.PictureBox();
             this._picture_joint_Lfoot = new System.Windows.Forms.PictureBox();
             this._picture_joint_Rknee = new System.Windows.Forms.PictureBox();
@@ -54,17 +64,13 @@
             this._picture_joint_Rshoulder = new System.Windows.Forms.PictureBox();
             this._picture_joint_Lshoulder = new System.Windows.Forms.PictureBox();
             this._picturebox_Character = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this._textbox_lineTocircle = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this._textbox_reducevalue = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this._textbox_longNotespeed = new System.Windows.Forms.TextBox();
-            this._picture_joint_Relbow = new System.Windows.Forms.PictureBox();
-            this._picture_joint_Lelbow = new System.Windows.Forms.PictureBox();
-            this._picture_joint_stomach = new System.Windows.Forms.PictureBox();
+            this._picture_Floor_R = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_L)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lfoot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rknee)).BeginInit();
@@ -74,9 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).BeginInit();
             this.SuspendLayout();
             // 
             // _button_loadmp3
@@ -251,6 +255,118 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "재생시간 / 관절 / 노트 / 효과음 / 애니메이션";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(399, 43);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 12);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "판정선 거리";
+            // 
+            // _textbox_lineTocircle
+            // 
+            this._textbox_lineTocircle.Enabled = false;
+            this._textbox_lineTocircle.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_lineTocircle.Location = new System.Drawing.Point(494, 40);
+            this._textbox_lineTocircle.Name = "_textbox_lineTocircle";
+            this._textbox_lineTocircle.Size = new System.Drawing.Size(47, 21);
+            this._textbox_lineTocircle.TabIndex = 25;
+            this._textbox_lineTocircle.TabStop = false;
+            this._textbox_lineTocircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_lineTocircle_KeyPress);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(399, 70);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 12);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "판정선감소속도";
+            // 
+            // _textbox_reducevalue
+            // 
+            this._textbox_reducevalue.Enabled = false;
+            this._textbox_reducevalue.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_reducevalue.Location = new System.Drawing.Point(494, 67);
+            this._textbox_reducevalue.Name = "_textbox_reducevalue";
+            this._textbox_reducevalue.Size = new System.Drawing.Size(47, 21);
+            this._textbox_reducevalue.TabIndex = 27;
+            this._textbox_reducevalue.TabStop = false;
+            this._textbox_reducevalue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_reducevalue_KeyPress);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(399, 98);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 12);
+            this.label7.TabIndex = 30;
+            this.label7.Text = "롱노트이동속도";
+            // 
+            // _textbox_longNotespeed
+            // 
+            this._textbox_longNotespeed.Enabled = false;
+            this._textbox_longNotespeed.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this._textbox_longNotespeed.Location = new System.Drawing.Point(494, 95);
+            this._textbox_longNotespeed.Name = "_textbox_longNotespeed";
+            this._textbox_longNotespeed.Size = new System.Drawing.Size(47, 21);
+            this._textbox_longNotespeed.TabIndex = 29;
+            this._textbox_longNotespeed.TabStop = false;
+            this._textbox_longNotespeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_longNotespeed_KeyPress);
+            // 
+            // _picture_Floor_L
+            // 
+            this._picture_Floor_L.BackColor = System.Drawing.Color.Transparent;
+            this._picture_Floor_L.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_Floor_L.BackgroundImage")));
+            this._picture_Floor_L.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_Floor_L.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_Floor_L.Location = new System.Drawing.Point(28, 538);
+            this._picture_Floor_L.Name = "_picture_Floor_L";
+            this._picture_Floor_L.Size = new System.Drawing.Size(65, 30);
+            this._picture_Floor_L.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_Floor_L.TabIndex = 34;
+            this._picture_Floor_L.TabStop = false;
+            // 
+            // _picture_joint_stomach
+            // 
+            this._picture_joint_stomach.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_stomach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_stomach.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_stomach.Location = new System.Drawing.Point(145, 337);
+            this._picture_joint_stomach.Name = "_picture_joint_stomach";
+            this._picture_joint_stomach.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_stomach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_stomach.TabIndex = 33;
+            this._picture_joint_stomach.TabStop = false;
+            this._picture_joint_stomach.Click += new System.EventHandler(this._picture_joint_stomach_Click);
+            // 
+            // _picture_joint_Relbow
+            // 
+            this._picture_joint_Relbow.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Relbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Relbow.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Relbow.Location = new System.Drawing.Point(184, 337);
+            this._picture_joint_Relbow.Name = "_picture_joint_Relbow";
+            this._picture_joint_Relbow.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Relbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Relbow.TabIndex = 32;
+            this._picture_joint_Relbow.TabStop = false;
+            this._picture_joint_Relbow.Click += new System.EventHandler(this._picture_joint_Relbow_Click);
+            // 
+            // _picture_joint_Lelbow
+            // 
+            this._picture_joint_Lelbow.BackColor = System.Drawing.Color.Transparent;
+            this._picture_joint_Lelbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_joint_Lelbow.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_joint_Lelbow.Location = new System.Drawing.Point(106, 337);
+            this._picture_joint_Lelbow.Name = "_picture_joint_Lelbow";
+            this._picture_joint_Lelbow.Size = new System.Drawing.Size(30, 30);
+            this._picture_joint_Lelbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_joint_Lelbow.TabIndex = 31;
+            this._picture_joint_Lelbow.TabStop = false;
+            this._picture_joint_Lelbow.Click += new System.EventHandler(this._picture_joint_Lelbow_Click);
+            // 
             // _picture_joint_Rfoot
             // 
             this._picture_joint_Rfoot.BackColor = System.Drawing.Color.Transparent;
@@ -371,110 +487,26 @@
             this._picturebox_Character.TabIndex = 6;
             this._picturebox_Character.TabStop = false;
             // 
-            // label5
+            // _picture_Floor_R
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(399, 43);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 12);
-            this.label5.TabIndex = 26;
-            this.label5.Text = "판정선 거리";
-            // 
-            // _textbox_lineTocircle
-            // 
-            this._textbox_lineTocircle.Enabled = false;
-            this._textbox_lineTocircle.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this._textbox_lineTocircle.Location = new System.Drawing.Point(494, 40);
-            this._textbox_lineTocircle.Name = "_textbox_lineTocircle";
-            this._textbox_lineTocircle.Size = new System.Drawing.Size(47, 21);
-            this._textbox_lineTocircle.TabIndex = 25;
-            this._textbox_lineTocircle.TabStop = false;
-            this._textbox_lineTocircle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_lineTocircle_KeyPress);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(399, 70);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 12);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "판정선감소속도";
-            // 
-            // _textbox_reducevalue
-            // 
-            this._textbox_reducevalue.Enabled = false;
-            this._textbox_reducevalue.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this._textbox_reducevalue.Location = new System.Drawing.Point(494, 67);
-            this._textbox_reducevalue.Name = "_textbox_reducevalue";
-            this._textbox_reducevalue.Size = new System.Drawing.Size(47, 21);
-            this._textbox_reducevalue.TabIndex = 27;
-            this._textbox_reducevalue.TabStop = false;
-            this._textbox_reducevalue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_reducevalue_KeyPress);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(399, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 12);
-            this.label7.TabIndex = 30;
-            this.label7.Text = "롱노트이동속도";
-            // 
-            // _textbox_longNotespeed
-            // 
-            this._textbox_longNotespeed.Enabled = false;
-            this._textbox_longNotespeed.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this._textbox_longNotespeed.Location = new System.Drawing.Point(494, 95);
-            this._textbox_longNotespeed.Name = "_textbox_longNotespeed";
-            this._textbox_longNotespeed.Size = new System.Drawing.Size(47, 21);
-            this._textbox_longNotespeed.TabIndex = 29;
-            this._textbox_longNotespeed.TabStop = false;
-            this._textbox_longNotespeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_longNotespeed_KeyPress);
-            // 
-            // _picture_joint_Relbow
-            // 
-            this._picture_joint_Relbow.BackColor = System.Drawing.Color.Transparent;
-            this._picture_joint_Relbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._picture_joint_Relbow.Cursor = System.Windows.Forms.Cursors.Default;
-            this._picture_joint_Relbow.Location = new System.Drawing.Point(184, 337);
-            this._picture_joint_Relbow.Name = "_picture_joint_Relbow";
-            this._picture_joint_Relbow.Size = new System.Drawing.Size(30, 30);
-            this._picture_joint_Relbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._picture_joint_Relbow.TabIndex = 32;
-            this._picture_joint_Relbow.TabStop = false;
-            this._picture_joint_Relbow.Click += new System.EventHandler(this._picture_joint_Relbow_Click);
-            // 
-            // _picture_joint_Lelbow
-            // 
-            this._picture_joint_Lelbow.BackColor = System.Drawing.Color.Transparent;
-            this._picture_joint_Lelbow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._picture_joint_Lelbow.Cursor = System.Windows.Forms.Cursors.Default;
-            this._picture_joint_Lelbow.Location = new System.Drawing.Point(106, 337);
-            this._picture_joint_Lelbow.Name = "_picture_joint_Lelbow";
-            this._picture_joint_Lelbow.Size = new System.Drawing.Size(30, 30);
-            this._picture_joint_Lelbow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._picture_joint_Lelbow.TabIndex = 31;
-            this._picture_joint_Lelbow.TabStop = false;
-            this._picture_joint_Lelbow.Click += new System.EventHandler(this._picture_joint_Lelbow_Click);
-            // 
-            // _picture_joint_stomach
-            // 
-            this._picture_joint_stomach.BackColor = System.Drawing.Color.Transparent;
-            this._picture_joint_stomach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._picture_joint_stomach.Cursor = System.Windows.Forms.Cursors.Default;
-            this._picture_joint_stomach.Location = new System.Drawing.Point(145, 337);
-            this._picture_joint_stomach.Name = "_picture_joint_stomach";
-            this._picture_joint_stomach.Size = new System.Drawing.Size(30, 30);
-            this._picture_joint_stomach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._picture_joint_stomach.TabIndex = 33;
-            this._picture_joint_stomach.TabStop = false;
-            this._picture_joint_stomach.Click += new System.EventHandler(this._picture_joint_stomach_Click);
+            this._picture_Floor_R.BackColor = System.Drawing.Color.Transparent;
+            this._picture_Floor_R.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_Floor_R.BackgroundImage")));
+            this._picture_Floor_R.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_Floor_R.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_Floor_R.Location = new System.Drawing.Point(230, 538);
+            this._picture_Floor_R.Name = "_picture_Floor_R";
+            this._picture_Floor_R.Size = new System.Drawing.Size(65, 30);
+            this._picture_Floor_R.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_Floor_R.TabIndex = 35;
+            this._picture_Floor_R.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 580);
+            this.Controls.Add(this._picture_Floor_R);
+            this.Controls.Add(this._picture_Floor_L);
             this.Controls.Add(this._picture_joint_stomach);
             this.Controls.Add(this._picture_joint_Relbow);
             this.Controls.Add(this._picture_joint_Lelbow);
@@ -518,6 +550,10 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_L)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rfoot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lfoot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rknee)).EndInit();
@@ -527,9 +563,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lelbow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -571,6 +605,8 @@
         private System.Windows.Forms.PictureBox _picture_joint_Relbow;
         private System.Windows.Forms.PictureBox _picture_joint_Lelbow;
         private System.Windows.Forms.PictureBox _picture_joint_stomach;
+        private System.Windows.Forms.PictureBox _picture_Floor_L;
+        private System.Windows.Forms.PictureBox _picture_Floor_R;
     }
 }
 

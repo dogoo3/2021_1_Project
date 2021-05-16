@@ -97,6 +97,8 @@ namespace NoteMaker
                 SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
                 SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
                 SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
+                SetNote("Floor_L", _mp3player.CurrentPosition, _picture_Floor_L, true);
+                SetNote("Floor_R", _mp3player.CurrentPosition, _picture_Floor_R, true);
             }
             else
             {
@@ -111,6 +113,8 @@ namespace NoteMaker
                 SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
                 SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
                 SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
+                SetNote("Floor_L", _mp3player.CurrentPosition, _picture_Floor_L);
+                SetNote("Floor_R", _mp3player.CurrentPosition, _picture_Floor_R);
             }
         }
 
@@ -409,6 +413,13 @@ namespace NoteMaker
         }
         private bool ShowJoint(string joint, double currentPosition, PictureBox pictureBox, int i, bool _iscorrect = false)
         {
+            string notename;
+            if (_note[i]._activeNote.Length >= 5)
+            {
+                notename = _note[i]._activeNote.Substring(0, 5);
+                if (notename == "Skull" || notename == "Floor")
+                    return false;
+            }
             if (!_iscorrect)
             {
                 if (_note[i]._activeTime <= currentPosition && _note[i]._activeTime + 0.05 >= currentPosition) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
@@ -435,6 +446,57 @@ namespace NoteMaker
         }
         #endregion
 
+        #region SHOWFLOORNOTE
+        private void SetNote(string joint, double currentPosition, PictureBox pictureBox, bool _iscorrect = false)
+        {
+            if (_note.Count == 0) // 노트안에 아무것도 없으면 실행하지 않음.
+                return;
+
+            if (currentPosition >= _note[_note.Count / 2]._activeTime) // 중간 타임보다 찾으려는 시간이 크면
+            {
+                for (int i = _note.Count - 1; i >= 0; i--)
+                {
+                    if (ShowNote(joint, currentPosition, pictureBox, i, _iscorrect))
+                        return;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < _note.Count; i++)
+                {
+                    if (ShowNote(joint, currentPosition, pictureBox, i, _iscorrect))
+                        return;
+                }
+            }
+            pictureBox.Image = null;
+        }
+        private bool ShowNote(string notename, double currentPosition, PictureBox pictureBox, int i, bool _iscorrect = false)
+        {
+            if (!_iscorrect)
+            {
+                if (_note[i]._activeTime <= currentPosition && _note[i]._activeTime + 0.05 >= currentPosition) // 시간이 맞고(보이게 하기 위해 표현시작 시간부터 0.05초의 텀을 둠)
+                {
+                    if (_note[i]._activeNote == notename) // 관절이 맞으면
+                    {
+                        pictureBox.Image = Properties.Resources.bluesquare;
+                        return true;
+                    }
+                }
+            }
+            else
+            {
+                if (_note[i]._activeTime == currentPosition) // 시간이 정확히 맞고
+                {
+                    if (_note[i]._activeNote == notename) // 관절이 맞으면
+                    {
+                        pictureBox.Image = Properties.Resources.bluesquare;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        #endregion
         #region MAKEJOINT
         private void _picture_joint_lShoulder_Click(object sender, EventArgs e)
         {
