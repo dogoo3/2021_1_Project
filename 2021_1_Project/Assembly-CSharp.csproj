@@ -90,16 +90,16 @@
     <Compile Include="Assets\Scripts\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\Notes\ShortNote.cs" />
     <Compile Include="Assets\Scripts\Notes\SkullNote.cs" />
+    <Compile Include="Assets\Scripts\Notes\SlashNote.cs" />
     <Compile Include="Assets\SelectMonster.cs" />
     <Compile Include="Assets\Temp\Test.cs" />
     <Compile Include="Assets\Vibration.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\Resources\Notes\swingbaby_A.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Resources\Notes\lachryma.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\Resources\Notes\maxburning.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\Resources\Notes\jomanda.txt" />
+    <None Include="Assets\Resources\Notes\swingbaby_B.txt" />
     <None Include="Assets\Resources\Cutscene\tongbagwan\tongbagwan_CS.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
@@ -113,7 +113,6 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Resources\Notes\tongbagwan01.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
