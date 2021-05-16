@@ -17,7 +17,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     private Sprite _noteSprite;
     private bool _isHit, _isAuto; // 노트 터치 여부
 
-    private float _judgeValue; // 판정 범위를 저장할 변수, 판정선과 노트의 범위 저장 변수
+    private float _judgeValue; // 판정 범위를 저장할 변수
 
     private string _motionName = "", _sfxName; // 정상 판정시 수행할 캐릭터 애니메이션 변수
 
@@ -30,15 +30,12 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     [Header("판정 범위")]
     [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
 
-    private float _t;
-
     private void OnEnable()
     {
         InvokeRepeating("BrightenNote", 0f, 0.05f);
         _noteColor = Color.gray;
         _noteColor.a = 0;
         _line.color = _noteColor;
-        _t = Time.time;
     }
     private void Start()
     {
@@ -96,7 +93,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
 
     private void BrightenNote()
     {
-        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 0.8f);
+        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 1f);
         _circle.color = _noteColor;
         _line.color = _noteColor;
 

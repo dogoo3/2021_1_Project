@@ -74,6 +74,15 @@ TextureImporter:
   - first:
       213: 2139639469324433694
     second: Note_Long800
+  - first:
+      213: -3543688426373328597
+    second: SlashNote
+  - first:
+      213: -3070781929005628028
+    second: Note_Slash_outline
+  - first:
+      213: -5271080720006726637
+    second: Slashnote_arrow
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -489,7 +498,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 600
-        y: 600
+        y: 602
         width: 300
         height: 300
       alignment: 0
@@ -514,7 +523,7 @@ TextureImporter:
         width: 400
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -535,7 +544,7 @@ TextureImporter:
         width: 600
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -556,7 +565,7 @@ TextureImporter:
         width: 800
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -564,6 +573,69 @@ TextureImporter:
       bones: []
       spriteID: e19fc74d2c681bd10800000000000000
       internalID: 2139639469324433694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlashNote
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b21da57c62a42dec0800000000000000
+      internalID: -3543688426373328597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Note_Slash_outline
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4854ee2fa146265d0800000000000000
+      internalID: -3070781929005628028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Slashnote_arrow
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1300
+        width: 750
+        height: 180
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cb695330c59d6b0800000000000000
+      internalID: -5271080720006726637
       vertices: []
       indices: 
       edges: []

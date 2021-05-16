@@ -124,7 +124,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
     private void BrightenNote() // 노트 판정 이전까지 실행
     {
-        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 0.8f);
+        _noteColor.a = Mathf.Clamp(_noteColor.a + 0.1f, 0f, 1f);
         _departcircle.color = _noteColor;
         _line.color = _noteColor;
         for (int i = 0; i < _stopOver.Length; i++)
