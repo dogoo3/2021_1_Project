@@ -10,6 +10,10 @@ public class NotePoolingManager : MonoBehaviour
     [SerializeField] private ShortNote _multiShortNote = default;
     [SerializeField] private LongNote[] _longNotes = default;
     [SerializeField] private SkullNote[] _skullNotes = default;
+
+    [Header("씬이 넘어오자마자 음악이 바로 재생되는가?")]
+    [SerializeField] private bool _isNowStart = true;
+
     // 저장 큐
     private Queue<ShortNote> _queue_shortNote = new Queue<ShortNote>();
     private Queue<ShortNote> _queue_multiShortNote = new Queue<ShortNote>();
@@ -26,11 +30,17 @@ public class NotePoolingManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
-        value = FileManager.ReadTextOneLine(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/").Split('/');
+        if (_isNowStart)
+            ReadNoteFile();
     }
 
-    private void Start()
+    public void ReadNoteFile()
+    {
+        value = FileManager.ReadTextOneLine(PlayMusicInfo.ReturnSongName() + ".txt", "Notes/").Split('/');
+        MakeObjectPool();
+    }
+
+    private void MakeObjectPool()
     {
         for (i = 0; i < 16; i++)
         {

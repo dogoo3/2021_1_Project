@@ -12,5 +12,6 @@ public class SelectMonster : MonoBehaviour, IPointerClickHandler
         PlayMusicInfo.AppendMusicInfo(_monsterType);
         // 몬스터 매니저를 만들어서 선택되지 않은 몬스터 처리
         SetNote.instance.ReadNoteFile();
+        NotePoolingManager.instance.ReadNoteFile();
     }
 }

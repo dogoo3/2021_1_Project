@@ -1166,6 +1166,7 @@ GameObject:
   - component: {fileID: 468874275}
   - component: {fileID: 468874274}
   - component: {fileID: 468874273}
+  - component: {fileID: 468874276}
   m_Layer: 5
   m_Name: MonsterB
   m_TagString: Untagged
@@ -1248,6 +1249,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 468874271}
   m_CullTransparentMesh: 0
+--- !u!114 &468874276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468874271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd09f24233a99a448ca2a713a85b6f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _monsterType: _B
 --- !u!1 &500777677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd09f24233a99a448ca2a713a85b6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _monsterType: 
+  _monsterType: _A
 --- !u!1 &1373177151
 GameObject:
   m_ObjectHideFlags: 0
@@ -2849,6 +2863,7 @@ MonoBehaviour:
   _skullNotes:
   - {fileID: 200284823}
   - {fileID: 1216447459}
+  _isNowStart: 0
 --- !u!1 &1409094596
 GameObject:
   m_ObjectHideFlags: 0
