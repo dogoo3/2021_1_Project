@@ -41,7 +41,8 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private Vector2 _touchdownPos, _touchupPos, _standardAxis;
     private bool _isTouch = false;
     private float _touchTime = 0f;
-    
+    private string _sfxName, _motionName;
+
     private void Awake()
     {
         _standardAxis = new Vector2(Mathf.Cos(_angle * Mathf.Deg2Rad), Mathf.Sin(_angle * Mathf.Deg2Rad));
@@ -153,10 +154,30 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         this._isAuto = _isAuto;
     }
 
+    public string GetNoteName()
+    {
+        return _notename;
+    }
+
+    public void InputSfxName(string _sfxName)
+    {
+        this._sfxName = _sfxName;
+    }
+    
+    public void InputAnimation(string _motion)
+    {
+        _motionName = _motion;
+    }
+
     private void SetJudgeText(string _judge)
     {
         _judgeText = _judge;
         _line.color = Color.clear;
+    }
+
+    private void Vibrate(long _millisec = 150)
+    {
+        Vibration.Vibrate(_millisec);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -181,6 +202,11 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             case "AWESOME":
             case "GOOD":
+                SetNote.instance.SetMotion(_motionName);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                ComboManager.instance.CreaseCombo();
+                SoundManager.instance.PlaySFX(_sfxName);
+                Vibrate();
                 _circle.sprite = _effectSprite;
                 _circle.rectTransform.sizeDelta = _effrect;
                 _arrow.gameObject.SetActive(false);
@@ -188,11 +214,15 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 break;
             case "FAIL":
             case "MISS":
+                SetEdge.instance.SetEdgeImage("FAIL_" + (SetNote.instance.SetMotion(_motionName, true) % 4).ToString() + "_EDGE");
+                ComboManager.instance.ResetCombo();
                 _line.color = Color.clear;
                 _isHit = false;
                 break;
         }
         _isJudgeEnd = true;
+        JudgeManager.instance.SetJudgeImage(_message);
+        _motionName = "";
         _circle.raycastTarget = false;
         if (IsInvoking("BrightenNote"))
             CancelInvoke("BrightenNote");
