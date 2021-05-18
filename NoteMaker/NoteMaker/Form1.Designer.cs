@@ -51,6 +51,7 @@
             this._textbox_reducevalue = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this._textbox_longNotespeed = new System.Windows.Forms.TextBox();
+            this._picture_Floor_R = new System.Windows.Forms.PictureBox();
             this._picture_Floor_L = new System.Windows.Forms.PictureBox();
             this._picture_joint_stomach = new System.Windows.Forms.PictureBox();
             this._picture_joint_Relbow = new System.Windows.Forms.PictureBox();
@@ -64,9 +65,9 @@
             this._picture_joint_Rshoulder = new System.Windows.Forms.PictureBox();
             this._picture_joint_Lshoulder = new System.Windows.Forms.PictureBox();
             this._picturebox_Character = new System.Windows.Forms.PictureBox();
-            this._picture_Floor_R = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_L)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).BeginInit();
@@ -80,7 +81,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).BeginInit();
             this.SuspendLayout();
             // 
             // _button_loadmp3
@@ -315,6 +315,19 @@
             this._textbox_longNotespeed.TabStop = false;
             this._textbox_longNotespeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this._textbox_longNotespeed_KeyPress);
             // 
+            // _picture_Floor_R
+            // 
+            this._picture_Floor_R.BackColor = System.Drawing.Color.Transparent;
+            this._picture_Floor_R.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_Floor_R.BackgroundImage")));
+            this._picture_Floor_R.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this._picture_Floor_R.Cursor = System.Windows.Forms.Cursors.Default;
+            this._picture_Floor_R.Location = new System.Drawing.Point(230, 538);
+            this._picture_Floor_R.Name = "_picture_Floor_R";
+            this._picture_Floor_R.Size = new System.Drawing.Size(65, 30);
+            this._picture_Floor_R.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this._picture_Floor_R.TabIndex = 35;
+            this._picture_Floor_R.TabStop = false;
+            // 
             // _picture_Floor_L
             // 
             this._picture_Floor_L.BackColor = System.Drawing.Color.Transparent;
@@ -487,19 +500,6 @@
             this._picturebox_Character.TabIndex = 6;
             this._picturebox_Character.TabStop = false;
             // 
-            // _picture_Floor_R
-            // 
-            this._picture_Floor_R.BackColor = System.Drawing.Color.Transparent;
-            this._picture_Floor_R.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("_picture_Floor_R.BackgroundImage")));
-            this._picture_Floor_R.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this._picture_Floor_R.Cursor = System.Windows.Forms.Cursors.Default;
-            this._picture_Floor_R.Location = new System.Drawing.Point(230, 538);
-            this._picture_Floor_R.Name = "_picture_Floor_R";
-            this._picture_Floor_R.Size = new System.Drawing.Size(65, 30);
-            this._picture_Floor_R.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this._picture_Floor_R.TabIndex = 35;
-            this._picture_Floor_R.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -546,10 +546,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.6";
+            this.Text = "마왕성에서 춤춰요! 채보메이커 ver 1.8";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_musicline)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._trackbar_volume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_L)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_stomach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Relbow)).EndInit();
@@ -563,7 +564,6 @@
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Rshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picture_joint_Lshoulder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._picturebox_Character)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._picture_Floor_R)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

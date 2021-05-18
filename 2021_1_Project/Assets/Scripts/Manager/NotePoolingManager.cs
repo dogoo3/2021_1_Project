@@ -10,6 +10,7 @@ public class NotePoolingManager : MonoBehaviour
     [SerializeField] private ShortNote _multiShortNote = default;
     [SerializeField] private LongNote[] _longNotes = default;
     [SerializeField] private SkullNote[] _skullNotes = default;
+    [SerializeField] private SlashNote[] _slashNotes = default;
 
     [Header("씬이 넘어오자마자 음악이 바로 재생되는가?")]
     [SerializeField] private bool _isNowStart = true;
@@ -18,11 +19,13 @@ public class NotePoolingManager : MonoBehaviour
     private Queue<ShortNote> _queue_shortNote = new Queue<ShortNote>();
     private Queue<ShortNote> _queue_multiShortNote = new Queue<ShortNote>();
     private Dictionary<string, Queue<LongNote>> _dic_longNote = new Dictionary<string, Queue<LongNote>>(); // 롱노트 프리팹의 개수에 맞게 배열로 선언
+    private Dictionary<string, Queue<SlashNote>> _dic_slashNote = new Dictionary<string, Queue<SlashNote>>(); // 슬래시 노트 프리팹의 개수에 맞게 배열로 선언
 
     // 활성화 큐
     private List<ShortNote> _activeShortNote = new List<ShortNote>();
     private List<ShortNote> _activeMultiShortNote = new List<ShortNote>();
     private List<LongNote> _activeLongNote = new List<LongNote>();
+    private List<SlashNote> _activeSlashNote = new List<SlashNote>();
 
     private int i;
     private string[] value;
@@ -48,13 +51,22 @@ public class NotePoolingManager : MonoBehaviour
             Init(_multiShortNote, _queue_multiShortNote, "MultiShortNote", i);
         }
 
-        for (i = 0; i < _longNotes.Length; i++)
+        for (i = 0; i < _longNotes.Length; i++) // 롱노트 생성
         {
             Queue<LongNote> longNotes = new Queue<LongNote>(); // 딕셔너리 안에 들어갈 큐 할당
             for (int j = 0; j < 3; j++)
                 Init(_longNotes[i], longNotes, _longNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
             _dic_longNote.Add(_longNotes[i].GetNoteName(), longNotes); // 딕셔너리 안에 자료 삽입
             longNotes = null;
+        }
+
+        for (i = 0; i < _slashNotes.Length; i++) // 슬래시 노트 생성
+        {
+            Queue<SlashNote> slashNotes = new Queue<SlashNote>(); // 딕셔너리 안에 들어갈 큐 할당
+            for (int j = 0; j < 3; j++)
+                Init(_slashNotes[i], slashNotes, _slashNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
+            _dic_slashNote.Add(_longNotes[i].GetNoteName(), slashNotes); // 딕셔너리 안에 자료 삽입
+            slashNotes = null;
         }
     }
 
@@ -73,6 +85,16 @@ public class NotePoolingManager : MonoBehaviour
         LongNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
         
         temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), float.Parse(value[2]), PlayMusicInfo.ReturnAutoMode()); // 판정선거리, 감소속도
+        temp.transform.SetParent(gameObject.transform, false);
+        temp.name = _objName + "(" + turnNum.ToString() + ")";
+        _inputQueue.Enqueue(temp);
+    }
+
+    private void Init(SlashNote _prefab, Queue<SlashNote> _inputQueue, string _objName, int turnNum)
+    {
+        SlashNote temp = Instantiate(_prefab, Vector2.zero, Quaternion.identity);
+
+        temp.SetNoteProperties(float.Parse(value[0]), float.Parse(value[1]), PlayMusicInfo.ReturnAutoMode()); // 판정선거리, 감소속도
         temp.transform.SetParent(gameObject.transform, false);
         temp.name = _objName + "(" + turnNum.ToString() + ")";
         _inputQueue.Enqueue(temp);
@@ -176,6 +198,22 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.SetActive(true);
                 _temp.gameObject.transform.SetAsFirstSibling();
                 _activeMultiShortNote.Add(_temp); // 활성화 노트 리스트에 넣어줌
+            }
+        }
+        else if(_noteName.Substring(0,5) == "Slash")
+        {
+            if(_dic_longNote[_noteName].Count != 0)
+            {
+                SlashNote _temp = _dic_slashNote[_noteName].Dequeue();
+                _temp.InputSfxName(_sfxName);
+                if (_motion != null) // 다음에 변경될 모션을 가지고 있으면
+                    _temp.InputAnimation(_motion); // 변경될 모션의 이름을 알려준다
+
+                _temp.transform.position = _origin;
+
+                _temp.gameObject.SetActive(true);
+                _temp.gameObject.transform.SetAsFirstSibling();
+                _activeSlashNote.Add(_temp);
             }
         }
         else

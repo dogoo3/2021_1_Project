@@ -114,6 +114,10 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\longnote.png" />
+    <None Include="Resources\multishortnote.png" />
+    <None Include="Resources\shortnote.png" />
+    <None Include="Resources\slashnote.png" />
     <None Include="Resources\bluesquare.png" />
     <Content Include="Resources\circle.png" />
     <None Include="Resources\transparent.png" />
