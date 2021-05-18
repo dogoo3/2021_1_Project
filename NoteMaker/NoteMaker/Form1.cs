@@ -387,6 +387,25 @@ namespace NoteMaker
             }
         }
 
+
+        private void SetNoteColor(string _notename, PictureBox picturebox)
+        {
+            switch(_notename)
+            {
+                case "Short":
+                    picturebox.Image = Properties.Resources.shortnote;
+                    break;
+                case "LongN":
+                    picturebox.Image = Properties.Resources.longnote;
+                    break;
+                case "Multi":
+                    picturebox.Image = Properties.Resources.multishortnote;
+                    break;
+                case "Slash":
+                    picturebox.Image = Properties.Resources.slashnote;
+                    break;
+            }
+        }
         #region SHOWJOINT
         private void SetJoint(string joint, double currentPosition, PictureBox pictureBox, bool _iscorrect = false)
         {
@@ -426,7 +445,7 @@ namespace NoteMaker
                 {
                     if (_note[i]._joint == joint) // 관절이 맞으면
                     {
-                        pictureBox.Image = Properties.Resources.circle;
+                        SetNoteColor(_note[i]._activeNote.Substring(0, 5), pictureBox);
                         return true;
                     }
                 }
@@ -437,7 +456,7 @@ namespace NoteMaker
                 {
                     if (_note[i]._joint == joint) // 관절이 맞으면
                     {
-                        pictureBox.Image = Properties.Resources.circle;
+                        SetNoteColor(_note[i]._activeNote.Substring(0, 5), pictureBox);
                         return true;
                     }
                 }
@@ -470,6 +489,7 @@ namespace NoteMaker
             }
             pictureBox.Image = null;
         }
+
         private bool ShowNote(string notename, double currentPosition, PictureBox pictureBox, int i, bool _iscorrect = false)
         {
             if (!_iscorrect)
