@@ -2863,7 +2863,15 @@ MonoBehaviour:
   _skullNotes:
   - {fileID: 200284823}
   - {fileID: 1216447459}
-  _slashNotes: []
+  _slashNotes:
+  - {fileID: 2160581727311346819, guid: 6842ce021a92f5b479c8a614d967602e, type: 3}
+  - {fileID: 3734473333827512796, guid: d0bb22f07ca91ce46990cee4305b26db, type: 3}
+  - {fileID: 8048830112185184281, guid: dead5d3ccf91ae9469c897c1e65ef8f5, type: 3}
+  - {fileID: 3773742597727273253, guid: 37fe16bad43e90341acb88625df48f47, type: 3}
+  - {fileID: 2446461892094108407, guid: af17481b5eabf174e909a53ec45f8f85, type: 3}
+  - {fileID: 3920668654676693055, guid: f9c7f9e4a358b4f41bc5c1c493b6a460, type: 3}
+  - {fileID: 6085749596004096669, guid: a9bdea59819c7cd4b82838ab429b5f31, type: 3}
+  - {fileID: 1536712867807474230, guid: 44ba3d1829df8b94a8b6ec6d3dc938ac, type: 3}
   _isNowStart: 0
 --- !u!1 &1409094596
 GameObject:

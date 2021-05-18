@@ -65,7 +65,7 @@ public class NotePoolingManager : MonoBehaviour
             Queue<SlashNote> slashNotes = new Queue<SlashNote>(); // 딕셔너리 안에 들어갈 큐 할당
             for (int j = 0; j < 3; j++)
                 Init(_slashNotes[i], slashNotes, _slashNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
-            _dic_slashNote.Add(_longNotes[i].GetNoteName(), slashNotes); // 딕셔너리 안에 자료 삽입
+            _dic_slashNote.Add(_slashNotes[i].GetNoteName(), slashNotes); // 딕셔너리 안에 자료 삽입
             slashNotes = null;
         }
     }
@@ -202,7 +202,7 @@ public class NotePoolingManager : MonoBehaviour
         }
         else if(_noteName.Substring(0,5) == "Slash")
         {
-            if(_dic_longNote[_noteName].Count != 0)
+            if(_dic_slashNote[_noteName].Count != 0)
             {
                 SlashNote _temp = _dic_slashNote[_noteName].Dequeue();
                 _temp.InputSfxName(_sfxName);

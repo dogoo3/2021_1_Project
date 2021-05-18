@@ -166,7 +166,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3920668654676693040
 RectTransform:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ MonoBehaviour:
   _arrow: {fileID: 1312719022485527042}
   _effectSprite: {fileID: 4015791115160461521, guid: c1e7c0d59a1a62b43924903670181c8f,
     type: 3}
-  _notename: SlashNote_0
+  _notename: SlashNote_45
   _reduceValue: 250
   _awesomeRange: 35
   _goodRange: 45
