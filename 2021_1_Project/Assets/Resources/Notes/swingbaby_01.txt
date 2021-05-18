@@ -33,8 +33,8 @@
 12.7130623/Lhand/ShortNote/Snare01/MOTION2_1
 13.0403123/Rhand/ShortNote/Snare01/MOTION2_2
 13.5803331/stomach/ShortNote/Snare01/MOTION1_2
-13.9130415/Lelbow/ShortNote/Snare01/MOTION1_1
-13.9130415/Relbow/ShortNote/Snare01/MOTION1_1
+13.9130415/Lelbow/SlashNote_90/Snare01/MOTION1_1
+13.9130415/Relbow/SlashNote_90/Snare01/MOTION1_1
 14.2203956/stomach/ShortNote/Snare01/MOTION1_2
 14.5429164/Rhand/ShortNote/Snare01/MOTION0_R
 14.8444164/stomach/ShortNote/Snare01/MOTION1_2
@@ -50,10 +50,10 @@
 17.2407913/Relbow/MultiShortNote/Snare01/MOTION1_2
 17.2407913/Lelbow/MultiShortNote/Snare01/MOTION1_2
 17.5191871/stomach/ShortNote/Snare01/MOTION1_1
-18.0991038/Lelbow/ShortNote/Snare01/MOTION1_2
-18.0991038/Relbow/ShortNote/Snare01/MOTION1_2
-18.4049371/Lhand/ShortNote/Snare01/MOTION1_3
-18.7238954/Relbow/ShortNote/Snare01/MOTION1_4
+18.0991038/Lelbow/SlashNote_135/Snare01/MOTION1_2
+18.0991038/Relbow/SlashNote_45/Snare01/MOTION1_2
+18.4049371/Lhand/SlashNote_-45/Snare01/MOTION1_3
+18.7238954/Relbow/SlashNote_-90/Snare01/MOTION1_4
 19.3318745/Rhand/ShortNote/Snare01/MOTION2_1
 19.9552703/Rfoot/ShortNote/Snare01/MOTION2_2
 20.544562/Lknee/LongNote2_3_1/Snare01/MOTION2_3
@@ -68,7 +68,7 @@
 23.4876035/stomach/ShortNote/Snare01/MOTION1_2
 24.0771035/Rhand/ShortNote/Snare01/MOTION2_1
 24.3753743/Lhand/ShortNote/Snare01/MOTION2_2
-24.6895201/Rhand/ShortNote/Snare01/MOTION0_R
+24.6895201/Rhand/SlashNote_45/Snare01/MOTION0_R
 25.0049368/Lhand/ShortNote/Snare01/MOTION2_1
 25.1544368/Rhand/ShortNote/Snare01/MOTION2_2
 25.4632076/Lfoot/ShortNote/Snare01/MOTION2_3
@@ -79,7 +79,7 @@
 26.5007076/Lelbow/ShortNote/Snare01/MOTION1_3
 26.7795409/Relbow/ShortNote/Snare01/MOTION1_4
 27.0948325/Rhand/ShortNote/Snare01/MOTION2_2
-27.68602/Rknee/ShortNote/Snare01/MOTION2_4
+27.68602/Rknee/SlashNote_-180/Snare01/MOTION2_4
 28.0056658/stomach/ShortNote/Snare01/MOTION1_2
-28.3361033/Relbow/ShortNote/Snare01/MOTION1_1
-28.3361033/Lelbow/ShortNote/Snare01/MOTION1_1
+28.3361033/Relbow/SlashNote_90/Snare01/MOTION1_1
+28.3361033/Lelbow/SlashNote_90/Snare01/MOTION1_1
