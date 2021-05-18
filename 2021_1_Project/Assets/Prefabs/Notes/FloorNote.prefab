@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effectSprite: {fileID: 0}
-  _notename: 
+  _notename: FloorNote_L
   _reduceValue: 300
   _awesomeRange: 35
   _goodRange: 40
