@@ -50,7 +50,6 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     private void Start()
     {
-        SetNoteProperties(300, 250);
         _noteSprite = _circle.sprite;
         _orirect = Vector2.one * 200.0f;
         _effrect = Vector2.one * 300.0f;
@@ -120,7 +119,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             CancelInvoke();
             gameObject.SetActive(false);
-            // NotePoolingManager.instance.InsertNote(this, _notenane);
+            NotePoolingManager.instance.InsertNote(this);
         }
     }
 

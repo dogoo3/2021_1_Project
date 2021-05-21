@@ -12,7 +12,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
     [Header("성공시 이펙트 이미지")]
     [SerializeField] private Sprite _effectSprite = default;
     [Header("노트 이름")]
-    [SerializeField] private string _notenane = default;
+    [SerializeField] private string _notename = default;
 
     private Sprite _noteSprite;
     private bool _isHit, _isAuto; // 노트 터치 여부
@@ -110,7 +110,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
         if(_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
             CancelInvoke();
-            NotePoolingManager.instance.InsertNote(this, _notenane);
+            NotePoolingManager.instance.InsertNote(this, _notename);
         }
     }
     

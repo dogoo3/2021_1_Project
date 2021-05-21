@@ -11,6 +11,7 @@ public class NotePoolingManager : MonoBehaviour
     [SerializeField] private LongNote[] _longNotes = default;
     [SerializeField] private SkullNote[] _skullNotes = default;
     [SerializeField] private SlashNote[] _slashNotes = default;
+    [SerializeField] private FloorNote[] _floorNotes = default;
 
     [Header("씬이 넘어오자마자 음악이 바로 재생되는가?")]
     [SerializeField] private bool _isNowStart = true;
@@ -150,6 +151,13 @@ public class NotePoolingManager : MonoBehaviour
         _activeLongNote.Remove(_obj);
     }
 
+    public void InsertNote(SlashNote _obj)
+    {
+        _obj.gameObject.SetActive(false);
+        _dic_slashNote[_obj.GetNoteName()].Enqueue(_obj);
+        _activeSlashNote.Remove(_obj);
+    }
+
     public void GetNote(Vector2 _origin, string _noteName, string _sfxName, string _motion = null)
     {
         if (_noteName == "ShortNote")
@@ -215,6 +223,13 @@ public class NotePoolingManager : MonoBehaviour
                 _temp.gameObject.transform.SetAsFirstSibling();
                 _activeSlashNote.Add(_temp);
             }
+        }
+        else if(_noteName.Substring(0,5) == "Floor")
+        {
+            if (_noteName == "FloorNote_L")
+                _floorNotes[0].ActiveNote(_sfxName);
+            else
+                _floorNotes[1].ActiveNote(_sfxName);
         }
         else
         {
