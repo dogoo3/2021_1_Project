@@ -72,9 +72,18 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 _lineSize.x -= _reduceValue * Time.deltaTime;
                 _lineSize.y -= _reduceValue * Time.deltaTime;
                 _line.rectTransform.sizeDelta = _lineSize;
-
-                if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
-                    Hit("MISS");
+                #region AUTOMODE
+                if(PlayMusicInfo.ReturnAutoMode())
+                {
+                    if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
+                        Hit("AWESOME");
+                }
+                else
+                {
+                    if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
+                        Hit("MISS");
+                }
+                #endregion
             }
             else
             {
@@ -127,7 +136,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if(_isHit)
         {
-            // 판정 정하기
+            // 판정 정하기(처음에 터치할 때 판정이 정해지고, 슬래시에 성공하면 그 판정이 처리됨)
             _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
             // 판정라인 설정
             if (_judgeValue < _awesomeRange)

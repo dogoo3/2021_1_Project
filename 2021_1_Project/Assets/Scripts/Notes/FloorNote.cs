@@ -15,7 +15,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     [SerializeField] private string _notename = default;
 
     private Sprite _oriSprite;
-    private Color _noteColor;
+    private Color _noteColor = Color.white;
 
     private Vector2 _notesize, _maxnotesize;
     private Vector2 _orirect { get { return new Vector2(500.0f, 220.0f); } }
@@ -23,7 +23,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
 
     private bool _isHit;
     private float _sizeratio, _judgeValue; // 너비와 높이의 비율
-    private string _sfxName;
+    private string _sfxName, _motionName;
 
     [Header("판정선 축소 속도")]
     [SerializeField] private float _reduceValue = 300f;
@@ -53,8 +53,18 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
             if(_notesize.x <= _maxnotesize.x)
                 _noteImage.rectTransform.sizeDelta = _notesize;
 
-            if (_notesize.x > _maxnotesize.x + _missRange)
-                Hit("MISS");
+            #region AUTOMODE
+            if(PlayMusicInfo.ReturnAutoMode())
+            {
+                if (_notesize.x >= _maxnotesize.x)
+                    Hit("AWESOME");
+            }
+            else
+            {
+                if (_notesize.x > _maxnotesize.x + _missRange)
+                    Hit("MISS");
+            }
+            #endregion
         }
     }
 
@@ -63,6 +73,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
         _isHit = false;
         _noteImage.rectTransform.sizeDelta = _notesize = Vector2.zero;
         _noteImage.sprite = _oriSprite;
+        _noteColor = Color.white;
     }
 
     private void Hit(string _message)
@@ -71,17 +82,24 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
         {
             case "AWESOME":
             case "GOOD":
-                Debug.Log(_message);
-                InvokeRepeating("DarkenNote", 0f, 0.05f);
+                SetNote.instance.SetMotion(_motionName);
+                ComboManager.instance.CreaseCombo();
+                SoundManager.instance.PlaySFX(_sfxName);
+                SetEdge.instance.SetEdgeImage(_motionName + "_EDGE");
+                Vibrate();
+                _noteImage.rectTransform.sizeDelta = _effrect;
                 _noteImage.sprite = _effectSprite;
                 break;
             case "FAIL":
             case "MISS":
-                Debug.Log(_message);
+                SetEdge.instance.SetEdgeImage("FAIL_" + (SetNote.instance.SetMotion(_motionName, true) % 4).ToString() + "_EDGE");
+                ComboManager.instance.ResetCombo();
                 break;
         }
+        JudgeManager.instance.SetJudgeImage(_message);
+        _motionName = "";
+        InvokeRepeating("DarkenNote", 0f, 0.05f);
         _isHit = true;
-        _noteImage.gameObject.SetActive(false);
     }
 
     private void DarkenNote()
@@ -95,10 +113,16 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
             gameObject.SetActive(false);
         }
     }
-
-    public void ActiveNote(string _sfxName)
+    
+    private void Vibrate(long _millisec = 150)
+    {
+        Vibration.Vibrate(_millisec);
+    }
+     
+    public void ActiveNote(string _sfxName, string _motionName)
     {
         this._sfxName = _sfxName;
+        this._motionName = _motionName;
         gameObject.SetActive(true);
     }
 

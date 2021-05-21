@@ -130,7 +130,6 @@ public class NotePoolingManager : MonoBehaviour
 
     public void InsertNote(ShortNote _obj, string _notename)
     {
-        _obj.gameObject.SetActive(false);
         switch(_notename)
         {
             case "ShortNote":
@@ -142,6 +141,7 @@ public class NotePoolingManager : MonoBehaviour
                 _activeMultiShortNote.Remove(_obj);
                 break;
         }
+        _obj.gameObject.SetActive(false);
     }
 
     public void InsertNote(LongNote _obj)
@@ -227,9 +227,9 @@ public class NotePoolingManager : MonoBehaviour
         else if(_noteName.Substring(0,5) == "Floor")
         {
             if (_noteName == "FloorNote_L")
-                _floorNotes[0].ActiveNote(_sfxName);
+                _floorNotes[0].ActiveNote(_sfxName, _motion);
             else
-                _floorNotes[1].ActiveNote(_sfxName);
+                _floorNotes[1].ActiveNote(_sfxName, _motion);
         }
         else
         {
