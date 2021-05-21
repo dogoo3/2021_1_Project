@@ -166,7 +166,7 @@ MonoBehaviour:
   _line: {fileID: 1095997569634108390}
   _effectSprite: {fileID: 4015791115160461521, guid: c1e7c0d59a1a62b43924903670181c8f,
     type: 3}
-  _notenane: MultiShortNote
+  _notename: MultiShortNote
   _reduceValue: 250
   _awesomeRange: 35
   _goodRange: 45
