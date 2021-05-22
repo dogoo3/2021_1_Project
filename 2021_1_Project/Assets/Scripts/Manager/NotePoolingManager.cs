@@ -61,13 +61,16 @@ public class NotePoolingManager : MonoBehaviour
             longNotes = null;
         }
 
-        for (i = 0; i < _slashNotes.Length; i++) // 슬래시 노트 생성
+        if(_slashNotes != null)
         {
-            Queue<SlashNote> slashNotes = new Queue<SlashNote>(); // 딕셔너리 안에 들어갈 큐 할당
-            for (int j = 0; j < 3; j++)
-                Init(_slashNotes[i], slashNotes, _slashNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
-            _dic_slashNote.Add(_slashNotes[i].GetNoteName(), slashNotes); // 딕셔너리 안에 자료 삽입
-            slashNotes = null;
+            for (i = 0; i < _slashNotes.Length; i++) // 슬래시 노트 생성
+            {
+                Queue<SlashNote> slashNotes = new Queue<SlashNote>(); // 딕셔너리 안에 들어갈 큐 할당
+                for (int j = 0; j < 3; j++)
+                    Init(_slashNotes[i], slashNotes, _slashNotes[i].GetNoteName(), j); // 큐 안에 자료 삽입
+                _dic_slashNote.Add(_slashNotes[i].GetNoteName(), slashNotes); // 딕셔너리 안에 자료 삽입
+                slashNotes = null;
+            }
         }
     }
 
@@ -158,7 +161,7 @@ public class NotePoolingManager : MonoBehaviour
         _activeSlashNote.Remove(_obj);
     }
 
-    public void GetNote(Vector2 _origin, string _noteName, string _sfxName, string _motion = null)
+    public void GetNote(Vector2 _origin, string _noteName, string _sfxName, string _motion = "")
     {
         if (_noteName == "ShortNote")
         {

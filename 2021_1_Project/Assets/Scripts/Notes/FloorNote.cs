@@ -23,7 +23,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
 
     private bool _isHit;
     private float _sizeratio, _judgeValue; // 너비와 높이의 비율
-    private string _sfxName, _motionName;
+    private string _sfxName = "", _motionName = "";
 
     [Header("판정선 축소 속도")]
     [SerializeField] private float _reduceValue = 300f;
@@ -34,7 +34,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     {
         _noteImage = GetComponent<Image>();
         _oriSprite = _noteImage.sprite;
-        _maxnotesize = _noteImage.rectTransform.sizeDelta;
+        _maxnotesize = _orirect;
         _sizeratio = _maxnotesize.x / _maxnotesize.y; // 최대 사이즈 노트의 비율을 구한다
     }
 
