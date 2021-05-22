@@ -831,6 +831,16 @@ MonoBehaviour:
   - {fileID: 6290467784705233092, guid: bdc0f42409d885347b1488c928339049, type: 3}
   - {fileID: -794582070831502317, guid: 2be40c328ece7c6449f247df50d84f52, type: 3}
   - {fileID: -4909251893036318838, guid: 2be40c328ece7c6449f247df50d84f52, type: 3}
+  - {fileID: 1527055596017178883, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: 558506661070740402, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: 6175575637548126014, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: -659401021309756769, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: -4232464632026393811, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: -8803319279299929793, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: 1885217303277020736, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: -6677676436662726591, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: 2228491176482950540, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: 1856539367919580074, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
 --- !u!1 &251107509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1325,7 +1335,7 @@ GameObject:
   - component: {fileID: 468874273}
   - component: {fileID: 468874276}
   m_Layer: 5
-  m_Name: MonsterB
+  m_Name: MonsterBLUE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1348,7 +1358,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 256, y: -61}
-  m_SizeDelta: {x: 534.3, y: 758.3}
+  m_SizeDelta: {x: 500, y: 874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &468874273
 Animator:
@@ -1360,7 +1370,7 @@ Animator:
   m_GameObject: {fileID: 468874271}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92252427511a0f94ebf7fd146d03a46f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 42f7da253b286fc4f9fd679a1dde4eec, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1387,7 +1397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8793639957104055765, guid: 5391913655b4101419435b2a3c21b1a6,
+  m_Sprite: {fileID: 2154659365528456614, guid: 4464655e99bc67f48ac66ea5ea306729,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3002,7 +3012,7 @@ GameObject:
   - component: {fileID: 1349097407}
   - component: {fileID: 1349097408}
   m_Layer: 5
-  m_Name: MonsterA
+  m_Name: MonsterRED
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3025,7 +3035,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -256, y: -61}
-  m_SizeDelta: {x: 534.3, y: 758.3}
+  m_SizeDelta: {x: 500, y: 874}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1349097405
 MonoBehaviour:
@@ -3045,7 +3055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 8793639957104055765, guid: 5391913655b4101419435b2a3c21b1a6,
+  m_Sprite: {fileID: 3726419154731080793, guid: 746060661dbf1944db413504c1c59bcc,
     type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3074,7 +3084,7 @@ Animator:
   m_GameObject: {fileID: 1349097403}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 92252427511a0f94ebf7fd146d03a46f, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9861b19732581849a158406af0447b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
