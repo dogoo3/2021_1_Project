@@ -82,13 +82,20 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
                 break;
         }
         _circle.raycastTarget = false; // 터치 감지 비활성화
+        SetMonsterGauge(_message);
         JudgeManager.instance.SetJudgeImage(_message); // 판정
         _motionName = "";
         if (IsInvoking("BrightenNote")) // 노트 생성 Invoke 해제
             CancelInvoke("BrightenNote");
 
         _line.color = Color.clear;
-        InvokeRepeating("DarkenNote", 0f, 0.05f); 
+        InvokeRepeating("DarkenNote", 0f, 0.05f);
+    }
+
+    private void SetMonsterGauge(string _message)
+    {
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.CarculateGauge(_message);
     }
 
     private void BrightenNote()

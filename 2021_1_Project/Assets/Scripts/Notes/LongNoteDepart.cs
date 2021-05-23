@@ -176,6 +176,12 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
         this._reduceValue = _reduceValue;
         this._isAuto = _isAuto;
     }
+    
+    private void SetMonsterGauge(string _message)
+    {
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.CarculateGauge(_message);
+    }
 
     private void FixedUpdate()
     {
@@ -198,6 +204,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                         _stopindex++;
                         _lerpValue = SetLerpValue();
                         Vibrate();
+                        SetMonsterGauge(_judgeName);
                         if (_stopindex < _stopOver.Length) // 인덱스 오버플로우 방지
                         {
                             _lerpDpos = _stopOverPoint[_stopindex-1].position; // 도착 위치 설정
@@ -222,6 +229,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                     _departcircle.raycastTarget = false;
                     _noteColor = Color.white;
                     Vibrate();
+                    SetMonsterGauge(_judgeName);
                     InvokeRepeating("DarkenNote", 0f, 0.05f);
                     _isEnd = true;
                 }
@@ -240,7 +248,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                         Hit("AWESOME");
                 }
                 #endregion
-                if (_line.rectTransform.sizeDelta.x < _departcircle.rectTransform.sizeDelta.x - _missRange)
+                if(_line.rectTransform.sizeDelta.x < _departcircle.rectTransform.sizeDelta.x - _missRange)
                     Hit("MISS");
             }
         }

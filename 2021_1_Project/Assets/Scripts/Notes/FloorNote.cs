@@ -97,9 +97,16 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
                 break;
         }
         JudgeManager.instance.SetJudgeImage(_message);
+        SetMonsterGauge(_message);
         _motionName = "";
         InvokeRepeating("DarkenNote", 0f, 0.05f);
         _isHit = true;
+    }
+
+    private void SetMonsterGauge(string _message)
+    {
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.CarculateGauge(_message);
     }
 
     private void DarkenNote()
