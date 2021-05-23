@@ -38,6 +38,12 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
     {
         Vibration.Vibrate(_millisec);
     }
+    
+    private void SetMonsterGauge(string _message)
+    {
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.CarculateGauge(_message);
+    }
 
     private void FAIL(string _message)
     {
@@ -49,6 +55,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         InvokeRepeating("Transparent", 0f, 0.05f);
         ComboManager.instance.ResetCombo();
         JudgeManager.instance.SetJudgeImage(_message); // 판정
+        SetMonsterGauge("FAIL");
     }
 
     private void Success()
@@ -59,6 +66,7 @@ public class SkullNote : MonoBehaviour, IPointerDownHandler
         ComboManager.instance.CreaseCombo();
         JudgeManager.instance.SetJudgeImage("AWESOME"); // 판정
         Vibrate();
+        SetMonsterGauge("AWESOME");
         gameObject.SetActive(false);
     }
 

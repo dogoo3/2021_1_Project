@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\MTECLOGO\AdvertiseMTEC.cs" />
-    <Compile Include="Assets\MonsterManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\AutoControl.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\ChoiceStageManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\Song.cs" />
@@ -78,11 +77,13 @@
     <Compile Include="Assets\Scripts\Manager\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\Manager\HPManager.cs" />
     <Compile Include="Assets\Scripts\Manager\JudgeManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\MonsterManager.cs" />
     <Compile Include="Assets\Scripts\Manager\NotePoolingManager.cs" />
     <Compile Include="Assets\Scripts\Manager\OptionManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TitleManager.cs" />
+    <Compile Include="Assets\Scripts\Monster\SelectMonster.cs" />
     <Compile Include="Assets\Scripts\Motion\Motion.cs" />
     <Compile Include="Assets\Scripts\Motion\SetEdge.cs" />
     <Compile Include="Assets\Scripts\Notes\FloorNote.cs" />
@@ -93,9 +94,8 @@
     <Compile Include="Assets\Scripts\Notes\ShortNote.cs" />
     <Compile Include="Assets\Scripts\Notes\SkullNote.cs" />
     <Compile Include="Assets\Scripts\Notes\SlashNote.cs" />
-    <Compile Include="Assets\SelectMonster.cs" />
+    <Compile Include="Assets\Scripts\Vibration.cs" />
     <Compile Include="Assets\Temp\Test.cs" />
-    <Compile Include="Assets\Vibration.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\Resources\Notes\swingbaby_03.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

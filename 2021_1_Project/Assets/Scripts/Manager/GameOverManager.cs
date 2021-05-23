@@ -16,7 +16,9 @@ public class GameOverManager : MonoBehaviour
         ComboManager.instance.ResetCombo(false); // 실행 전 반드시 HPManager의 Reset을 해줘야함!
         JudgeManager.instance.ResetJudge();
         if(CutSceneManager.instance != null)
-        CutSceneManager.instance.ResetTime();
+            CutSceneManager.instance.ResetTime();
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.Init();
         SetNote.instance.ResetNote();
         SoundManager.instance.Stop();
         gameObject.SetActive(false);

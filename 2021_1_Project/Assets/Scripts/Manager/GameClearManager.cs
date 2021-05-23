@@ -30,8 +30,10 @@ public class GameClearManager : MonoBehaviour
         JudgeManager.instance.ResetJudge();
         SetNote.instance.ResetNote();
         if(CutSceneManager.instance != null)
-        CutSceneManager.instance.ResetTime();
+            CutSceneManager.instance.ResetTime();
         SoundManager.instance.Stop();
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.Init();
         gameObject.SetActive(false);
     }
 

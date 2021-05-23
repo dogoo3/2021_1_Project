@@ -230,11 +230,18 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         _isJudgeEnd = true;
         JudgeManager.instance.SetJudgeImage(_message);
+        SetMonsterGauge(_message);
         _motionName = "";
         _circle.raycastTarget = false;
         if (IsInvoking("BrightenNote"))
             CancelInvoke("BrightenNote");
         InvokeRepeating("DarkenNote", 0f, 0.05f);
+    }
+
+    private void SetMonsterGauge(string _message)
+    {
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.CarculateGauge(_message);
     }
 
     private void CheckRange(float _angle)
