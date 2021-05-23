@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\MTECLOGO\AdvertiseMTEC.cs" />
+    <Compile Include="Assets\MonsterManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\AutoControl.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\ChoiceStageManager.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\Song.cs" />
