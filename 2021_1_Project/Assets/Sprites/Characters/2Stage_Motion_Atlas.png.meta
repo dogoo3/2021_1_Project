@@ -32,6 +32,12 @@ TextureImporter:
   - first:
       213: 5708943065614087762
     second: MOTION_R_1_2
+  - first:
+      213: -4537740231521419559
+    second: MOTION_B_2_F
+  - first:
+      213: 2185431490927290824
+    second: MOTION_R_2_F
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -136,7 +142,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,7 +163,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,7 +184,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,7 +205,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -220,7 +226,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -241,7 +247,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,7 +268,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,7 +289,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,7 +310,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,7 +331,7 @@ TextureImporter:
         width: 860
         height: 1168
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,6 +339,48 @@ TextureImporter:
       bones: []
       spriteID: 2567bdc887d3a3f40800000000000000
       internalID: 5708943065614087762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOTION_B_2_F
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 2336
+        width: 860
+        height: 1168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9deba292d45b601c0800000000000000
+      internalID: -4537740231521419559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MOTION_R_2_F
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 2336
+        width: 860
+        height: 1168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c96ca1bc56345e10800000000000000
+      internalID: 2185431490927290824
       vertices: []
       indices: 
       edges: []
