@@ -85,6 +85,8 @@ public class SetNote : MonoBehaviour
         SoundManager.instance.Play();
         if(CutSceneManager.instance != null)
             CutSceneManager.instance.SetTime();
+        if (MonsterManager.instance != null)
+            MonsterManager.instance.SetTime();
     }
 
     private void FSM_DAB()

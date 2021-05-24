@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+class MonsterState
+{
+    public float _time { get; }
+    public string _monster { get; }
+    public bool _isactive { get; }
+
+    public MonsterState(string _time, string _monster, string _isactive)
+    {
+        this._time = float.Parse(_time);
+        this._monster = _monster;
+        this._isactive = bool.Parse(_isactive);
+    }
+}
 public class MonsterManager : MonoBehaviour
 {
     public static MonsterManager instance;
@@ -14,8 +27,12 @@ public class MonsterManager : MonoBehaviour
     [SerializeField] private Color _failColor = default;
     [SerializeField] private Color _successColor = default;
 
+    private List<MonsterState> _monsterState = new List<MonsterState>();
     private Dictionary<string, float> _gaugePoint = new Dictionary<string, float>();
 
+    private bool _isStart;
+    private int _monsterIndex = 0;
+    private float _startTime;
     private string _monsterType;
 
     private void Awake()
@@ -25,6 +42,27 @@ public class MonsterManager : MonoBehaviour
         _gaugePoint.Add("GOOD", 0.005f);
         _gaugePoint.Add("FAIL", -0.1f);
         _gaugePoint.Add("MISS", -0.1f);
+    }
+
+    private void Update()
+    {
+        if(_isStart)
+        {
+            if(Time.time - _startTime > _monsterState[_monsterIndex]._time) // 시간 경과 시
+            {
+                if (_monsterState[_monsterIndex]._monster == "_A") // 몬스터 타입에 따라서
+                {
+                    _monsters[0].gameObject.SetActive(_monsterState[_monsterIndex]._isactive); // 몬스터의 활성화 여부를 결정해줌
+                }
+                else
+                {
+                    _monsters[1].gameObject.SetActive(_monsterState[_monsterIndex]._isactive);
+                }
+                _monsterIndex++; // 인덱스 올림
+                if (_monsterIndex >= _monsterState.Count) // 상태를 저장한 인덱스의 카운트까지 올라가면
+                    _isStart = false; // 몬스터 상태 게산 종료
+            }
+        }
     }
 
     public void ChoiceMonster(string _type)
@@ -51,6 +89,21 @@ public class MonsterManager : MonoBehaviour
             ActiveGauge(_blueM_gauge);
         }
         _curtain.gameObject.SetActive(false);
+
+        List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Monster/");
+
+        for(int i=0;i<_tempstringList.Count;i++)
+        {
+            string[] temp = _tempstringList[i].Split('/');
+            _monsterState.Add(new MonsterState(temp[0], temp[1], temp[2]));
+        }
+        _tempstringList = null;
+    }
+
+    public void SetTime()
+    {
+        _startTime = Time.time;
+        _isStart = true;
     }
 
     private void ActiveGauge(Image _gauge)
