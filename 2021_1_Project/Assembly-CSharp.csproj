@@ -101,7 +101,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\Resources\Notes\swingbaby_DO.txt" />
-    <None Include="Assets\Resources\Notes\swingbaby_A.txt" />
+    <None Include="Assets\Resources\Notes\swingbaby_A01.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Resources\Notes\swingbaby_B.txt" />
     <None Include="Assets\Resources\Notes\swingbaby_02.txt" />
@@ -117,7 +117,7 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\Resources\SongInfo.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Resources\Notes\swingbaby_A01.txt" />
+    <None Include="Assets\Resources\Notes\swingbaby_A.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Resources\Notes\swingbaby_04.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />

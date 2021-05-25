@@ -843,6 +843,10 @@ MonoBehaviour:
   - {fileID: 1856539367919580074, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
   - {fileID: -5135571155823970192, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
   - {fileID: -5273893921499663305, guid: 64e0d12c958455c4d9c8db1f9de7c50c, type: 3}
+  - {fileID: -3750666328968426067, guid: 6b7c4e3727126be46b72a9c49029c8ca, type: 3}
+  - {fileID: 7372121963856157202, guid: 6b7c4e3727126be46b72a9c49029c8ca, type: 3}
+  - {fileID: -8696920657615018903, guid: 6b7c4e3727126be46b72a9c49029c8ca, type: 3}
+  - {fileID: -4579218844092523392, guid: 6b7c4e3727126be46b72a9c49029c8ca, type: 3}
 --- !u!1 &251107509
 GameObject:
   m_ObjectHideFlags: 0
@@ -3079,7 +3083,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.69803923}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
