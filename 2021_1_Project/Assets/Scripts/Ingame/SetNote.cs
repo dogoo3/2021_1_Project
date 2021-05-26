@@ -107,7 +107,6 @@ public class SetNote : MonoBehaviour
 
     public int SetMotion(string _motion, bool _isFail = false)
     {
-        Debug.Log(Time.time - _startTime);
         if (_isFail) // 실패 애니메이션일 경우
         {
             if(_image.sprite.name == "MOTION3_L_1" || _image.sprite.name == "MOTION3_R_1")

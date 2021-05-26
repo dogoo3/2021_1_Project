@@ -113,7 +113,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _arrow.color = _noteColor;
         if (_line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x < _failRange + 1.0f) // Fail 판정시 Note가 밝아지지 않은 경우도 있기 때문에 미세한 값 수정
         {
-            _circle.color = _line.color = _noteColor = Color.white;
+            _circle.color = _line.color = _arrow.color = _noteColor = Color.white;
             _isHit = true; // 노트 터치 가능
             CancelInvoke();
         }

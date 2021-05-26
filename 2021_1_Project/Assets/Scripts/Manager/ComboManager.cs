@@ -19,8 +19,9 @@ public class ComboManager : MonoBehaviour
     [SerializeField] private float _decreaseFontsizeValue = default;
     [Header("콤보증가시 커질 폰트 사이즈 배율")]
     [SerializeField] private float _creaseMagnification = 1.18f;
-    [Header("N콤보마다 HP 1씩 증가")]
-    [SerializeField] private int _creaseHpCombo = 2;
+    
+    //[Header("N콤보마다 HP 1씩 증가")]
+    //[SerializeField] private int _creaseHpCombo = 2;
     private void Awake()
     {
         instance = this;
@@ -43,24 +44,20 @@ public class ComboManager : MonoBehaviour
         _comboText.fontSize = _textsize * _creaseMagnification; // 사이즈 조정
         _combo++; // 콤보 1 증가
         _comboText.text = _combo.ToString(); // 콤보 숫자 표시
-        if (_combo % _creaseHpCombo == 0) // 매 30콤보마다 HP 1 회복
-            HPManager.instance.CreaseHP();
         _isUpCombo = true; // 효과를 위한 Update 진행
     }
 
-    public void ResetCombo(bool _isPlaying = true)
+    public void ResetCombo()
     {
         _combo = 0;
         _comboText.text = "";
-        if(_isPlaying)
-        {
-            if (HPManager.instance.DecreaseHP() == 0) // HP가 다 죽으면 사망윈도우를 띄운다.
-            {
-                SetNote.instance.StopNote();
-                NotePoolingManager.instance.ResetNote();
-                CutSceneManager.instance.ResetTime();
-                _gameOverManager.Active();
-            }
-        }
+    }
+
+    public void GameOver()
+    {
+        SetNote.instance.StopNote();
+        NotePoolingManager.instance.ResetNote();
+        CutSceneManager.instance.ResetTime();
+        _gameOverManager.Active();
     }
 }

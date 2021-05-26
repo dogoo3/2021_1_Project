@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+/*
+ * NOT USE SCRIPT
+ */
+
 public class HPManager : MonoBehaviour
 {
     public static HPManager instance;
