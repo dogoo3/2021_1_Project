@@ -11,22 +11,18 @@ public class GameClearManager : MonoBehaviour
 
     public void Active() // 게임완료창 활성화
     {
-        if(HPManager.instance.GetHP() > 0)
-        {
-            Dictionary<string, int> _judge = JudgeManager.instance.GetJudge();
-            _score[0].text = _judge["AWESOME"].ToString();
-            _score[1].text = _judge["GOOD"].ToString();
-            _score[2].text = _judge["FAIL"].ToString();
-            _score[3].text = _judge["MISS"].ToString();
+        Dictionary<string, int> _judge = JudgeManager.instance.GetJudge();
+        _score[0].text = _judge["AWESOME"].ToString();
+        _score[1].text = _judge["GOOD"].ToString();
+        _score[2].text = _judge["FAIL"].ToString();
+        _score[3].text = _judge["MISS"].ToString();
 
-            gameObject.SetActive(true);
-        }
+        gameObject.SetActive(true);
     }
 
     public void Restart() // 악곡 재시작
     {
-        HPManager.instance.ResetHP();
-        ComboManager.instance.ResetCombo(false); // 실행 전 반드시 HPManager의 Reset을 해줘야함!
+        ComboManager.instance.ResetCombo();
         JudgeManager.instance.ResetJudge();
         SetNote.instance.ResetNote();
         if(CutSceneManager.instance != null)
