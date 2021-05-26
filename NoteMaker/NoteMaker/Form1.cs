@@ -97,8 +97,8 @@ namespace NoteMaker
                 SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee, true);
                 SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot, true);
                 SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot, true);
-                SetNote("Floor_L", _mp3player.CurrentPosition, _picture_Floor_L, true);
-                SetNote("Floor_R", _mp3player.CurrentPosition, _picture_Floor_R, true);
+                SetNote("FloorNote_L", _mp3player.CurrentPosition, _picture_Floor_L, true);
+                SetNote("FloorNote_R", _mp3player.CurrentPosition, _picture_Floor_R, true);
             }
             else
             {
@@ -113,8 +113,8 @@ namespace NoteMaker
                 SetJoint("Rknee", _mp3player.CurrentPosition, _picture_joint_Rknee);
                 SetJoint("Lfoot", _mp3player.CurrentPosition, _picture_joint_Lfoot);
                 SetJoint("Rfoot", _mp3player.CurrentPosition, _picture_joint_Rfoot);
-                SetNote("Floor_L", _mp3player.CurrentPosition, _picture_Floor_L);
-                SetNote("Floor_R", _mp3player.CurrentPosition, _picture_Floor_R);
+                SetNote("FloorNote_L", _mp3player.CurrentPosition, _picture_Floor_L);
+                SetNote("FloorNote_R", _mp3player.CurrentPosition, _picture_Floor_R);
             }
         }
 
