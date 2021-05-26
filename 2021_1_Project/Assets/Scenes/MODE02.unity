@@ -412,6 +412,11 @@ PrefabInstance:
       propertyPath: _notename
       value: FloorNote_R
       objectReference: {fileID: 0}
+    - target: {fileID: 840925925763998014, guid: 78f659a660008114aaa8b8f345d79ed0,
+        type: 3}
+      propertyPath: _reduceValue
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 840925926867637488, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
       propertyPath: m_Name
@@ -1834,6 +1839,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 840925925763998014, guid: 78f659a660008114aaa8b8f345d79ed0,
+        type: 3}
+      propertyPath: _reduceValue
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 840925926867637488, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}

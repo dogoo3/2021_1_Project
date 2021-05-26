@@ -46,21 +46,24 @@ public class MonsterManager : MonoBehaviour
 
     private void Update()
     {
-        if(_isStart)
+        if(_monsterState != null)
         {
-            if(Time.time - _startTime > _monsterState[_monsterIndex]._time) // 시간 경과 시
+            if (_isStart)
             {
-                if (_monsterState[_monsterIndex]._monster == "_A") // 몬스터 타입에 따라서
+                if (Time.time - _startTime > _monsterState[_monsterIndex]._time) // 시간 경과 시
                 {
-                    _monsters[0].gameObject.SetActive(_monsterState[_monsterIndex]._isactive); // 몬스터의 활성화 여부를 결정해줌
+                    if (_monsterState[_monsterIndex]._monster == "_A") // 몬스터 타입에 따라서
+                    {
+                        _monsters[0].gameObject.SetActive(_monsterState[_monsterIndex]._isactive); // 몬스터의 활성화 여부를 결정해줌
+                    }
+                    else
+                    {
+                        _monsters[1].gameObject.SetActive(_monsterState[_monsterIndex]._isactive);
+                    }
+                    _monsterIndex++; // 인덱스 올림
+                    if (_monsterIndex >= _monsterState.Count) // 상태를 저장한 인덱스의 카운트까지 올라가면
+                        _isStart = false; // 몬스터 상태 게산 종료
                 }
-                else
-                {
-                    _monsters[1].gameObject.SetActive(_monsterState[_monsterIndex]._isactive);
-                }
-                _monsterIndex++; // 인덱스 올림
-                if (_monsterIndex >= _monsterState.Count) // 상태를 저장한 인덱스의 카운트까지 올라가면
-                    _isStart = false; // 몬스터 상태 게산 종료
             }
         }
     }
@@ -92,12 +95,17 @@ public class MonsterManager : MonoBehaviour
 
         List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Monster/");
 
-        for(int i=0;i<_tempstringList.Count;i++)
+        if (_tempstringList != null)
         {
-            string[] temp = _tempstringList[i].Split('/');
-            _monsterState.Add(new MonsterState(temp[0], temp[1], temp[2]));
+            for (int i = 0; i < _tempstringList.Count; i++)
+            {
+                string[] temp = _tempstringList[i].Split('/');
+                _monsterState.Add(new MonsterState(temp[0], temp[1], temp[2]));
+            }
+            _tempstringList = null;
         }
-        _tempstringList = null;
+        else
+            _monsterState = null;
     }
 
     public void SetTime()

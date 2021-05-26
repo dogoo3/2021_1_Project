@@ -26,10 +26,11 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     private string _sfxName = "", _motionName = "";
 
     [Header("판정선 축소 속도")]
-    [SerializeField] private float _reduceValue = 300f;
+    [SerializeField] private float _reduceValue = 300.0f;
     [Header("판정 범위")]
     [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
 
+    float t;
     private void Awake()
     {
         _noteImage = GetComponent<Image>();
@@ -40,6 +41,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
 
     private void OnEnable()
     {
+        t = Time.time;
         _noteImage.color = Color.white;
     }
 
@@ -82,6 +84,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
         {
             case "AWESOME":
             case "GOOD":
+                Debug.Log("Time : " + (Time.time - t).ToString());
                 SetNote.instance.SetMotion(_motionName);
                 ComboManager.instance.CreaseCombo();
                 SoundManager.instance.PlaySFX(_sfxName);
@@ -130,6 +133,11 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     {
         this._sfxName = _sfxName;
         this._motionName = _motionName;
+        Invoke("Active", 0.42f);
+    }
+
+    private void Active()
+    {
         gameObject.SetActive(true);
     }
 
