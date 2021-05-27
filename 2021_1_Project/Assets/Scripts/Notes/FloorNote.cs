@@ -24,7 +24,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     private string _sfxName = "", _motionName = "";
 
     [Header("판정선 축소 속도")]
-    [SerializeField] private float _reduceValue = 300.0f;
+    [SerializeField] private float _reduceValue = 150f;
     [Header("판정 범위")]
     [SerializeField] private float _awesomeRange = default, _goodRange = default, _failRange = default, _missRange = default;
     

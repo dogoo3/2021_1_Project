@@ -94,7 +94,10 @@ public class SetNote : MonoBehaviour
         _image.sprite = _motion[_dabFSM[_index_dabFSM]]._sprite;
         _index_dabFSM++;
         if (_index_dabFSM >= _dabFSM.Length)
+        {
+            _index_dabFSM = 0;
             CancelInvoke("FSM_DAB");
+        }
     }
 
     private void FSM_IDLE()
