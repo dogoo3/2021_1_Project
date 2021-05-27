@@ -490,12 +490,12 @@ PrefabInstance:
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 220
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
@@ -1918,12 +1918,12 @@ PrefabInstance:
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 500
+      value: 440
       objectReference: {fileID: 0}
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 220
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 840925926867637503, guid: 78f659a660008114aaa8b8f345d79ed0,
         type: 3}
@@ -2525,7 +2525,6 @@ MonoBehaviour:
   _gameOverManager: {fileID: 1641767819}
   _decreaseFontsizeValue: 3
   _creaseMagnification: 1.18
-  _creaseHpCombo: 2
 --- !u!1 &920406801
 GameObject:
   m_ObjectHideFlags: 0

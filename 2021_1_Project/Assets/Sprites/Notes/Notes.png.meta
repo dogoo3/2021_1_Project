@@ -83,6 +83,12 @@ TextureImporter:
   - first:
       213: -5271080720006726637
     second: Slashnote_arrow
+  - first:
+      213: 3915054994604051810
+    second: FloorNote
+  - first:
+      213: -5378190347153699756
+    second: FloorNote_Case
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -636,6 +642,48 @@ TextureImporter:
       bones: []
       spriteID: 31cb695330c59d6b0800000000000000
       internalID: -5271080720006726637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorNote
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1100
+        width: 440
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26d4e7556c1155630800000000000000
+      internalID: 3915054994604051810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FloorNote_Case
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 1230
+        width: 440
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45c0877cf54dc55b0800000000000000
+      internalID: -5378190347153699756
       vertices: []
       indices: 
       edges: []
