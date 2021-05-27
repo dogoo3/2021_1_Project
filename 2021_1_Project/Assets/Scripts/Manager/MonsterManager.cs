@@ -16,22 +16,27 @@ class MonsterState
         this._isactive = bool.Parse(_isactive);
     }
 }
+
 public class MonsterManager : MonoBehaviour
 {
     public static MonsterManager instance;
 
     [SerializeField] private SelectMonster[] _monsters = default;
+    [SerializeField] private Sprite[] _monsterMotions = default;
     [SerializeField] private Image _redM_gauge = default;
     [SerializeField] private Image _blueM_gauge = default;
     [SerializeField] private Image _curtain = default;
-    [SerializeField] private Color _failColor = default;
-    [SerializeField] private Color _successColor = default;
+    [SerializeField] private Sprite _failGauge = default;
+    [SerializeField] private Sprite _successGauge = default;
 
     private List<MonsterState> _monsterState = new List<MonsterState>();
     private Dictionary<string, float> _gaugePoint = new Dictionary<string, float>();
 
+    private Color _curtainColor;
+
+
     private bool _isStart;
-    private int _monsterIndex = 0;
+    private int _monsterIndex = 0, _motionRandIndex, _motionLength;
     private float _startTime;
     private string _monsterType;
 
@@ -42,6 +47,10 @@ public class MonsterManager : MonoBehaviour
         _gaugePoint.Add("GOOD", 0.005f);
         _gaugePoint.Add("FAIL", -0.1f);
         _gaugePoint.Add("MISS", -0.1f);
+
+        _motionLength = _monsterMotions.Length / 2;
+        _curtainColor = _curtain.color;
+        
     }
 
     private void Update()
@@ -91,7 +100,7 @@ public class MonsterManager : MonoBehaviour
         {
             ActiveGauge(_blueM_gauge);
         }
-        _curtain.gameObject.SetActive(false);
+        InvokeRepeating("PullCurtain", 0f, 0.05f);
 
         List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Monster/");
 
@@ -108,6 +117,17 @@ public class MonsterManager : MonoBehaviour
             _monsterState = null;
     }
 
+    private void PullCurtain()
+    {
+        _curtainColor.a -= 0.05f;
+        _curtain.color = _curtainColor;
+        if (_curtain.color.a <= 0)
+        {
+            _curtain.gameObject.SetActive(false);
+            CancelInvoke("PullCurtain");
+        }
+    }
+
     public void SetTime()
     {
         _startTime = Time.time;
@@ -116,8 +136,8 @@ public class MonsterManager : MonoBehaviour
 
     private void ActiveGauge(Image _gauge)
     {
-        _gauge.color = _failColor;
-        _gauge.gameObject.SetActive(true);
+        _gauge.sprite = _failGauge;
+        _gauge.transform.parent.gameObject.SetActive(true);
     }
 
     public void CarculateGauge(string _judge)
@@ -133,20 +153,42 @@ public class MonsterManager : MonoBehaviour
                 SetGauge(_blueM_gauge, _judge);
             }
         }
+        SetMotion(_judge);
+    }
+
+    private void SetMotion(string _judge)
+    {
+        if (_judge == "FAIL" || _judge == "MISS")
+            return;
+
+        for (int i = 0; i < _monsters.Length; i++)
+        {
+            if (_monsters[i].gameObject.activeSelf) // 몬스터가 비활성화되어있으면 연산을 진행하지 않는다.
+            {
+                _motionRandIndex = Random.Range(0, _motionLength); // 모션 번호 랜덤
+                if (_monsters[i].GetMotionName() == _monsterMotions[_motionRandIndex + i * _motionLength].name) // 이전에 적용된 모션과 같은 모션일 경우
+                {
+                    _motionRandIndex++; // 모션 번호를 1 올리고
+                    if (_motionRandIndex >= _motionLength) // 모션의 범위를 벗어나는 경우(오버플로우 방지)
+                        _motionRandIndex = 0; // 처음 모션으로 바꿔 적용해준다.
+                }
+                _monsters[i].SetMotion(_monsterMotions[_motionRandIndex + i * _motionLength]); // 모션을 적용한다.
+            }
+        }
     }
 
     private void SetGauge(Image _gauge, string _judge)
     {
         _gauge.fillAmount = Mathf.Clamp(_gauge.fillAmount + _gaugePoint[_judge], 0, 1.0f);
         if (_gauge.fillAmount >= 0.6f)
-            _gauge.color = _successColor;
+            _gauge.sprite = _successGauge;
         else
-            _gauge.color = _failColor;
+            _gauge.sprite = _failGauge;
     }
 
     public void Init()
     {
         _redM_gauge.fillAmount = _blueM_gauge.fillAmount = 0f;
-        _redM_gauge.color = _blueM_gauge.color = _failColor;
+        _redM_gauge.sprite = _blueM_gauge.sprite = _failGauge;
     }
 }

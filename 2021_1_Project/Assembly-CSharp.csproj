@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\Manager\SoundManager.cs" />
     <Compile Include="Assets\Scripts\Manager\SystemManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TitleManager.cs" />
+    <Compile Include="Assets\Scripts\Monster\MonsterSmoke.cs" />
     <Compile Include="Assets\Scripts\Monster\SelectMonster.cs" />
     <Compile Include="Assets\Scripts\Motion\Motion.cs" />
     <Compile Include="Assets\Scripts\Motion\SetEdge.cs" />

@@ -16,7 +16,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     private Color _noteColor = Color.white;
 
     private Vector2 _notesize, _maxnotesize;
-    private Vector2 _orirect { get { return new Vector2(500.0f, 220.0f); } }
+    private Vector2 _orirect { get { return new Vector2(440.0f, 130.0f); } }
     private Vector2 _effrect { get { return Vector2.one * 300.0f; } }
 
     private bool _isHit;
