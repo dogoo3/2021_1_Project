@@ -128,7 +128,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
     {
         this._sfxName = _sfxName;
         this._motionName = _motionName;
-        Invoke("Active", 0.42f);
+        Invoke("Active", 0.271f);
     }
 
     private void Active()
