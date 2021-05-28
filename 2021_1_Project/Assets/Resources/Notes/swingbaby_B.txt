@@ -389,8 +389,8 @@
 153.4112499/Lhand/FloorNote_L/Snare01/MOTION_R_2
 154.0319791/stomach/SlashNote_0/Snare01/MOTION_R_2_F
 154.6403957/Rhand/ShortNote/Snare01/MOTION_R_2
-154.6403957/Lhand/ShortNote/Snare01/MOTION_R_2
-154.9520624/Rhand/ShortNote/Snare01/MOTION_R_3_1
+154.6403957/Lhand/MultiShortNote/Snare01/MOTION_R_2
+154.9520624/Rhand/MultiShortNote/Snare01/MOTION_R_3_1
 155.2549998/Rhand/ShortNote/Snare01/MOTION_R_3_2
 155.8454373/Lhand/ShortNote/Snare01/MOTION_R_1_1_F
 156.156354/Relbow/ShortNote/Snare01/MOTION_R_1_2_F
