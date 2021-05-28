@@ -8,4 +8,10 @@ public class CutSceneViewer : MonoBehaviour
     {
         SoundManager.instance.PlaySFX(_sfxName);
     }
+
+    public void Destroy()
+    {
+        transform.parent.gameObject.SetActive(false);
+        Destroy(gameObject);
+    }
 }

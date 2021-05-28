@@ -17,33 +17,46 @@ public class CutSceneManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+        GetCutScene();
+    }
+
+    public void GetCutScene()
+    {
         // 노래에 맞는 컷씬 연출 프리팹 가져오기
         _animator = Resources.Load<Animator>("Cutscene/" + PlayMusicInfo.ReturnSongName() + "/" + PlayMusicInfo.ReturnSongName());
-        if(_animator == null)
+        if (_animator == null)
         {
             gameObject.SetActive(false);
             return;
         }
-        instance = this;
-        
+
+        gameObject.SetActive(true);
         _animator = Instantiate(_animator);
         _animator.transform.SetParent(transform, false);
 
         // 컷씬 타이밍 저장 파일 가져오기
         List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + "_CS.txt", "Cutscene/" + PlayMusicInfo.ReturnSongName() + "/");
 
-        // 갯수에 맞게 저장 후
-        _timeStamp = new float[_tempstringList.Count];
-        // 파싱
-        for (int i = 0; i < _timeStamp.Length; i++)
-            _timeStamp[i] = float.Parse(_tempstringList[i]);
+        // 타이밍 파일이 존재하는 경우에만 타임스탬프를 저장한다.
+        if(_tempstringList != null)
+        {
+            // 갯수에 맞게 저장 후
+            _timeStamp = new float[_tempstringList.Count];
+            // 파싱
+            for (int i = 0; i < _timeStamp.Length; i++)
+                _timeStamp[i] = float.Parse(_tempstringList[i]);
+        }
     }
 
     public void SetTime()
     {
-        _startTime = Time.time; // 타임 설정 후
-        _animator.Rebind();
-        _isAllShow = false;
+        if(gameObject.activeSelf)
+        {
+            _startTime = Time.time; // 타임 설정 후
+            _animator.Rebind();
+            _isAllShow = false;
+        }
     }
 
     public void ResetTime()

@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameClearManager : MonoBehaviour
 {
     [Header("0 : AWESOME, 1 : GOOD, 2 : FAIL, 3 : MISS")]
-    [SerializeField] private Text[] _score = default;
+    [SerializeField] private TextMeshProUGUI[] _score = default;
 
     public void Active() // 게임완료창 활성화
     {
