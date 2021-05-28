@@ -141,6 +141,8 @@ public class SetNote : MonoBehaviour
         }
         else if (_motion != "") // 다른 모션일 경우
         {
+            if (IsInvoking("FSM_DAB"))
+                CancelInvoke("FSM_DAB");
             _image.sprite = this._motion[_motion]._sprite;
             if (_motion == "DAB") // 노래가 끝나는 모션
             {
