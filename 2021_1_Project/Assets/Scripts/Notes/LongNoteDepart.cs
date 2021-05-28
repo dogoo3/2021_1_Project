@@ -136,7 +136,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
             _departcircle.color = _line.color = _noteColor = Color.white;
             for (int i = 0; i < _stopOver.Length; i++)
                 _stopOver[i].SetColor(_noteColor);
-            CancelInvoke();
+            CancelInvoke("BrightenNote");
         }
     }
     private void DarkenNote() // 노트 판정 완료시 실행
@@ -148,7 +148,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
 
         if (_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
-            CancelInvoke();
+            CancelInvoke("DarkenNote");
             NotePoolingManager.instance.InsertNote(_longNote);
         }
     }

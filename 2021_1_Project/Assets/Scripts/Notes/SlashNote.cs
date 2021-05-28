@@ -118,7 +118,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             _circle.color = _line.color = _arrow.color = _noteColor = Color.white;
             _isHit = true; // 노트 터치 가능
-            CancelInvoke();
+            CancelInvoke("BrightenNote");
         }
     }
     private void DarkenNote()
@@ -129,7 +129,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _arrow.color = _noteColor;
         if (_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
-            CancelInvoke();
+            CancelInvoke("DarkenNote");
             gameObject.SetActive(false);
             NotePoolingManager.instance.InsertNote(this);
         }
