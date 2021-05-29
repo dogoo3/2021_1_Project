@@ -77,7 +77,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             case "FAIL":
             case "MISS":
                 // 실패 애니메이션 진행 함수 작성
-                SetEdge.instance.SetEdgeImage("FAIL_" + (SetNote.instance.SetMotion(_motionName, true) % 4).ToString() + "_EDGE");
+                SetNote.instance.SetMotion(_motionName, true);
                 ComboManager.instance.ResetCombo();
                 break;
         }

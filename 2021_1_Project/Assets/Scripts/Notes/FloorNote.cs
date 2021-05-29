@@ -90,7 +90,7 @@ public class FloorNote : MonoBehaviour, IPointerDownHandler
                 break;
             case "FAIL":
             case "MISS":
-                SetEdge.instance.SetEdgeImage("FAIL_" + (SetNote.instance.SetMotion(_motionName, true) % 4).ToString() + "_EDGE");
+                SetNote.instance.SetMotion(_motionName, true);
                 ComboManager.instance.ResetCombo();
                 break;
         }
