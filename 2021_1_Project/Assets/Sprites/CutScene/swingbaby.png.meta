@@ -47,6 +47,72 @@ TextureImporter:
   - first:
       213: -3079597325952451944
     second: CutScene_2_4
+  - first:
+      213: -1887141732225699761
+    second: Cutscene_2_M_s3
+  - first:
+      213: -6064003389067701721
+    second: Cutscene_2_M_s2
+  - first:
+      213: 2537759466649235026
+    second: Cutscene_2_M_s1
+  - first:
+      213: 5789704680670671129
+    second: Cutscene_2_M_R2
+  - first:
+      213: -3691904930818320980
+    second: Cutscene_2_M_B2
+  - first:
+      213: -5786847364695994015
+    second: Cutscene_2_M_B1
+  - first:
+      213: 4681101008356003850
+    second: Cutscene_2_M_R1
+  - first:
+      213: -9051339058686967339
+    second: swingbaby_7
+  - first:
+      213: 298301525270437362
+    second: swingbaby_8
+  - first:
+      213: -8193612325068618553
+    second: swingbaby_9
+  - first:
+      213: -8385403360749972088
+    second: swingbaby_10
+  - first:
+      213: 6955535868033703013
+    second: swingbaby_11
+  - first:
+      213: 6791783728940140907
+    second: swingbaby_12
+  - first:
+      213: 385815186420589622
+    second: swingbaby_13
+  - first:
+      213: 796619235657385141
+    second: swingbaby_14
+  - first:
+      213: 456141092050536408
+    second: swingbaby_15
+  - first:
+      213: 2963227071987035192
+    second: swingbaby_16
+  - first:
+      213: -6776799549527617521
+    second: swingbaby_17
+  - first:
+      213: 2865123503787407280
+    second: swingbaby_18
+  - first:
+      213: -8599825547643331481
+    second: swingbaby_19
+  - first:
+      213: 585429742805865175
+    second: swingbaby_20
+  - first:
+      213: -708402387824265369
+    second: swingbaby_21
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -453,6 +519,153 @@ TextureImporter:
       bones: []
       spriteID: 89a7c576c821345d0800000000000000
       internalID: -3079597325952451944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_s3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3798
+        width: 550
+        height: 298
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f403fd1d7968fc5e0800000000000000
+      internalID: -1887141732225699761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_s2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 3550
+        width: 324
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722daddcb0558dba0800000000000000
+      internalID: -6064003389067701721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_s1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 3215
+        width: 563
+        height: 315
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e230f0acee73320800000000000000
+      internalID: 2537759466649235026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_R2
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 3193
+        width: 900
+        height: 895
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 911bacd5bb9295050800000000000000
+      internalID: 5789704680670671129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_B2
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 3193
+        width: 900
+        height: 895
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca59f06a608b3ccc0800000000000000
+      internalID: -3691904930818320980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_B1
+      rect:
+        serializedVersion: 2
+        x: 2547
+        y: 3193
+        width: 856
+        height: 895
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161d3e95bfcf0bfa0800000000000000
+      internalID: -5786847364695994015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cutscene_2_M_R1
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 2253
+        width: 856
+        height: 895
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0058c8c09c96f040800000000000000
+      internalID: 4681101008356003850
       vertices: []
       indices: 
       edges: []
