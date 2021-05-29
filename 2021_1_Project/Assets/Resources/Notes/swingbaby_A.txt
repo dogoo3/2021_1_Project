@@ -212,7 +212,7 @@
 85.1860401/Rhand/ShortNote/Snare01/MOTION_R_1_1
 85.4878734/Lelbow/ShortNote/Snare01/MOTION_R_1_2
 85.7442067/Lknee/ShortNote/Snare01/MOTION_R_1_1
-86.30079/Rshoulder/LongNote2_4_1/Snare01/MOTION_R_2
+86.30079/Rshoulder/LongNote2_4_1/Snare01/IDLE
 96.0075624/Lhand/ShortNote/Snare01/MOTION1_1
 96.0075624/Rhand/ShortNote/Snare01/MOTION1_1
 96.5777708/Lhand/FloorNote_L/Snare01/MOTION1_2
