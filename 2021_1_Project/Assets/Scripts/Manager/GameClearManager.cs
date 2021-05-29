@@ -24,12 +24,17 @@ public class GameClearManager : MonoBehaviour
     {
         ComboManager.instance.ResetCombo();
         JudgeManager.instance.ResetJudge();
-        SetNote.instance.ResetNote();
-        if(CutSceneManager.instance != null)
+        if (CutSceneManager.instance != null)
             CutSceneManager.instance.ResetTime();
-        SoundManager.instance.Stop();
         if (MonsterManager.instance != null)
+        {
             MonsterManager.instance.Init();
+            MonsterManager.instance.SetTime();
+        }
+        SetNote.instance.ResetNote();
+        AttackMotionManager.instance.SetTime();
+        SoundManager.instance.Stop();
+        BackgroundManager.instance.Init();
         gameObject.SetActive(false);
     }
 

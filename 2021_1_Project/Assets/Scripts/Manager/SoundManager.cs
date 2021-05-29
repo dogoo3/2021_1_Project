@@ -14,9 +14,14 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Time.timeScale = 1.0f;
         AudioClip[] _audio = Resources.LoadAll<AudioClip>("Sounds/SFX/");
         for (int i = 0; i < _audio.Length; i++)
             _sfxList.Add(_audio[i].name, _audio[i]);
+
+        _song.pitch = 1f;
+        for (int i = 0; i < _sfxs.Length; i++)
+            _sfxs[i].pitch = 1f;
         DontDestroyOnLoad(this);
     }
 

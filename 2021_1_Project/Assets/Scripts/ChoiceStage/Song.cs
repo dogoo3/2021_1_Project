@@ -8,6 +8,7 @@ public class Song : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField] private Image _image_jacket = default;
     [SerializeField] private Text _text_title = default, _text_composer = default;
+    [SerializeField] private Image _level = default;
 
     private AudioClip _song;
     private float _highlightpos;
@@ -21,6 +22,7 @@ public class Song : MonoBehaviour, IPointerClickHandler
         _image_jacket.sprite = Resources.Load<Sprite>("JacketImage/" + _filenames[3]);
         _highlightpos = float.Parse(_filenames[4]);
         _gameMode = _filenames[5];
+        _level.fillAmount = float.Parse(_filenames[6]) * 0.2f;
     }
 
     public void OnPointerClick(PointerEventData eventData)

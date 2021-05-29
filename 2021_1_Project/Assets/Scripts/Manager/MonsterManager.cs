@@ -23,22 +23,21 @@ public class MonsterManager : MonoBehaviour
 
     [SerializeField] private SelectMonster[] _monsters = default;
     [SerializeField] private Sprite[] _monsterMotions = default;
+    [SerializeField] private Sprite[] _idleMotion = default;
     [SerializeField] private Image _redM_gauge = default;
     [SerializeField] private Image _blueM_gauge = default;
     [SerializeField] private Image _curtain = default;
     [SerializeField] private Sprite _failGauge = default;
     [SerializeField] private Sprite _successGauge = default;
-
     private List<MonsterState> _monsterState = new List<MonsterState>();
     private Dictionary<string, float> _gaugePoint = new Dictionary<string, float>();
 
     private Color _curtainColor;
 
-
     private bool _isStart;
     private int _monsterIndex = 0, _motionRandIndex, _motionLength;
     private float _startTime;
-    private string _monsterType;
+    private string _monsterType, _oriType;
 
     private void Awake()
     {
@@ -50,7 +49,6 @@ public class MonsterManager : MonoBehaviour
 
         _motionLength = _monsterMotions.Length / 2;
         _curtainColor = _curtain.color;
-        
     }
 
     private void Update()
@@ -87,19 +85,13 @@ public class MonsterManager : MonoBehaviour
         {
             _monsters[0].NonSelect();
         }
-        _monsterType = _type;
+        _monsterType = _oriType = _type;
     }
 
     public void StartMusic()
     {
-        if (_monsterType == "_A")
-        {
-            ActiveGauge(_redM_gauge);
-        }
-        else
-        {
-            ActiveGauge(_blueM_gauge);
-        }
+        ActiveGauge(_redM_gauge);
+        ActiveGauge(_blueM_gauge);
         InvokeRepeating("PullCurtain", 0f, 0.05f);
 
         List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Monster/");
@@ -131,7 +123,16 @@ public class MonsterManager : MonoBehaviour
     public void SetTime()
     {
         _startTime = Time.time;
+        _monsterIndex = 0;
+        _monsterType = _oriType;
+        for (int i = 0; i < _monsters.Length; i++)
+            _monsters[i].SetMotion(_idleMotion[i]);
         _isStart = true;
+    }
+
+    public void StopTime()
+    {
+        _isStart = false;
     }
 
     private void ActiveGauge(Image _gauge)
@@ -180,15 +181,29 @@ public class MonsterManager : MonoBehaviour
     private void SetGauge(Image _gauge, string _judge)
     {
         _gauge.fillAmount = Mathf.Clamp(_gauge.fillAmount + _gaugePoint[_judge], 0, 1.0f);
+        Debug.Log(_gauge.fillAmount);
         if (_gauge.fillAmount >= 0.6f)
             _gauge.sprite = _successGauge;
         else
             _gauge.sprite = _failGauge;
     }
 
+    public float ReturnGauge()
+    {
+        if (_monsterType == "_A")
+            return _redM_gauge.fillAmount;
+        else
+            return _blueM_gauge.fillAmount;
+    }
+
     public void Init()
     {
         _redM_gauge.fillAmount = _blueM_gauge.fillAmount = 0f;
         _redM_gauge.sprite = _blueM_gauge.sprite = _failGauge;
+    }
+
+    public void ChangeMonsterType(string _type)
+    {
+        _monsterType = _type;
     }
 }

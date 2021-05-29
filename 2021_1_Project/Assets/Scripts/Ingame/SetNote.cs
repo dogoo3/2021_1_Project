@@ -30,7 +30,9 @@ public class SetNote : MonoBehaviour
         _jointName = { "Lshoulder", "Rshoulder", "Lelbow", "Relbow", "stomach", "Lhand", "Rhand", "Lknee", "Rknee", "Lfoot", "Rfoot" },
         _idleFSM = { "IDLE", "IDLE_1", "IDLE_2", "IDLE_3", "IDLE_4" },
         _dabFSM = { "DAB", "DAB_1", "DAB_2", "DAB_3", "DAB_4", "DAB_5", "DAB_6", "DAB_7", "DAB_8", "DAB_9", "DAB_10", "DAB_11" },
-        _failFSM = { "FAIL_0", "FAIL_1", "FAIL_2", "FAIL_3" };
+        _failFSM = { "FAIL_0", "FAIL_1", "FAIL_2", "FAIL_3" },
+        _redFSM = { "RED_MISS_0", "RED_MISS_1" },
+        _blueFSM = { "BLUE_MISS_0", "BLUE_MISS_1" };
     private void Awake()
     {
         instance = this;
@@ -83,7 +85,7 @@ public class SetNote : MonoBehaviour
         _startTime = Time.time;
         _isStart = true;
         SoundManager.instance.Play();
-        if(CutSceneManager.instance != null)
+        if (CutSceneManager.instance != null)
             CutSceneManager.instance.SetTime();
         if (MonsterManager.instance != null)
             MonsterManager.instance.SetTime();
@@ -110,6 +112,12 @@ public class SetNote : MonoBehaviour
 
     public int SetMotion(string _motion, bool _isFail = false)
     {
+        if (_motion == "IDLE")
+        {
+            InvokeRepeating("FSM_IDLE", 0, 0.1f);
+            return -1; // IDLE 상태에서는 EDGE가 없으므로 -1을 반환하여 다른 EDGE가 활성화되지 않게 한다
+        }
+
         if (_isFail) // 실패 애니메이션일 경우
         {
             if(_image.sprite.name == "MOTION3_L_1" || _image.sprite.name == "MOTION3_R_1")
@@ -121,12 +129,29 @@ public class SetNote : MonoBehaviour
             }
             if (IsInvoking("FSM_IDLE"))
                 CancelInvoke("FSM_IDLE");
-
-            _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
-
-            foreach (KeyValuePair<string, RectTransform> items in _jointPoints)
-                _jointPoints[items.Key].position = this._motion[_failFSM[_index_failFSM % _failFSM.Length]].joint[items.Key];
-            _index_failFSM++;
+            if(_motion.Length >= 8) // Red/Blue 모션을 가려내기 위해 모션 이름의 길이가 8 이상인 경우에만 판별
+            {
+                if (_motion.Substring(0, 8) == "MOTION_R")
+                {
+                    _image.sprite = this._motion[_redFSM[_index_failFSM % _redFSM.Length]]._sprite;
+                    SetEdge.instance.SetEdgeImage(_redFSM[_index_failFSM++ % _redFSM.Length] + "_EDGE");
+                }
+                else if (_motion.Substring(0, 8) == "MOTION_L")
+                {
+                    _image.sprite = this._motion[_blueFSM[_index_failFSM % _blueFSM.Length]]._sprite;
+                    SetEdge.instance.SetEdgeImage(_blueFSM[_index_failFSM++ % _blueFSM.Length] + "_EDGE");
+                }
+                else
+                {
+                    _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
+                    SetEdge.instance.SetEdgeImage(_failFSM[_index_failFSM++ % _failFSM.Length] + "_EDGE");
+                }
+            }
+            else // 그 외의 경우는 전부 일반 실패 모션 처리
+            {
+                _image.sprite = this._motion[_failFSM[_index_failFSM % _failFSM.Length]]._sprite;
+                SetEdge.instance.SetEdgeImage(_failFSM[_index_failFSM++ % _failFSM.Length] + "_EDGE");
+            }
             return _index_failFSM - 1;
         }
         else if (_motion == "MOTION3_L_2" || _motion == "MOTION3_R_2")
@@ -150,8 +175,6 @@ public class SetNote : MonoBehaviour
                     CancelInvoke("FSM_IDLE");
                 InvokeRepeating("FSM_DAB", 0, 0.1f);
             }
-            else if (_motion == "IDLE")
-                InvokeRepeating("FSM_IDLE", 0, 0.1f);
             else
             {
                 if (IsInvoking("FSM_IDLE")) // 아이들에서 다른 모션으로 넘어갈 때
@@ -163,9 +186,10 @@ public class SetNote : MonoBehaviour
         else
             return 0;
 
-        _index_failFSM = 0;
+        _index_failFSM = 0; // 노트가 성공하면 Fail 주기를 0으로 초기화한다.
         return 0;
     }
+
     public void StopNote()
     {
         _isStart = false;
@@ -177,10 +201,14 @@ public class SetNote : MonoBehaviour
         CancelInvoke();
         _isStart = false;
         _index_failFSM = 0;
+        _image.enabled = true;
         InvokeRepeating("FSM_IDLE", 0, 0.1f);
         Invoke("StartMusic", 3.0f); // 음악 재생
     }
-
+    public void SetActiveImage(bool _isHide = true)
+    {
+        _image.enabled = _isHide;
+    }
     private void FixedUpdate()
     {
         if (_isStart)

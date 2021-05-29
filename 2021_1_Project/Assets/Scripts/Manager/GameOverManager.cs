@@ -7,6 +7,10 @@ public class GameOverManager : MonoBehaviour
 {
     public void Active() // 게임완료창 활성화
     {
+        SetNote.instance.StopNote();
+        NotePoolingManager.instance.ResetNote();
+        CutSceneManager.instance.ResetTime();
+        MonsterManager.instance.StopTime();
         gameObject.SetActive(true);
     }
 
@@ -17,9 +21,14 @@ public class GameOverManager : MonoBehaviour
         if(CutSceneManager.instance != null)
             CutSceneManager.instance.ResetTime();
         if (MonsterManager.instance != null)
+        {
             MonsterManager.instance.Init();
+            MonsterManager.instance.SetTime();
+        }
         SetNote.instance.ResetNote();
+        AttackMotionManager.instance.SetTime();
         SoundManager.instance.Stop();
+        BackgroundManager.instance.Init();
         gameObject.SetActive(false);
     }
 
