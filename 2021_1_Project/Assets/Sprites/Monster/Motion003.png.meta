@@ -4,10 +4,10 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 9182157284707403512
-    second: Blue_Miss_0
+    second: BLUE_MISS_0
   - first:
       213: 4726436553962287433
-    second: RED_Miss_0
+    second: BLUE_MISS_0
   - first:
       213: 9066870904737133126
     second: Red_02
@@ -40,10 +40,10 @@ TextureImporter:
     second: Red_03
   - first:
       213: -1777617952289007304
-    second: Blue_Miss_1
+    second: BLUE_MISS_1
   - first:
       213: -5308440788202615073
-    second: Red_Miss_1
+    second: BLUE_MISS_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -140,13 +140,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blue_Miss_0
+      name: RED_MISS_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2216
-        width: 800
-        height: 1100
+        y: 2200
+        width: 860
+        height: 1168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,13 +161,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RED_Miss_0
+      name: BLUE_MISS_0
       rect:
         serializedVersion: 2
-        x: 1626
-        y: 2217
-        width: 800
-        height: 1100
+        x: 1720
+        y: 2200
+        width: 860
+        height: 1168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,13 +392,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blue_Miss_1
+      name: RED_MISS_1
       rect:
         serializedVersion: 2
-        x: 800
-        y: 2216
-        width: 800
-        height: 1100
+        x: 860
+        y: 2200
+        width: 860
+        height: 1168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -413,13 +413,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Red_Miss_1
+      name: BLUE_MISS_1
       rect:
         serializedVersion: 2
-        x: 2426
-        y: 2217
-        width: 800
-        height: 1100
+        x: 2580
+        y: 2200
+        width: 860
+        height: 1168
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

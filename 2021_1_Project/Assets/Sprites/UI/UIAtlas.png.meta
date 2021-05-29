@@ -56,6 +56,42 @@ TextureImporter:
   - first:
       213: 1637263757768891574
     second: SoundON
+  - first:
+      213: -1997983427079204491
+    second: IngameEdge
+  - first:
+      213: -2242911272580784506
+    second: levelstar1
+  - first:
+      213: 7208106850282566461
+    second: levelstar2
+  - first:
+      213: -4318932061899885090
+    second: levelGauge
+  - first:
+      213: 4212933144256301459
+    second: levelbackground
+  - first:
+      213: -7891955291301122609
+    second: songpanel
+  - first:
+      213: -7206629412123869616
+    second: ChoiceSongPanel
+  - first:
+      213: 1414660816591176729
+    second: FAIL
+  - first:
+      213: -2242911272580784506
+    second: MISS
+  - first:
+      213: 7208106850282566461
+    second: GOOD
+  - first:
+      213: 3303909427098033265
+    second: AWESOME
+  - first:
+      213: -8697320363551259984
+    second: AppIcon
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -525,6 +561,195 @@ TextureImporter:
       bones: []
       spriteID: 6bc9f6d86bab8b610800000000000000
       internalID: 1637263757768891574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: IngameEdge
+      rect:
+        serializedVersion: 2
+        x: 2460
+        y: 1487
+        width: 1440
+        height: 2560
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57193d9a8acb544e0800000000000000
+      internalID: -1997983427079204491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelGauge
+      rect:
+        serializedVersion: 2
+        x: 2499
+        y: 1325
+        width: 390
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed579612c221014c0800000000000000
+      internalID: -4318932061899885090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelbackground
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 1343
+        width: 370
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 399cdd5af58577a30800000000000000
+      internalID: 4212933144256301459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: songpanel
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 1004
+        width: 1091
+        height: 260
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd6bb6d9742a7290800000000000000
+      internalID: -7891955291301122609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChoiceSongPanel
+      rect:
+        serializedVersion: 2
+        x: 2966
+        y: 0
+        width: 1130
+        height: 1246
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05e79766bb8ecfb90800000000000000
+      internalID: -7206629412123869616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FAIL
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 3506
+        width: 550
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914c49a7482e1a310800000000000000
+      internalID: 1414660816591176729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MISS
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 3711
+        width: 550
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68e5a1fb4149fd0e0800000000000000
+      internalID: -2242911272580784506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GOOD
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 3711
+        width: 550
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33f62a7df6580460800000000000000
+      internalID: 7208106850282566461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AWESOME
+      rect:
+        serializedVersion: 2
+        x: 1894
+        y: 3506
+        width: 550
+        height: 205
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17c1e3c7e18d9dd20800000000000000
+      internalID: 3303909427098033265
       vertices: []
       indices: 
       edges: []

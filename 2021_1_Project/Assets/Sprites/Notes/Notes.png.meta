@@ -504,7 +504,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 600
-        y: 602
+        y: 600
         width: 300
         height: 300
       alignment: 0

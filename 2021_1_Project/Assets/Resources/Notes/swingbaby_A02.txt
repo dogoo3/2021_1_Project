@@ -1,5 +1,0 @@
-350/300/1200
-2.5/Lhand/FloorNote_L/Snare01/MOTION2_3
-3/Rfoot/SlashNote_0/Snare01/MOTION2_4
-4.2/Rhand/FloorNote_L/Snare01/MOTION2_2
-5/Lhand/SlashNote_-180/Snare01/MOTION2_1

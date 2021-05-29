@@ -1,5 +1,0 @@
-350/300/1000
-3/Lshoulder/FloorNote_L//
-6/Rshoulder/FloorNote_R//
-9/Lhand/FloorNote_L//
-12/Rhand/FloorNote_R//
