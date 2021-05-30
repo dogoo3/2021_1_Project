@@ -65,6 +65,7 @@
     <Compile Include="Assets\MTECLOGO\AdvertiseMTEC.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\AutoControl.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\ChoiceStageManager.cs" />
+    <Compile Include="Assets\Scripts\ChoiceStage\EasterEgg.cs" />
     <Compile Include="Assets\Scripts\ChoiceStage\Song.cs" />
     <Compile Include="Assets\Scripts\Ingame\CutSceneViewer.cs" />
     <Compile Include="Assets\Scripts\Ingame\PlayMusicInfo.cs" />
