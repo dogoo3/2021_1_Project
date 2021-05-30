@@ -153,7 +153,7 @@ public class ShortNote : MonoBehaviour, IPointerDownHandler
             {
                 _judgeValue = _line.rectTransform.sizeDelta.x - _circle.rectTransform.sizeDelta.x;
 
-                if (_judgeValue < _awesomeRange)
+                if (_judgeValue < 2.0f)
                 {
                     Hit("AWESOME");
                     return;

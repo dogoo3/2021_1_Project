@@ -244,7 +244,7 @@ public class LongNoteDepart : MonoBehaviour, IPointerDownHandler, IPointerExitHa
                 if(_isAuto)
                 {
                     _judgeValue = _line.rectTransform.sizeDelta.x - _departcircle.rectTransform.sizeDelta.x;
-                    if (_judgeValue < _awesomeRange)
+                    if (_judgeValue < 2.0f)
                         Hit("AWESOME");
                 }
                 #endregion

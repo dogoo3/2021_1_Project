@@ -75,7 +75,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 #region AUTOMODE
                 if(PlayMusicInfo.ReturnAutoMode())
                 {
-                    if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x - _missRange) // 노트를 놓치는 판정 범위
+                    if (_line.rectTransform.sizeDelta.x < _circle.rectTransform.sizeDelta.x) // 노트를 놓치는 판정 범위
                     {
                         _line.color = Color.clear;
                         Hit("AWESOME");
