@@ -129,7 +129,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
             _arrow.color = _noteColor;
         if (_noteColor.a <= 0f) // 노트가 투명해지면 비활성화
         {
-            CancelInvoke("DarkenNote");
+            CancelInvoke();
             gameObject.SetActive(false);
             NotePoolingManager.instance.InsertNote(this);
         }
@@ -193,7 +193,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if(_isHit)
+        if(_isHit && _isTouch)
         {
             if(_touchTime <= _slashTime)
             {
@@ -237,7 +237,7 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         _motionName = "";
         _circle.raycastTarget = false;
         if (IsInvoking("BrightenNote"))
-            CancelInvoke("BrightenNote");
+            CancelInvoke();
         InvokeRepeating("DarkenNote", 0f, 0.05f);
     }
 

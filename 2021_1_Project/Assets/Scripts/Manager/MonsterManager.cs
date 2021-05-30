@@ -42,10 +42,10 @@ public class MonsterManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        _gaugePoint.Add("AWESOME", 0.01f);
+        _gaugePoint.Add("AWESOME", 0.008f);
         _gaugePoint.Add("GOOD", 0.005f);
-        _gaugePoint.Add("FAIL", -0.1f);
-        _gaugePoint.Add("MISS", -0.1f);
+        _gaugePoint.Add("FAIL", -0.03f);
+        _gaugePoint.Add("MISS", -0.03f);
 
         _motionLength = _monsterMotions.Length / 2;
         _curtainColor = _curtain.color;
