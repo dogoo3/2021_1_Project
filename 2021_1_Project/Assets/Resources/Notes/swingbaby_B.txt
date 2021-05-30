@@ -215,8 +215,8 @@
 85.4878734/Lelbow/ShortNote/Snare01/MOTION_B_1_2
 85.7442067/Lknee/ShortNote/Snare01/MOTION_B_1_1
 86.30079/Rshoulder/LongNote2_4_1/Snare01/IDLE
-96.0075624/Lhand/ShortNote/Snare01/MOTION1_1
-96.0075624/Rhand/ShortNote/Snare01/MOTION1_1
+96.0075624/Lhand/MultiShortNote/Snare01/MOTION1_1
+96.0075624/Rhand/MultiShortNote/Snare01/MOTION1_1
 96.5777708/Rhand/FloorNote_R/Snare01/MOTION1_2
 96.5777708/Lhand/FloorNote_L/Snare01/MOTION1_2
 97.1904582/Lhand/ShortNote/Snare01/MOTION2_1
@@ -241,8 +241,8 @@
 102.827208/Lhand/FloorNote_L/Snare01/MOTION1_1
 103.1416246/Lfoot/ShortNote/Snare01/MOTION2_3
 103.4403954/Rfoot/ShortNote/Snare01/MOTION2_4
-103.7314996/Rhand/ShortNote/Snare01/MOTION1_1
-103.7314996/Lhand/ShortNote/Snare01/MOTION1_1
+103.7314996/Rhand/MultiShortNote/Snare01/MOTION1_1
+103.7314996/Lhand/MultiShortNote/Snare01/MOTION1_1
 104.6/Rhand/FloorNote_R/Snare01/MOTION_R_2_F
 104.6/Lhand/FloorNote_L/Snare01/MOTION_R_2_F
 105.1574995/Rhand/ShortNote/Snare01/MOTION_R_3_1
@@ -353,8 +353,8 @@
 141.4980202/Rhand/ShortNote/Snare01/MOTION2_2
 141.7567701/Rfoot/ShortNote/Snare01/MOTION2_4
 142.0664785/Lfoot/ShortNote/Snare01/MOTION2_3
-142.8752708/Rhand/ShortNote/Snare01/MOTION1_1
-142.8752708/Lhand/ShortNote/Snare01/MOTION1_1
+142.8752708/Rhand/MultiShortNote/Snare01/MOTION1_1
+142.8752708/Lhand/MultiShortNote/Snare01/MOTION1_1
 143.0356041/stomach/ShortNote/Snare01/MOTION1_2
 143.2106249/Relbow/ShortNote/Snare01/MOTION1_3
 143.3723958/Lelbow/ShortNote/Snare01/MOTION1_4
@@ -388,9 +388,9 @@
 153.4112499/Rhand/FloorNote_R/Snare01/MOTION_R_2
 153.4112499/Lhand/FloorNote_L/Snare01/MOTION_R_2
 154.0319791/stomach/SlashNote_0/Snare01/MOTION_R_2_F
-154.6403957/Rhand/ShortNote/Snare01/MOTION_R_2
+154.6403957/Rhand/MultiShortNote/Snare01/MOTION_R_2
 154.6403957/Lhand/MultiShortNote/Snare01/MOTION_R_2
-154.9520624/Rhand/MultiShortNote/Snare01/MOTION_R_3_1
+154.9520624/Rhand/ShortNote/Snare01/MOTION_R_3_1
 155.2549998/Rhand/ShortNote/Snare01/MOTION_R_3_2
 155.8454373/Lhand/ShortNote/Snare01/MOTION_R_1_1_F
 156.156354/Relbow/ShortNote/Snare01/MOTION_R_1_2_F
@@ -405,8 +405,8 @@
 159.4343747/Rhand/ShortNote/Snare01/MOTION_R_3_1
 159.7278121/Rhand/ShortNote/Snare01/MOTION_R_3_2
 160.0320621/Rhand/ShortNote/Snare01/MOTION_R_3_1
-160.5978329/Rhand/ShortNote/Snare01/MOTION1_1
-160.5978329/Lhand/ShortNote/Snare01/MOTION1_1
+160.5978329/Rhand/MultiShortNote/Snare01/MOTION1_1
+160.5978329/Lhand/MultiShortNote/Snare01/MOTION1_1
 160.9135829/stomach/ShortNote/Snare01/MOTION1_2
 161.2122496/Relbow/ShortNote/Snare01/MOTION1_3
 161.4984371/Lelbow/ShortNote/Snare01/MOTION1_4
