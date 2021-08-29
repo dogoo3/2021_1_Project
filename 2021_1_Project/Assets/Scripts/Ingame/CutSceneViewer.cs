@@ -17,6 +17,6 @@ public class CutSceneViewer : MonoBehaviour
 
     public void ChangeMonsterType(string _type) // 게이지를 올릴 몬스터의 타입을 변경해준다
     {
-        MonsterManager.instance.ChangeMonsterType(_type);
+        // MonsterManager.instance.ChangeMonsterType(_type);
     }
 }

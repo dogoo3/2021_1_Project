@@ -91,7 +91,7 @@ public class MonsterManager : MonoBehaviour
     public void StartMusic()
     {
         ActiveGauge(_redM_gauge);
-        ActiveGauge(_blueM_gauge);
+        // ActiveGauge(_blueM_gauge);
         InvokeRepeating("PullCurtain", 0f, 0.05f);
 
         List<string> _tempstringList = FileManager.ReadFile_TXT(PlayMusicInfo.ReturnSongName() + ".txt", "Monster/");
@@ -181,7 +181,7 @@ public class MonsterManager : MonoBehaviour
     private void SetGauge(Image _gauge, string _judge)
     {
         _gauge.fillAmount = Mathf.Clamp(_gauge.fillAmount + _gaugePoint[_judge], 0, 1.0f);
-        Debug.Log(_gauge.fillAmount);
+
         if (_gauge.fillAmount >= 0.6f)
             _gauge.sprite = _successGauge;
         else
@@ -199,7 +199,8 @@ public class MonsterManager : MonoBehaviour
     public void Init()
     {
         _redM_gauge.fillAmount = _blueM_gauge.fillAmount = 0f;
-        _redM_gauge.sprite = _blueM_gauge.sprite = _failGauge;
+        // _redM_gauge.sprite = _blueM_gauge.sprite = _failGauge; // 게이지가 각자 따로 있을 때
+        _redM_gauge.sprite = _failGauge;
     }
 
     public void ChangeMonsterType(string _type)
