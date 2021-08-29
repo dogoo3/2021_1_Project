@@ -1,3 +1,3 @@
-ShortNote,LongNote1
+ShortNote,MultiShortNote,LongNote1,LongNote1_1_1,LongNote1_1_2,LongNote1_2_1_1,LongNote1_2_1_2,LongNote1_2_2_1,SlashNote_-45,SlashNote_-90,SlashNote_-135,SlashNote_-180,SlashNote_0,SlashNote_45,SlashNote_90,SlashNote_135
 Snare01,Snare02
 ,IDLE,MOTION1_1,MOTION1_2,MOTION1_3,MOTION1_4,MOTION2_1,MOTION2_2,MOTION2_3,MOTION2_4,MOTION0_L,MOTION0_R,MOTION3_L_2,MOTION3_R_2,DAB

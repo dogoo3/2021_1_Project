@@ -1,3 +1,4 @@
 화면에 표시될 곡 이름,사운드 파일 이름,작곡가,앨범 이미지 이름,하이라이트 시작 시간(s),게임모드,난이도
+Tutorial(KangKang),KangKang,KONAMI,jacket_kangkang,5.598,MODE01,1
 통배권,tongbagwan,Sultan,jacket_tongbagwan,60,MODE01,2
 Swing Baby,swingbaby,박진영(JYP),jacket_swingbaby,67.125,MODE02,4
