@@ -53,7 +53,7 @@ public class MonsterManager : MonoBehaviour
 
     private void Update()
     {
-        if(_monsterState != null)
+        if(_monsterState != null) // 몬스터의 사라짐과 나타남을 컨트롤해주는 부분
         {
             if (_isStart)
             {
@@ -69,7 +69,7 @@ public class MonsterManager : MonoBehaviour
                     }
                     _monsterIndex++; // 인덱스 올림
                     if (_monsterIndex >= _monsterState.Count) // 상태를 저장한 인덱스의 카운트까지 올라가면
-                        _isStart = false; // 몬스터 상태 게산 종료
+                        _isStart = false; // 몬스터 상태 계산 종료
                 }
             }
         }
@@ -145,14 +145,15 @@ public class MonsterManager : MonoBehaviour
     {
         if (_gaugePoint.ContainsKey(_judge))
         {
-            if(_monsterType == "_A")
-            {
-                SetGauge(_redM_gauge, _judge);
-            }
-            else
-            {
-                SetGauge(_blueM_gauge, _judge);
-            }
+            //if(_monsterType == "_A")
+            //{
+            //    SetGauge(_redM_gauge, _judge);
+            //}
+            //else
+            //{
+            //    SetGauge(_blueM_gauge, _judge);
+            //}
+            SetGauge(_redM_gauge, _judge);
         }
         SetMotion(_judge);
     }
@@ -190,10 +191,11 @@ public class MonsterManager : MonoBehaviour
 
     public float ReturnGauge()
     {
-        if (_monsterType == "_A")
-            return _redM_gauge.fillAmount;
-        else
-            return _blueM_gauge.fillAmount;
+        //if (_monsterType == "_A")
+        //    return _redM_gauge.fillAmount;
+        //else
+        //    return _blueM_gauge.fillAmount;
+        return _redM_gauge.fillAmount;
     }
 
     public void Init()

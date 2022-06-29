@@ -195,12 +195,12 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if(_isHit && _isTouch)
         {
-            if(_touchTime <= _slashTime)
+            if(_touchTime <= _slashTime) // 정해진 슬라이드 시간 이하일 경우(터치 시간이 짧을 경우를 의미)
             {
                 _touchupPos = eventData.position;
                 _isTouch = false;
-                if (Vector2.Distance(_touchdownPos, _touchupPos) >= 500.0f)
-                    CheckRange(GetAngle(_touchupPos - _touchdownPos, _standardAxis));
+                if (Vector2.Distance(_touchdownPos, _touchupPos) >= 500.0f) // 일정 길이 이상 슬라이드해야함
+                    CheckRange(GetAngle(_touchupPos - _touchdownPos, _standardAxis)); // 정해진 화살표와 슬라이드 벡터의 사잇각을 구한다
                 else
                     Hit("FAIL");
             }
@@ -258,9 +258,10 @@ public class SlashNote : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     private float GetAngle(Vector2 a, Vector2 b)
     {
         float normA, normB;
-        normA = Mathf.Sqrt(a.x * a.x + a.y * a.y);
-        normB = Mathf.Sqrt(b.x * b.x + b.y * b.y);
-
-        return 57.29578f * Mathf.Acos(Vector2.Dot(a, b) / (normA * normB));
+        normA = Mathf.Sqrt(a.x * a.x + a.y * a.y); // 벡터의 크기
+        normB = Mathf.Sqrt(b.x * b.x + b.y * b.y); // 벡터의 크기
+        
+        // 라디안을 각도값으로 바꾸기 위한 상수 57.29578
+        return 57.29578f * Mathf.Acos(Vector2.Dot(a, b) / (normA * normB)); // (내적 / 각 벡터의 크기곱)을 Acos한 후 상수를 곱해줌.
     }
 }
